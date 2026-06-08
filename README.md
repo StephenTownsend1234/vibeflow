@@ -2,19 +2,23 @@
 
 vibeflow is a kit of skills that give Claude the structure to plan collaboratively, build iteravely, and save progress contextually, so every session picks up ready and more informed than the last. Built for vibecoders who use Claude and want momentum across sessions without losing the plot.
 
-## The commands
+## The core commands
 
 | Command | What it does | When |
 |---|---|---|
-| `/bootstrap` | One-time setup — creates a `.claude/` state folder with templates to store your project context | First time in a project |
 | `/start` | Loads relevant context, then you resume, plan a sprint, or just build | Every session |
-| `/build` | Executes the work — guardrails, checkpoints, debugging from first principles | After planning, or to iterate |
+| `/build` | Executes the work with guardrails, checkpoints, debugging from first principles | After planning, or to iterate |
 | `/wrap` | Saves progress, decisions, and learnings so the next session starts smarter | End of session |
-| `/roadmap` | Your path to the goal — capture ideas, order what's next (Now / Next / Later) | Anytime priorities shift |
+
+## Sub-commands
+| Command | What it does | When |
+| `/bootstrap` | One-time setup — creates a `.claude/` state folder with templates to store your project context | First time in a project |
+| `/roadmap` | Where you capture ideas, order what's next, and shape your path to the goal | Anytime priorities shift |
+| `/auto-research` | Async agent that conducts deep research on your roadmap ideas so your next sprint starts faster | Scheduled loop |
 
 ## The loop
 
-1. **`/bootstrap`** once per project — Claude scans your code, asks about your product in your own words, and sets up `.claude/`.
+1. **`/bootstrap`** run once per project — Claude scans your code, asks about your product in your own words, and sets up `.claude/`.
 2. **`/start`** → decide what to build together, research the approach, and create a sprint plan you can execute.   
 3. **`/build`** → work through it; Claude checks in with you at the points that matter.
 4. **`/wrap`** → Claude consolidates your learnings, updates your project docs and tees up what's next.
