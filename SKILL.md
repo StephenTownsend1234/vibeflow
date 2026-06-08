@@ -17,7 +17,7 @@ A workflow suite for a founder building software with Claude. Five commands shar
 | `/wrap` | Save the session to the files so the next one starts smarter | End of session |
 | `/roadmap` | The path to your goal — capture ideas, order Now/Next/Later | Anytime priorities shift |
 
-Plus two helpers: **compare-plans** (standalone second-opinion on a plan) and the **roadmap investigator** (opt-in background routine that pre-researches roadmap items — see `roadmap/references/investigator.md`).
+Plus the **roadmap investigator** (opt-in background routine that pre-researches roadmap items — see `roadmap/references/investigator.md`).
 
 ## How they connect
 

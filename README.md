@@ -50,7 +50,7 @@ git clone https://github.com/StephenTownsend1234/vibeflow ~/.claude/skills/vibef
 Each command (`/start`, `/build`, …) is a skill under that folder. Depending on your setup, register each one by symlinking its folder into `~/.claude/skills/` — e.g.:
 
 ```bash
-for cmd in bootstrap start build wrap roadmap compare-plans; do
+for cmd in bootstrap start build wrap roadmap; do
   ln -s ~/.claude/skills/vibeflow/$cmd ~/.claude/skills/$cmd
 done
 ```
