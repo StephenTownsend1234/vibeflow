@@ -12,6 +12,7 @@ vibeflow is a kit of skills that give Claude the structure to plan collaborative
 
 ## Sub-commands
 | Command | What it does | When |
+|---|---|---|
 | `/bootstrap` | One-time setup — creates a `.claude/` state folder with templates to store your project context | First time in a project |
 | `/roadmap` | Where you capture ideas, order what's next, and shape your path to the goal | Anytime priorities shift |
 | `/auto-research` | Async agent that conducts deep research on your roadmap ideas so your next sprint starts faster | Scheduled loop |
