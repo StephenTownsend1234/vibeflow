@@ -157,15 +157,15 @@ Emit a topic heading as your first line — bold H2, ≤6 words.
 
 > `## Sprint planning: <topic>`
 
-If the target is a roadmap item (the user named one, or picked from "Now"), pull its definition from ROADMAP.md as the starting point — and note whether it points to a pre-sprint brief at `.claude/research/<slug>.md`.
-
 If the user already gave a fully-formed description, skip the questions; go to **2.2 (research)**. Otherwise read related docs silently (the ARCHITECTURE Map, recent DECISIONS for this area, endorsed patterns in `.claude/PLAYBOOK.md`, a pre-sprint brief at `.claude/research/<slug>.md` if one exists, any prior plan for it). 
+
+If the target is a roadmap item (the user named one, or picked from "Now"), pull its definition from ROADMAP.md as the starting point — and note whether it points to a pre-sprint brief at `.claude/research/<slug>.md`. Type it back exactly as written in roadmap. Assume it is not well defined, and proceed: 
 
 1. Start by asking the user to dump everything they want to build. 
 
 Then, help the user sharpen and refine their intent by asking relevant follow up questions one at a time. The goal is to help the user define and scope what they want to build in this sprint. An example structure could be:
 
-1. First, play it back - Restate the feature as a single concrete sentence describing the user's step-by-step experience. Surface the assumptions they didn't state (triggers, timing, sequence). Confirm before continuing. 
+1. First, play it back - Restate the feature as a single concrete sentence describing the user's step-by-step experience. Surface questions they didn't state (triggers, timing, sequence). Confirm before continuing. 
 2. Understand the why/problem - What does this get the user that the current way doesn't?
 3. Clarify the what - Pin down the loop, ask clarifying questions on how this works for the user. 
 4. Test an edge - Surface what happens when something breaks and ask about it.
