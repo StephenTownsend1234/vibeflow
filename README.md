@@ -1,17 +1,13 @@
 # vibeflow
 
-**A vibe-coding workflow for [Claude Code](https://claude.com/claude-code) — stay in flow from idea to shipped.**
-
-vibeflow is a suite of slash-command skills that gives Claude the structure to plan, build, and *remember* a software project with you. State lives in a `.claude/` folder you own, so every session picks up smarter than the last.
-
-Built for founders and solo builders who code with Claude and want momentum without losing the plot.
+vibeflow is a kit of skills that give Claude the structure to plan collaboratively, build iteravely, and save progress contextually, so every session picks up ready and more informed than the last. Built for vibecoders who use Claude and want momentum across sessions without losing the plot.
 
 ## The commands
 
 | Command | What it does | When |
 |---|---|---|
-| `/bootstrap` | One-time setup — scaffolds the `.claude/` state folder | First time in a project |
-| `/start` | Loads context, then you resume, plan a sprint, or just build | Every session |
+| `/bootstrap` | One-time setup — creates a `.claude/` state folder with templates to store your project context | First time in a project |
+| `/start` | Loads relevant context, then you resume, plan a sprint, or just build | Every session |
 | `/build` | Executes the work — guardrails, checkpoints, debugging from first principles | After planning, or to iterate |
 | `/wrap` | Saves progress, decisions, and learnings so the next session starts smarter | End of session |
 | `/roadmap` | Your path to the goal — capture ideas, order what's next (Now / Next / Later) | Anytime priorities shift |
@@ -19,9 +15,9 @@ Built for founders and solo builders who code with Claude and want momentum with
 ## The loop
 
 1. **`/bootstrap`** once per project — Claude scans your code, asks about your product in your own words, and sets up `.claude/`.
-2. **`/start`** → pull something from your roadmap (or plan fresh) → shape a sprint together. The planning effort goes into the *approach* (research-backed, first-principles), not micro-managing steps.
-3. **`/build`** → work through it; Claude checks in at the points that matter and trusts itself on the rest.
-4. **`/wrap`** → Claude updates your project docs and tees up what's next.
+2. **`/start`** → decide what to build together, research the approach, and create a sprint plan you can execute.   
+3. **`/build`** → work through it; Claude checks in with you at the points that matter.
+4. **`/wrap`** → Claude consolidates your learnings, updates your project docs and tees up what's next.
 5. Next session, **`/start`** picks up right where you left off.
 
 ## What it sets up
@@ -61,7 +57,7 @@ Then open Claude Code in a project and run `/bootstrap`.
 
 - **Plan the approach, not the steps.** Spend effort on the expensive-to-reverse decision (the approach); trust Claude to execute the cheap-to-redo work.
 - **Get smarter over time.** `/wrap` captures decisions, learnings, and what worked, so context compounds instead of evaporating.
-- **You stay in the driver's seat.** One clear decision at a time; nothing written to `.claude/` without your say-so.
+- **You stay in the driver's seat.** One clear decision at a time; no time wasted building things you didn't mean to. 
 
 ## License
 
