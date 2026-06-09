@@ -1,6 +1,6 @@
 ---
 name: start
-description: Triggered by `/start`. Loads relevant project context, briefs the user, then routes to one of three paths — resume an in-flight sprint, plan a new sprint (research-driven), or Freebuild (load context and iterate directly with no formal plan). Requires a `.claude/` folder — tells the user to run `/bootstrap` first if missing. Triggered only by the `/start` command, not by natural-language phrasing.
+description: Triggered by `/start`. Loads relevant project context, briefs the user, then routes to one of three paths — resume an in-flight sprint, plan a new sprint (research-driven), or Freebuild (load context and iterate directly with no formal plan). Requires vibeflow state in `.claude/`; if the project isn't set up yet, shows a welcome and points the user to `/bootstrap`. Triggered only by the `/start` command, not by natural-language phrasing.
 ---
 
 # /start
@@ -82,7 +82,11 @@ In a single turn, **parallel-read the files**:
 2. `.claude/ROADMAP.md`
 3. Every `.claude/sprints/*.md` (excluding `archive/`)
 
-If `.claude/` doesn't exist: tell the user to run `/bootstrap` first.
+**If the project isn't set up yet** — `.claude/` is missing, *or* it contains no vibeflow state (only harness files like `settings.local.json`; no `PROJECT.md` / `ROADMAP.md`) — don't try to orient against nothing. Point the user to setup in one line; the full intro to vibeflow lives in `/bootstrap`, where most users start:
+
+> "This project isn't set up yet — run **`/bootstrap`** to set up vibeflow here. Want me to kick it off?"
+
+Otherwise, proceed to orient.
 
 ### Sprint files
 

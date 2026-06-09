@@ -33,6 +33,8 @@ One-time setup for a project. Scan the repo (or go conversation-first for greenf
 
 ## Philosophy
 
+**Be their guide, not a technician.** The user is likely new to vibeflow and doesn't know any of these stage names — never make them decode jargon like "greenfield," "the Map,", etc. Say plainly *what* you're doing and *why it helps them*, and help them feel like they are being walked through. Keep the internal labels for your own reasoning; translate them for the user.
+
 **Deep on architecture, open on product.** Code reveals stack, folder patterns, services, schemas. It cannot reveal vision or target user. Spend scan effort on architecture; spend conversation on product.
 
 **Ask, don't infer.** For anything product-shaped, ask the user in their own words.
@@ -41,20 +43,26 @@ One-time setup for a project. Scan the repo (or go conversation-first for greenf
 
 ## Stage 1: Welcome, orient, and confirm intent
 
-**Open by orienting the user to vibeflow.** Show this on a fresh setup; for a migration or an existing `.claude/`, shorten to a single line (they already know vibeflow):
+**This is vibeflow's front door — and the user's first impression.** Most users meet vibeflow by running `/bootstrap`, so this is where you introduce it. Be a guide: explain in plain terms what setup *is* and why it helps, then introduce the commands as *how they'll work going forward* — not as a feature list. (On a migration or an existing `.claude/`, skip the intro and shorten to a line — they already know vibeflow.)
 
-> "We're in **bootstrap mode** — setting the foundation so the rest of vibeflow works for this project.
+A fresh-setup opening, in this spirit:
+
+> Welcome to vibeflow — a kit of skills that help Claude plan collaboratively, build iteravely, and save progress contextually, so every session picks up ready and more informed than the last.
 >
-> vibeflow is five commands that share a `.claude/` folder:
+>We're in **bootstrap mode** — a one-time setup per project that enabling the following skills:
 > - **`/start`** — every session: load context, then resume, plan a sprint, or just build.
 > - **`/build`** — execute the work, with guardrails and checkpoints.
 > - **`/wrap`** — end of session: save progress, decisions, and learnings so the next one starts smarter.
 > - **`/roadmap`** — your path to the goal: capture ideas, order what's next.
-> - **`/bootstrap`** — this, once per project.
+> - **`/bootstrap`** — setup mode, once per project.
 >
 > The loop: `/start` → plan a sprint → `/build` → ship it → `/wrap` — and next session `/start` picks up right where you left off.
 >
-> Right now I'll scan this project, ask you a few things in your own words, and set up `.claude/`. Sound good?"
+> All files live in a per-project `.claude/` folder. 
+>
+> Right now I'll scan this project, ask you a few questions, and set the foundation. Sound good?"
+
+Adapt the wording to the user and project — this is a guide's framing to hit, not a script to recite verbatim. Except for the first welcome line - keep that verbatim. 
 
 Then detect which scenario applies:
 
@@ -74,6 +82,10 @@ Handle each:
 > "Looks like we're starting fresh — no significant code yet. I'll skip the architecture scan and we'll do this conversation-first. You can expand ARCHITECTURE.md as you make tech choices. Sound good?"
 
 In greenfield mode: skip Stages 2–3, jump to Stage 4 with the extra stack/services questions. ARCHITECTURE.md gets drafted from answers with `<TBD>` markers for undecided things.
+
+**Don't pull in adjacent context on assumption.** If related work exists nearby — a sibling project, an old `.claude/`, a prior plan doc — surface it and *ask before reading it in*, rather than ingesting it on the guess that it carries over:
+> "I see a related `support-agent/` with prior vibeflow state — build on it, or start clean?"
+This is "ask, don't infer" applied to context: a new project in an empty folder is a clean slate unless the user says so. Reading in prior work the user then has to discard wastes the session and pulls the new project toward the old one's shape.
 
 **Existing project:** proceed with the full flow.
 
@@ -125,20 +137,22 @@ Ask these one at a time; follow up if an answer is thin.
    *(Greenfield also:* "What stack are you planning, or is it TBD?"*)*
 4. "What does success look like — the north star that signals this works?"
    *(Greenfield also:* "Any services you know you'll need — auth, payments, email?"*)*
-5. "What are the next 2–3 things you want to ship? Rough priorities."
+5. **Propose the build sequence — don't just ask for it.** Don't ask "what are the next 2–3 things to ship?" and make the user do the sequencing cold; help them find the order. From what they've told you, propose a high-level phased sequence to react to: state the *ordering principle* you're using (e.g. "validate the riskiest, least-certain thing first with the least build"), lay out the phases at a coarse altitude, and name the one obvious alternative ordering so they can push back ("…or build the portal first so they're in the tool from day one?"). This is the propose-options-before-building pattern applied to sequencing.
 
-   Then offer the deep dive:
-   > "Want a deeper roadmap session now? It walks through milestones, sequencing, and prioritization — worth it if this is a serious project or you don't have a clear 3–6 month picture. Or skip and use what you've told me?"
+   **Keep it provisional and light.** This is a strawman roadmap *seed*, not a committed plan — it gets validated and reshaped per-phase at `/start`, where the real research and approach options live. Don't try to fully de-risk the sequence here (no 2–3 competing full roadmaps); that's premature at setup altitude. One ordering + the obvious alternative is proportionate.
 
-   If yes: read `../roadmap/SKILL.md` and run it in "called from bootstrap" mode (skip orient, skip velocity check, don't write to disk — hand back milestones + next + later for the draft).
+   Then offer two ways forward:
+   > "Accept this as the rough roadmap and keep going — or want to go deeper on sequencing and priorities? I can run a proper `/roadmap` session if this is a serious, longer-horizon build."
+
+   If they want depth, **invoke the real roadmap skill** — read `../roadmap/SKILL.md` and run it in "called from bootstrap" mode (skip orient, skip velocity check, don't write to disk — hand back Now/Next/Later for the draft). Don't improvise a deeper version inline: bootstrap does the light strawman, `/roadmap` owns the deep version.
 6. "Anything further out you know is coming but isn't urgent?"
 7. "Any decisions already made worth capturing? E.g. 'server actions for all mutations', or 'Supabase over Firebase because X'."
 
 Don't fabricate. If the user says "I don't know," leave it blank or mark `<TBD>`.
 
-## Stage 5: Draft all files inline
+## Stage 5: Draft the files
 
-Draft all of these in one pass and present them together:
+Pull together all of these in one pass:
 
 - **PROJECT.md** — from the Q&A.
 - **ARCHITECTURE.md** — **Map section first** (stack / services / where things live / key patterns), then the detail sections (data model, functions, gotchas). Greenfield: drafted from answers with `<TBD>` markers.
@@ -146,17 +160,19 @@ Draft all of these in one pass and present them together:
 - **DECISIONS.md** — from Q7; may be just a header.
 - **PLAYBOOK.md** — a header only; it fills over time as you praise things that work. (See its purpose note below.)
 
+**The confirm-before-write gate is optional for initial creation.** These files are brand-new and derived from the Q&A you just walked through — nothing is being overwritten, and editing a written file is as cheap as editing an inline draft. So you may either present the drafts and write on confirm (Stage 6 → 7), *or* write them directly now (Stage 7) and then invite edits (Stage 6). For a fast, well-defined greenfield setup, writing directly then summarizing what you wrote is usually smoother — keep the user in flow. The draft-before-writing rule still binds wherever you edit or overwrite *existing* state; it protects existing docs, not first-time creation.
+
 ## Stage 6: Iterate
 
-> "Review the drafts. What's wrong? What's missing?"
+Whether you drafted inline or wrote the files directly, invite changes:
 
-Revise, show again. After 2–3 rounds or when solid:
+> "Review these — what's wrong? What's missing?"
 
-> "I think these are solid — ready to write them, or keep iterating?"
+Revise, show again. After 2–3 rounds or when solid, you're done. (If you drafted inline rather than writing, write now — Stage 7.)
 
 ## Stage 7: Write the `.claude/` folder
 
-Once confirmed:
+Once confirmed (or directly, per Stage 5's write-first carve-out):
 
 1. Create `.claude/` at the project root.
 2. Write PROJECT.md, ARCHITECTURE.md (Map on top), ROADMAP.md, DECISIONS.md from the drafts. Templates in `../templates/` are reference structure.
