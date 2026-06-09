@@ -92,6 +92,24 @@ In a single turn, **parallel-read the files**:
 
 Otherwise, proceed to orient.
 
+### Stay current (light, fail-silent)
+
+vibeflow is shared and improves over time, so help the user keep their copy current — without nagging. Check **at most once a day**, in the same parallel batch as the context reads; never block orienting, and skip silently on any error or no network. Run:
+
+```bash
+D="$HOME/.claude/skills/vibeflow"; S="$D/.last-update-check"
+if [ -d "$D/.git" ] && [ "$(cat "$S" 2>/dev/null)" != "$(date +%F)" ]; then
+  date +%F > "$S"
+  L=$(git -C "$D" rev-parse HEAD 2>/dev/null)
+  R=$(git -C "$D" ls-remote -q origin HEAD 2>/dev/null | awk 'NR==1{print $1}')
+  [ -n "$R" ] && [ "$L" != "$R" ] && echo "vibeflow:BEHIND"
+fi
+```
+
+The date stamp throttles this to once per calendar day, so it never nags. If it prints `vibeflow:BEHIND`, add one quiet line to your brief (otherwise say nothing):
+
+> "🔄 vibeflow has updates — run `bash ~/.claude/skills/vibeflow/update` to get the latest."
+
 ### Sprint files
 
 Sprints live at `.claude/sprints/<slug>.md` (kebab-case, e.g. `onboarding.md`, `lab-v1.md`). Archived sprints move to `.claude/sprints/archive/<sprint-NNN>-<slug>.md` via `/wrap`. 
@@ -140,8 +158,8 @@ The roadmap is a menu of candidates — when "Pull from roadmap" is picked, surf
 
   Route from the selection:
   - Resume <name> (or the follow-up sprint picker) → Path: Resume 
-  - Pull from roadmap (then a chosen item) → Job 2 — the item is a pre-scoped candidate; its brief at .claude/research/<slug>.md is used if present
-  - Plan something new → Job 2
+  - Pull from roadmap (then a chosen item) → Stage 2 (Plan) — the item is a pre-scoped candidate; its brief at .claude/research/<slug>.md is used if present
+  - Plan something new → Stage 2 (Plan)
   - Freebuild → Path: Freebuild
   - Wrap & archive (Case C) → "Run /wrap to archive and plan next."
 
@@ -216,9 +234,9 @@ If the shape that emerges would add a new route, table, auth flag, loader, or a 
 
 Keep a visible "Decisions so far" list. 
 
-### Stage 2.4: Sequencing (only if the dump bundles multiple independent goals)
+### Stage 2.4: Sequencing (only if the intent bundles multiple independent goals)
 
-**Trigger:** the user's dump contains items that would each be worth a sprint on their own. Be generous to the user. Don't split for the sake of splitting.
+**Trigger:** the user's intent spans items that would each be worth a sprint on their own. Be generous to the user; split only when it genuinely helps.
 
 When it triggers, output a sprint lineup and plan only Sprint 1 in detail. Full rules and format: [references/sequencing.md](references/sequencing.md) — read it when this stage fires.
 
@@ -296,7 +314,7 @@ When the user wants to build without planning a sprint, hand off to /build mode:
 
 ## Capturing good examples
 
-When the user gives genuine, specific praise ("that planning session was great", "exactly the approach I wanted") or says "record this", offer to capture it — but only if there's a *transferable* lesson. Skip casual acknowledgement.
+When the user genuinely praises an *approach* ("that planning session was great", "exactly the approach I wanted") or says "record this", judge whether it's a lesson worth carrying across the whole project — one that'll matter for the big picture, beyond this sprint. If so, offer to capture it:
 
 > "Glad that landed. Worth recording so we repeat it? I'd capture: *\<the pattern\>*. General (any project), or \<project\>-specific?"
 

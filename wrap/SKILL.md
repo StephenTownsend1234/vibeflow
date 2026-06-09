@@ -137,7 +137,7 @@ Only if a sprint was archived in Step 4:
 
 > "Plan the next sprint now, freebuild, or defer to your next `/start`?"
 
-- **Now:** read `../start/SKILL.md` and run its sprint planning (Job 2).
+- **Now:** read `../start/SKILL.md` and run its sprint planning (Stage 2).
 - **Defer:** report what was updated and end.
 
 If the sprint is still in progress, skip this:

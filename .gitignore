@@ -8,3 +8,6 @@
 
 # Logs / scratch
 *.log
+
+# vibeflow once-a-day update-check stamp
+.last-update-check

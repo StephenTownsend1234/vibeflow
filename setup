@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# vibeflow installer — symlinks each command into ~/.claude/skills/ so
+# /bootstrap, /start, /build, /wrap, /roadmap work as slash commands.
+# Safe to re-run: auto-detects commands, and never clobbers a real skill
+# you already have (only ever replaces vibeflow's own symlinks).
+set -e
+
+SRC="$(cd "$(dirname "$0")" && pwd)"
+SKILLS_DIR="$HOME/.claude/skills"
+mkdir -p "$SKILLS_DIR"
+
+linked=""
+for dir in "$SRC"/*/; do
+  [ -f "$dir/SKILL.md" ] || continue        # a command folder has a SKILL.md
+  name="$(basename "$dir")"
+  link="$SKILLS_DIR/$name"
+  if [ -L "$link" ] || [ ! -e "$link" ]; then   # our symlink, or nothing there
+    ln -sfn "$dir" "$link"
+    linked="$linked /$name"
+  else
+    echo "⚠️  skipping '$name' — a real skill already exists at $link (left untouched)"
+  fi
+done
+
+echo "✅ vibeflow installed — commands:$linked"
+echo "   Update anytime:  bash \"$SRC/update\""

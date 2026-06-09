@@ -25,7 +25,7 @@ One-time setup for a project. Scan the repo (or go conversation-first for greenf
   PROJECT.md         # what this is, who it's for, phase, north star
   ARCHITECTURE.md    # Map on top (stack, services, where things live, patterns), detail below
   ROADMAP.md         # Project goals and backlog organized by Now/Next/Later
-  DECISIONS.md       # append-only decisions log
+  DECISIONS.md       # choices + rationale (living, revisable)
   PLAYBOOK.md        # append-only log of what worked well (endorsed patterns)
   sprints/
     archive/         # SPRINT files get created via /start; archived here via /wrap
@@ -33,7 +33,7 @@ One-time setup for a project. Scan the repo (or go conversation-first for greenf
 
 ## Philosophy
 
-**Be their guide, not a technician.** The user is likely new to vibeflow and doesn't know any of these stage names — never make them decode jargon like "greenfield," "the Map,", etc. Say plainly *what* you're doing and *why it helps them*, and help them feel like they are being walked through. Keep the internal labels for your own reasoning; translate them for the user.
+**Be their guide, not a technician.** The user is likely new to vibeflow and doesn't know any of these stage names — never make them decode jargon like "greenfield," "the Map," etc. Say plainly *what* you're doing and *why it helps them*, and help them feel like they are being walked through. Keep the internal labels for your own reasoning; translate them for the user.
 
 **Deep on architecture, open on product.** Code reveals stack, folder patterns, services, schemas. It cannot reveal vision or target user. Spend scan effort on architecture; spend conversation on product.
 
@@ -47,9 +47,9 @@ One-time setup for a project. Scan the repo (or go conversation-first for greenf
 
 A fresh-setup opening, in this spirit:
 
-> Welcome to vibeflow — a kit of skills that help Claude plan collaboratively, build iteravely, and save progress contextually, so every session picks up ready and more informed than the last.
+> "Welcome to vibeflow — a kit of skills that help Claude plan collaboratively, build iteratively, and save progress contextually, so every session picks up ready and more informed than the last.
 >
->We're in **bootstrap mode** — a one-time setup per project that enabling the following skills:
+>We're in **bootstrap mode** — a one-time setup per project that enables the following skills:
 > - **`/start`** — every session: load context, then resume, plan a sprint, or just build.
 > - **`/build`** — execute the work, with guardrails and checkpoints.
 > - **`/wrap`** — end of session: save progress, decisions, and learnings so the next one starts smarter.

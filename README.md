@@ -1,6 +1,6 @@
 # vibeflow
 
-vibeflow is a kit of skills that give Claude the structure to plan collaboratively, build iteravely, and save progress contextually, so every session picks up ready and more informed than the last. Built for vibecoders who use Claude and want momentum across sessions without losing the plot.
+vibeflow is a kit of skills that give Claude the structure to plan collaboratively, build iteratively, and save progress contextually, so every session picks up ready and more informed than the last. Built for vibecoders who use Claude and want momentum across sessions without losing the plot.
 
 ## The core commands
 
@@ -42,21 +42,21 @@ Everything lives in a `.claude/` folder at your project root — plain markdown 
 
 ## Install
 
-vibeflow is a set of [Claude Code skills](https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/overview). Clone it into your skills directory:
+vibeflow is a set of [Claude Code skills](https://docs.anthropic.com/en/docs/agents-and-tools/agent-skills/overview). Open Claude Code and paste this — it clones vibeflow and registers the commands:
 
 ```bash
-git clone https://github.com/StephenTownsend1234/vibeflow ~/.claude/skills/vibeflow
+git clone --depth 1 https://github.com/StephenTownsend1234/vibeflow.git ~/.claude/skills/vibeflow && cd ~/.claude/skills/vibeflow && bash setup
 ```
 
-Each command (`/start`, `/build`, …) is a skill under that folder. Depending on your setup, register each one by symlinking its folder into `~/.claude/skills/` — e.g.:
+That symlinks each command (`/bootstrap`, `/start`, `/build`, `/wrap`, `/roadmap`) into `~/.claude/skills/`. Then open Claude Code in a project and run `/bootstrap`.
+
+### Updating
 
 ```bash
-for cmd in bootstrap start build wrap roadmap; do
-  ln -s ~/.claude/skills/vibeflow/$cmd ~/.claude/skills/$cmd
-done
+bash ~/.claude/skills/vibeflow/update
 ```
 
-Then open Claude Code in a project and run `/bootstrap`.
+Pulls the latest and re-links any new commands — and `/start` nudges you when your copy is behind.
 
 ## Philosophy
 

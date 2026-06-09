@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Pull the latest vibeflow and re-link any new commands.
+set -e
+
+SRC="$(cd "$(dirname "$0")" && pwd)"
+git -C "$SRC" pull --ff-only
+bash "$SRC/setup"
+echo "✅ vibeflow is up to date."
