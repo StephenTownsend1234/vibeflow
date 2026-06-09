@@ -23,7 +23,7 @@ A fresh Claude Code chat already codes well. `/build` supplies the three things 
 
 ## Working philosophy
 
-**The user is a expert vibe-coder, not a engineer.** Explain *what* you're doing at a level they can follow — not line by line. Use their language for the product, match their depth on the tech, and surface brief teaching moments.
+**Meet the user at their level.** Adapt to the technical level in the global profile (`~/.claude/vibeflow/playbook.md`) — hand-hold a beginner (explain plainly, make the calls, talk product not code), stay lean and technical for an expert. (`/start` has usually loaded this already; on a cold `/build` you read it in Stage 1.)
 
 **Simple over clever.** Match solution complexity to the problem. If the first approach is ugly but works, ship it and note it for later. Avoid premature abstraction.
 
@@ -51,8 +51,6 @@ These are the failure modes autonomous coding falls into. Hold them actively.
 
 ## Entry
 
-Entry
- 
 Before anything, figure out your starting state from two questions: is there a sprint? and is the context already warm (loaded earlier in this same chat — e.g. you arrived from /start)?
 
 **With a sprint**:
@@ -61,8 +59,7 @@ Before anything, figure out your starting state from two questions: is there a s
   
 **No sprint** — this is Freebuild (the user wants to build without planning):
   - **Warm** (you arrived from a /start chat that already oriented) → context is loaded; just ask what they want to work on, if they haven't said, and start.
-  - **Cold** (bare /build, nothing loaded) → offer the choice first:
-  ▎ "No active sprint here. Want to plan one (/start), or just start building? I'll load what I need as we go."
+  - **Cold** (bare /build, nothing loaded) → offer the choice first: "No active sprint here. Want to plan one (/start), or just start building? I'll load what I need as we go."
 
 - If they build directly, load only the working context for their target on demand — the ARCHITECTURE Map + the relevant source via grep/read; don't pre-load everything.
 - Either way, then iterate directly, no SPRINT.md, using the working philosophy and guardrails below. There's no checkpoint-preference question (that's for planned sprints) — just offer to verify user-facing changes as they come.
@@ -78,7 +75,7 @@ Read in parallel:
 - `.claude/sprints/<slug>.md` — the plan. Trust its **Approach** and **Ground truth** (verified `path:line` facts) — don't re-investigate what plan mode already grounded.
 - `.claude/PROJECT.md` — tone and vision
 - `.claude/ARCHITECTURE.md` Map + the area this sprint touches
-- Recent `.claude/DECISIONS.md` entries, and any endorsed patterns in `.claude/PLAYBOOK.md`
+- Recent `.claude/DECISIONS.md` entries, endorsed patterns in `.claude/PLAYBOOK.md`, and the user's global profile + cross-project patterns in `~/.claude/vibeflow/playbook.md`
 
 Brief tightly:
 
@@ -172,20 +169,16 @@ When the user gives genuine, specific praise ("that was a great build", "exactly
 
 > "Glad that landed. Worth recording so we repeat it? I'd capture: *\<the pattern\>*. General (any project), or \<project\>-specific?"
 
-On yes, append to `.claude/PLAYBOOK.md` (create it if absent):
+On yes, route by reach: a lesson specific to **this project** → `.claude/PLAYBOOK.md`; one that applies on **any** project → the **global** `~/.claude/vibeflow/playbook.md` (create either if absent):
 
 ```
-## YYYY-MM-DD — <short title>   [project | general-candidate]
+## YYYY-MM-DD — <short title>
 What worked: <the approach / decision / interaction praised>
 Why it landed: <the transferable lesson>
 Reuse when: <the situation to apply it again>
-Axis: <output | tone | structure | approach>
 ```
-
-Tag `[general-candidate]` when it would apply on any project; those get promoted into the skill's own examples in a separate iteration session. Don't edit the skill itself mid-build.
 
 ## Things that come up
 
-- **Mid-sprint discoveries:** blocking → surface and decide; non-blocking → sprint TO-DOs. Don't silently expand scope.
 - **New technical decisions:** capture in the sprint's notes so `/wrap` can promote them to `DECISIONS.md`.
 - **Architecture drift:** if the work contradicts `ARCHITECTURE.md`, flag it — don't silently update. `/wrap` handles it after the user confirms.

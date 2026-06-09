@@ -1,8 +1,8 @@
 # Architecture
 
 <!--
-Map on top = the cheap, always-loaded orientation layer that /start and the
-roadmap investigator read. Detail below = read on demand when working an area.
+Map on top = the cheap, always-loaded orientation layer that /start and
+Ship Spotter read. Detail below = read on demand when working an area.
 -->
 
 ## Map

@@ -23,9 +23,11 @@ The guiding principle for the Plan path: **spend planning effort on the decision
 
 And the second: **stay forward-oriented — be eager to start the next sprint, not to blow this one up.** When there's a clear roadmap goal, aim for the minimum version of *that* running, not a flawless version of every step it takes to get there. Either way, keep each sprint to the smallest thing that lets the user learn or decide and move on; draft-quality output is fine, and finalizing can be its own later sprint. When worthwhile work falls outside that core, park it on the roadmap or as a future sprint rather than folding it in. That's what "great work" means in planning: forward momentum, built iteratively — not perfecting the step you're on.
 
-## Global style srules
+## Global style rules
 
 - **Guide, don't lecture.** Walk the user through planning in plain, concise language — say what you're doing and why it helps. Keep internal labels (Tier 1/2, the handshake, ground-truth) for your own reasoning, not the user's screen.
+- **Play it back, don't assume.** Reflect your understanding back before acting on it — "here's what I think this sprint is…" — and let the user correct it. Tentative-and-checking beats confident-and-wrong.
+- **Meet the user at their level.** Gauge their technical comfort (the global profile notes it, or read it from how they talk). Beginners get more hand-holding — recommend the stack/approach, explain the *why*, walk the decision; experts get leaner, more technical, faster. When a beginner says "keep it simple," it means *guide me simply through building it*, not drop to no-code — vibe coding is what lets them build the real thing with you.
 - **No empty validation.** Skip "great pivot", "makes sense", "good call". Either push back with a real alternative or move on.
 - **Plain, concise vocabulary.** "Prompts come in two states", not "two flavors".
 - **No calendar-day estimates.** No "Day 1", "~2 hours", "4-5 day sprint". Scope is conveyed by ordering and the `unknowns` / `blocked` tags, not duration.
@@ -68,8 +70,7 @@ Rests on: no live data a migration would disrupt.
 Alternative: Reuse an existing tag field — only wins if there's real production
 data a schema change would break.
 
-⚠ Constraint check: IF the project is live with real user data, the tag-hack is a "simple, safer" way to capture the data for the short term BUT is not the correct long-term solution, 
-If not, the proper column wins — the alternative's only advantage doesn't exist.
+⚠ Constraint check: IF the project is live with real user data, the tag-hack is the safer short-term capture — but not the correct long-term shape. If not, the proper column wins; the alternative's only advantage doesn't exist.
 </example>
 
 When the recommendation hinges on an unknown fact, ask that one fact first — don't make the user pick blind.
@@ -85,6 +86,7 @@ In a single turn, **parallel-read the files**:
 1. `.claude/PROJECT.md`
 2. `.claude/ROADMAP.md`
 3. Every `.claude/sprints/*.md` (excluding `archive/`)
+4. `~/.claude/vibeflow/playbook.md` — the user's **global profile + cross-project patterns** (read it every session). Adapt to its technical level, and let its patterns shape how you work. It lives outside the skill repo, so updates never touch it; if it's missing, they just haven't set one yet — fine.
 
 **If the project isn't set up yet** — `.claude/` is missing, *or* it contains no vibeflow state (only harness files like `settings.local.json`; no `PROJECT.md` / `ROADMAP.md`) — don't try to orient against nothing. Point the user to setup in one line; the full intro to vibeflow lives in `/bootstrap`, where most users start:
 
@@ -108,7 +110,7 @@ fi
 
 The date stamp throttles this to once per calendar day, so it never nags. If it prints `vibeflow:BEHIND`, add one quiet line to your brief (otherwise say nothing):
 
-> "🔄 vibeflow has updates — run `bash ~/.claude/skills/vibeflow/update` to get the latest."
+> "vibeflow has updates — run `bash ~/.claude/skills/vibeflow/update` to get the latest."
 
 ### Sprint files
 
@@ -185,7 +187,7 @@ Emit a topic heading as your first line — bold H2, ≤6 words.
 
 If the user already gave a fully-formed description, skip the questions; go to **2.2 (research)**. Otherwise read related docs silently (the ARCHITECTURE Map, recent DECISIONS for this area, endorsed patterns in `.claude/PLAYBOOK.md`, a pre-sprint brief at `.claude/research/<slug>.md` if one exists, any prior plan for it). 
 
-If the target is a roadmap item (the user named one, or picked from "Now"), pull its definition from ROADMAP.md as the starting point — and note whether it points to a pre-sprint brief at `.claude/research/<slug>.md`. Type it back exactly as written in roadmap. Assume it is not well defined, and proceed: 
+If the target is a roadmap item (the user named one, or picked from "Now"), pull its definition from ROADMAP.md as the starting point — and note whether it points to a pre-sprint brief at `.claude/research/<slug>.md`. Type it back exactly as written in roadmap. Also read the **goal and what's queued after this item**, not just the item line — you're planning this sprint to fit the trajectory, not in isolation. Assume it is not well defined, and proceed: 
 
 **Choose the opening that fits — don't default to one.** Use judgment based on how defined the target already is: for a brand-new sprint with little shape, open by asking the user to dump everything they want, unorganized. For a roadmap pull that's already partly defined, a few high-level clarifiers land better — "is this still what you're trying to build?" / "what's changed since you wrote this?" — before going deeper. Scale the ceremony to the work.
 
@@ -208,7 +210,7 @@ Then, synthesize what you've captured into a concise summary and ask the user to
 
 **This is the stage that prevents the "we shipped a worse approach because we never looked into how it's really done" failure.** Don't plan a meaningful feature from Claude's native priors alone.
 
-**Check for a ready brief first.** If a pre-sprint brief exists at `.claude/research/<slug>.md` (the roadmap investigator may have done this homework ahead of time), read it and use it as your research — this is the fast path that removes the planning bottleneck. Confirm it's still current: the item's framing hasn't changed and the brief isn't stale. Refresh only what's outdated rather than re-researching from scratch. If there's no brief, do the research yourself:
+**Check for a ready brief first.** If a pre-sprint brief exists at `.claude/research/<slug>.md` (Ship Spotter may have done this homework ahead of time), read it and use it as your research — this is the fast path that removes the planning bottleneck. Confirm it's still current: the item's framing hasn't changed and the brief isn't stale. Refresh only what's outdated rather than re-researching from scratch. If there's no brief, do the research yourself:
 
 **Gate (generous).** Ask yourself: *is this approach genuinely well-trodden for us, or am I about to plan it from priors alone?* When in doubt, research. Skip only when the approach is obviously routine for this codebase.
 
@@ -217,7 +219,7 @@ Then, synthesize what you've captured into a concise summary and ask the user to
 - **Tier 1 — default, inline.** Read the relevant *project* code + the ARCHITECTURE doc + recent DECISIONS for this area (you need that to make the approach fit what's already here). **And** run targeted `WebSearch` / `WebFetch` for how this is actually done well and the known pitfalls. Fold findings into the options.
 - **Tier 2 — thorny / large unknown.** Spawn a focused research subagent — `Explore` for codebase fan-out, `general-purpose` for web — that returns a tight *options + tradeoffs + sources* memo, so the noisy fetch content stays out of this thread. For a genuinely large unknown, invoke the `deep-research` skill instead of reinventing it. 
 
-Ask the user to confirm which Tier you want to spawn, with your recommedations. 
+Ask the user to confirm which Tier you want to spawn, with your recommendations. 
 Default to Tier 1; escalate to Tier 2 only when the unknown is genuinely thorny.
 
 **Investigate, don't speculate.** Never describe how our existing code works from memory — open the file first. Approach options must rest on what the code actually does, not on what you'd assume it does.
@@ -226,11 +228,13 @@ Default to Tier 1; escalate to Tier 2 only when the unknown is genuinely thorny.
 
 ### Stage 2.3: Present approach options
 
-Surface **2-3 approach options from first principles**, using the Decision format above, each grounded in what you found — cite the web source and/or `path:line`. The user picks the direction. This is the headline decision of the sprint.
+Surface **2-3 approach options from first principles**, using the Decision format above, each grounded in what you found — cite the web source and/or `path:line`. The user picks the direction. This is the headline decision of the sprint. (On a greenfield project's first sprint, the stack itself is that decision — bootstrap left it open on purpose; research and recommend it here.)
 
 Let endorsed patterns from `.claude/PLAYBOOK.md` shape the options — if the user has previously praised a way of working (e.g. researching integrations before committing), lead with options that honor it.
 
 If the shape that emerges would add a new route, table, auth flag, loader, or a reimplementation of something that exists, run the **inferred-infrastructure check** as its own Decision card: did the user state this requirement, or am I inferring it? If inferred, the simplest shape that meets the stated goal wins unless the user confirms the addition. (This is the same "default to the correct solution / verify the constraint" reflex, applied to architecture.)
+
+**Fits the path.** Choose the approach with the goal in view: build the minimal thing for this sprint, but pick the minimal approach that the known near-term roadmap won't force you to rip out. (Goal = multi-tenant, this sprint = add login → build the minimal login, but scope it by user from day one; not full org management nobody asked for.) Lean execution, goal-aware direction. If the leanest option would need a rewrite when a known next item lands, flag it and let the user choose.
 
 Keep a visible "Decisions so far" list. 
 
@@ -282,11 +286,11 @@ When the user picks Continue, invoke `EnterPlanMode`. Announce both the handoff 
 Inside plan mode:
 
 The goal is to find the correct approach and deliver a clear, concise build plan that `/build` mode can execute.
-- **Ground the load-bearing claims.** Grep/read the source files the approach depends on; cite `path:line`. These verified facts are what keep `/build` aligned and stop it inventing things — this is the real coherence guarantee, so don't skip it. They go in the SPRINT.md "Ground truth" section.
+- **Ground the load-bearing claims.** Grep/read the source files the approach depends on; cite `path:line`. These verified facts are what keep `/build` aligned and stop it inventing things — this is the real coherence guarantee, so don't skip it. They go in the sprint file's "Ground truth" section.
 - **Produce a concise build plan.** Concise outcome-steps, each a span `/build` can one-shot. Mark a **checkpoint** where a later step genuinely depends on this one being right, so proceeding on a wrong result would cost real rework. (Build offers each checkpoint as optional — verify there, or one-shot through.) Full template: [references/sprint-md-shape.md](references/sprint-md-shape.md) — read it now.
 - Tag steps `[PORT]` / `[NEW]` / `[REUSE]`; produce a port map only if cloning/extending existing work. Copy an existing system's shape unless a deviation traces to a stated requirement. Look for existing code or systems we can reuse if appropriate. 
 
-Call `ExitPlanMode` with the plan as the argument. Don't write SPRINT.md from inside plan mode (it's read-only by contract).
+Call `ExitPlanMode` with the plan as the argument. Don't write the sprint file from inside plan mode (it's read-only by contract).
 
 ### Stage 2.7: Write the sprint file and hand off
 
@@ -295,6 +299,8 @@ The plan was approved at the native gate. The rest is plumbing — do it in one 
 1. **Copy the saved plan as-is.** The harness saved it to `.claude/plans/<slug>.md`; copy it to `.claude/sprints/<slug>.md` via `cp` (`mkdir -p .claude/sprints` if needed) — zero tokens, exact fidelity. (If the saved plan is missing, `Write` it instead.)
 2. `Edit` to trim anything that leaked (effort/timeline language).
 3. **Filename:** a short kebab-case slug from the sprint name; if it collides with an in-flight sprint, prefix a discriminator (`onboarding-v2.md`) and confirm.
+
+On a greenfield project's **first** sprint, the approach decision is also the project's first architecture — seed `.claude/ARCHITECTURE.md` from it here (Map-on-top shape: Stack / External services / Where things live / Key patterns — template at `../templates/ARCHITECTURE.md`), so `/build` and `/wrap` have a base to grow from. Fill what the stack decision settles; leave `<TBD>` for what only emerges as code lands.
 
 Then hand off in one line:
 
@@ -318,14 +324,11 @@ When the user genuinely praises an *approach* ("that planning session was great"
 
 > "Glad that landed. Worth recording so we repeat it? I'd capture: *\<the pattern\>*. General (any project), or \<project\>-specific?"
 
-On yes, append to `.claude/PLAYBOOK.md` (create it if absent):
+On yes, route by reach: a lesson specific to **this project** → `.claude/PLAYBOOK.md`; one that applies on **any** project → the **global** `~/.claude/vibeflow/playbook.md` (create either if absent):
 
 ```
-## YYYY-MM-DD — <short title>   [project | general-candidate]
+## YYYY-MM-DD — <short title>
 What worked: <the approach / decision / interaction praised>
 Why it landed: <the transferable lesson>
 Reuse when: <the situation to apply it again>
-Axis: <output | tone | structure | approach>
 ```
-
-Tag `[general-candidate]` when it would apply on any project; those get promoted into the skill's own examples in a separate iteration session. Don't edit the skill itself mid-session.

@@ -11,13 +11,13 @@ A workflow suite for a founder building software with Claude. Five commands shar
 
 | Command | Purpose | When |
 |---|---|---|
-| `/bootstrap` | One-time project setup — scaffolds `.claude/` | First time in a repo |
+| `/bootstrap` | One-time setup — captures the vision, maps the path (`/roadmap`), scaffolds `.claude/` | First time in a repo |
 | `/start` | Orient, then resume / plan a sprint / **Freebuild** (iterate directly) | Every session |
 | `/build` | Execute the work (or pick up warm from `/start`) | After planning, or to iterate |
 | `/wrap` | Save the session to the files so the next one starts smarter | End of session |
 | `/roadmap` | The path to your goal — capture ideas, order Now/Next/Later | Anytime priorities shift |
 
-Plus the **roadmap investigator** (opt-in background routine that pre-researches roadmap items — see `roadmap/references/investigator.md`).
+Plus an opt-in **background routine** (see `roadmap/references/background-routine.md`): **Ship Captain** (checks your progress and keeps you aligned on the goal) and **Ship Spotter** (researches upcoming roadmap items ahead of time).
 
 ## How they connect
 
@@ -26,7 +26,8 @@ Plus the **roadmap investigator** (opt-in background routine that pre-researches
                                                           ├─ plan ─────▶ /build ──▶ /wrap
                                                           └─ Freebuild ─(iterate here)─▶ /wrap
 
-(background)  roadmap investigator ──▶ .claude/research/<slug>.md ──▶ used by /start
+(background, opt-in)  Ship Captain ──▶ progress check toward your goal
+                      Ship Spotter ──▶ .claude/research/<slug>.md ──▶ used by /start
 ```
 
 ## Shared `.claude/` files
@@ -41,7 +42,7 @@ Plus the **roadmap investigator** (opt-in background routine that pre-researches
   sprints/
     <slug>.md        # current sprint(s); created by /start
     archive/         # completed sprints, via /wrap
-  research/          # pre-sprint briefs from the roadmap investigator (lazily read)
+  research/          # pre-sprint briefs from Ship Spotter (lazily read)
   plans/             # plans the harness saved at ExitPlanMode
 ```
 
@@ -64,7 +65,7 @@ Every mode opens with the same base `<role>` (the vibe-coder's-master-assistant 
 
 ## Dispatching
 
-Each command is its own registered skill, triggered by its slash command; the harness loads that skill directly. This overview is shared reference, not a dispatcher — don't trigger it on a slash command. `/bootstrap` can optionally invoke `roadmap` for a deeper planning dive.
+Each command is its own registered skill, triggered by its slash command; the harness loads that skill directly. This overview is shared reference, not a dispatcher — don't trigger it on a slash command. `/bootstrap` always invokes `roadmap` to map the path before writing the scaffold.
 
 ## When `.claude/` doesn't exist
 

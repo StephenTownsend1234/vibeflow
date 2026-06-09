@@ -13,13 +13,12 @@ vibeflow is a kit of skills that give Claude the structure to plan collaborative
 ## Sub-commands
 | Command | What it does | When |
 |---|---|---|
-| `/bootstrap` | One-time setup — creates a `.claude/` state folder with templates to store your project context | First time in a project |
+| `/bootstrap` | One-time setup — captures your vision, maps your path, creates a `.claude/` state folder for your project context | First time in a project |
 | `/roadmap` | Where you capture ideas, order what's next, and shape your path to the goal | Anytime priorities shift |
-| `/auto-research` | Async agent that conducts deep research on your roadmap ideas so your next sprint starts faster | Scheduled loop |
 
 ## The loop
 
-1. **`/bootstrap`** run once per project — Claude scans your code, asks about your product in your own words, and sets up `.claude/`.
+1. **`/bootstrap`** run once per project — Claude scans your code, captures your vision, maps your path with `/roadmap`, and sets up `.claude/`.
 2. **`/start`** → decide what to build together, research the approach, and create a sprint plan you can execute.   
 3. **`/build`** → work through it; Claude checks in with you at the points that matter.
 4. **`/wrap`** → Claude consolidates your learnings, updates your project docs and tees up what's next.
@@ -39,6 +38,15 @@ Everything lives in a `.claude/` folder at your project root — plain markdown 
   sprints/         # current + archived sprints
   research/        # optional pre-sprint research briefs
 ```
+
+## Background routines (opt-in)
+
+Switch these on to let vibeflow work between sessions — set up when you finish `/bootstrap`, or anytime from `/roadmap`:
+
+- **Ship Captain** — auto-checks your progress and keeps you aligned on the work that lets you reach your goal.
+- **Ship Spotter** — scouts upcoming roadmap items and researches the approach ahead of time, so each sprint plans faster.
+
+They run on a daily schedule and notify you in your Claude chat. Everything works without them.
 
 ## Install
 

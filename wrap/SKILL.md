@@ -96,17 +96,16 @@ Your richest material — the gotchas, the decisions, the *what we learned* — 
 
 **→ PROJECT.md** — keep the at-a-glance status current. PROJECT is the stable identity (what / who / north-star / safety invariant), so most sessions leave it untouched. But its **Phase / focus** line is living: update it when the project's lifecycle stage moves (e.g. greenfield → building → launched to users), when a major piece ships, or when the focus shifts to a new thing. Keep it coarse — sprint-level detail lives in ROADMAP; this is just "where is this project right now."
 
-**→ PLAYBOOK.md** — when the user genuinely praises an *approach* (or says "record this"), judge whether it's a lesson worth carrying across the whole project — one that'll matter for the big picture, beyond this sprint. If so, offer to capture it:
+**→ PLAYBOOK** — when the user genuinely praises an *approach* (or says "record this") and it's worth repeating, offer to capture it — routed by reach: specific to **this project** → `.claude/PLAYBOOK.md`; useful on **any** project → the **global** `~/.claude/vibeflow/playbook.md`.
 
-> "Earlier you said `<the praise>` — worth recording so we repeat it? I'd capture: *`<pattern>`*. General (any project), or `<project>`-specific?"
+> "Earlier you said `<the praise>` — worth recording so we repeat it? I'd capture: *`<pattern>`*. Just this project, or all your projects?"
 
 On yes:
 ```
-## YYYY-MM-DD — <short title>   [project | general-candidate]
+## YYYY-MM-DD — <short title>
 What worked: <the approach / decision / interaction praised>
 Why it landed: <the transferable lesson>
 Reuse when: <the situation to apply it again>
-Axis: <output | tone | structure | approach>
 ```
 
 **Present in two clear parts, so the user knows exactly what — if anything — they need to answer:**
