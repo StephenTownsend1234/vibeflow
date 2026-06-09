@@ -64,6 +64,8 @@ A fresh-setup opening, in this spirit:
 
 Adapt the wording to the user and project — this is a guide's framing to hit, not a script to recite verbatim. Except for the first welcome line - keep that verbatim. 
 
+**Get a feel for how they work.** Early on, ask lightly — so you can match them — how hands-on-technical they are and how they like to work (lots of detail vs. just the gist, move fast vs. check in often). A quick exchange, not an interrogation. Use it to pitch your explanations and check-in rhythm right, and seed the gist into PLAYBOOK when you write the files.
+
 Then detect which scenario applies:
 
 - **Existing project** — has `package.json` / `pyproject.toml` / `Cargo.toml` / `go.mod` / real source. Full flow.
@@ -131,12 +133,12 @@ Then: "Anything wrong? Anything to add or override?" Iterate until the user is s
 
 Ask these one at a time; follow up if an answer is thin.
 
-1. "In your own words, what is this project?"
+1. "In your own words, what is this project — and the bigger vision behind it?"
 2. "Who is this for — the target user?"
 3. "What phase are you in — discovery, build, launch, iterate, or maintain?"
-   *(Greenfield also:* "What stack are you planning, or is it TBD?"*)*
+   *(Greenfield also:* "How will this run for your users — web app, mobile, CLI, something else?"*)*
 4. "What does success look like — the north star that signals this works?"
-   *(Greenfield also:* "Any services you know you'll need — auth, payments, email?"*)*
+   *(Greenfield also:* "Any stack preferences, or want me to suggest a direction for this kind of project? Either way it's a starting point, not locked — the real stack call gets researched in your first `/start`." And: "Any services you know you'll need — auth, payments, email?"*)*
 5. **Propose the build sequence — don't just ask for it.** Don't ask "what are the next 2–3 things to ship?" and make the user do the sequencing cold; help them find the order. From what they've told you, propose a high-level phased sequence to react to: state the *ordering principle* you're using (e.g. "validate the riskiest, least-certain thing first with the least build"), lay out the phases at a coarse altitude, and name the one obvious alternative ordering so they can push back ("…or build the portal first so they're in the tool from day one?"). This is the propose-options-before-building pattern applied to sequencing.
 
    **Keep it provisional and light.** This is a strawman roadmap *seed*, not a committed plan — it gets validated and reshaped per-phase at `/start`, where the real research and approach options live. Don't try to fully de-risk the sequence here (no 2–3 competing full roadmaps); that's premature at setup altitude. One ordering + the obvious alternative is proportionate.
@@ -144,7 +146,7 @@ Ask these one at a time; follow up if an answer is thin.
    Then offer two ways forward:
    > "Accept this as the rough roadmap and keep going — or want to go deeper on sequencing and priorities? I can run a proper `/roadmap` session if this is a serious, longer-horizon build."
 
-   If they want depth, **invoke the real roadmap skill** — read `../roadmap/SKILL.md` and run it in "called from bootstrap" mode (skip orient, skip velocity check, don't write to disk — hand back Now/Next/Later for the draft). Don't improvise a deeper version inline: bootstrap does the light strawman, `/roadmap` owns the deep version.
+   If they want depth, **invoke the real roadmap skill** — read `../roadmap/SKILL.md` and run it in "called from bootstrap" mode (skip orient, skip velocity check, don't write to disk — hand back Now/Next/Later for the draft). Don't improvise a deeper version inline: bootstrap does the light strawman, `/roadmap` owns the deep version. When it hands back ("roadmap done…"), acknowledge the return — "great, folding that into your setup" — so the transition is clear, then continue.
 6. "Anything further out you know is coming but isn't urgent?"
 7. "Any decisions already made worth capturing? E.g. 'server actions for all mutations', or 'Supabase over Firebase because X'."
 
@@ -172,11 +174,11 @@ Revise, show again. After 2–3 rounds or when solid, you're done. (If you draft
 
 ## Stage 7: Write the `.claude/` folder
 
-Once confirmed (or directly, per Stage 5's write-first carve-out):
+Mark the moment first — tell the user you've gathered enough to set the foundation: *"I've got enough context now — ready to write your project scaffold (the `.claude/` files) so we work from here."* Then, once confirmed (or directly, per Stage 5's write-first carve-out):
 
 1. Create `.claude/` at the project root.
 2. Write PROJECT.md, ARCHITECTURE.md (Map on top), ROADMAP.md, DECISIONS.md from the drafts. Templates in `../templates/` are reference structure.
-3. Write `PLAYBOOK.md` with a short header:
+3. Write `PLAYBOOK.md` with a short header, and seed it with any working-style preferences you picked up in Stage 1 (how they like to work, how technical to get) so future sessions match them:
    > `# Playbook` — *Append-only. What worked well on this project, captured when you praise something during a session. Tag entries `[project]` or `[general-candidate]`; general ones get promoted into the skill itself later.*
 4. **If an existing architecture doc lives outside `.claude/`**, ask:
    > "Move `<path>` into `.claude/ARCHITECTURE.md` as the single source of truth, or keep it where it is with a pointer? Move is usually cleaner."

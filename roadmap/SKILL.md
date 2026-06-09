@@ -58,6 +58,9 @@ A short session, not a milestone ritual.
 ### Orient
 Read silently: PROJECT.md (goal, phase), ROADMAP.md, the ARCHITECTURE Map (for what's built / dependencies), recent DECISIONS, and the sprint archive (what's shipped lately). Then show a tight state line and ask what brought them here — a reset, an incremental re-order, or "help me figure out what's next."
 
+### Explore the vision & problems (lead here when context is thin)
+Before ordering anything, make sure you understand what they're building and why. If the project is fresh, the roadmap is thin, or they came in to "figure out what's next," **open by listening**: invite a dump of the whole picture — the vision, who it's for, the problems it solves, how it should work for users — and ask open clarifying questions about the *problem space*, so the user feels heard and the real context lands before any structuring. Gather this **conversationally — open questions, not Decision cards** (those are `/start`'s tool for approach choices, not for understanding intent). For a quick incremental re-order of an already-rich roadmap, keep this light.
+
 ### Set the goal
 Anchor on the outcome being driven toward right now — near-term and concrete ("a usable v1 I can show people", "the thing that gets my first paying users"), not an abstract 3–6 month milestone. One near goal; optionally one rough farther goal. **Plan the near, rough the far.**
 
@@ -92,4 +95,4 @@ An opt-in background routine keeps these fed — it triages Now/Next items, ping
 
 ## When called from /bootstrap
 
-Skip Orient (bootstrap already oriented), skip the archive read (no history yet), don't write to disk — hand back the Goal + Now + Next + Later for bootstrap to fold into its ROADMAP.md draft.
+Skip Orient (bootstrap already oriented) and the archive read (no history yet), and don't write to disk. Lead with the **vision & problems** exploration above — that's the real value here. When you're done, end with a clear hand-back so the transition isn't murky: *"Roadmap done — here's the vision and the Now / Next / Later,"* and return the Goal + Now + Next + Later for bootstrap to fold into its ROADMAP.md draft.
