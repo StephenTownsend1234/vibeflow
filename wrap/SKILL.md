@@ -17,6 +17,8 @@ Save this session's context, learnings, and progress into the `.claude/` files s
 
 That gives you the test for every action here: *would a fresh session need this to understand the project and proceed well?* If yes, it goes in a file. If no, skip it.
 
+**What a good job looks like here:** the session's decisions, learnings, and what worked are captured cleanly, so the project's context *compounds* instead of evaporating when the chat closes. This is the step that makes every future session smarter — so it's worth real care. Act as the project's thorough reviewer and maintainer: take your time, mine the whole session, and get the records right.
+
 ## Principles
 
 - **Harvest, then route.** Take stock of what this session produced, and route each piece to the file that answers its question:
@@ -28,6 +30,7 @@ That gives you the test for every action here: *would a fresh session need this 
   | a choice you made + why | DECISIONS |
   | a practice/approach that worked well | PLAYBOOK |
   | a shift in priorities | ROADMAP |
+  | a change in the project's phase or focus | PROJECT |
 
 - **Build positives, not negatives.** Capture what worked and what we learned — not a log of what went wrong. Bad habits (guessing before investigating, over-engineering) are fenced by the skill's own guardrails and crowded out by good PLAYBOOK examples; they don't need a graveyard.
 - **Ground in the diff, not memory.** Before claiming what shipped, look at the actual changes (see Step 1). Use the conversation for *why* and *which sprint*; use the diff for *what*.
@@ -52,18 +55,16 @@ That gives you the test for every action here: *would a fresh session need this 
 - Summarize what shipped (grounded in the diff).
 - Offer to record it: fold the outcomes into DECISIONS / ARCHITECTURE / ROADMAP (lighter default), or write a retroactive sprint file in `archive/` if the user wants a trace. Don't let meaningful Freebuild work vanish for lack of a sprint.
 
-## Step 2: Review TO-DOs
+## Step 2: Triage the TO-DOs
 
-For each, one at a time:
+Route each open TO-DO to where it belongs. Most have an obvious home, so make the call yourself:
 
-> "TO-DO: `<item>`. **(P)**romote to a sprint step, **(D)**efer to roadmap, **(R)**esolve to decisions, or **(X)** drop?"
+- **Promote** → a sprint step (this sprint or next)
+- **Defer** → ROADMAP "Later"
+- **Resolve** → DECISIONS, when it was an open question this session actually answered
+- **Drop** → gone
 
-- **P** → into the sprint step list (this sprint or next)
-- **D** → ROADMAP.md under "Later"
-- **R** → it was an open question; record the choice + rationale in DECISIONS.md
-- **X** → drop it
-
-More than five? Offer to batch: "Go through each, or batch-defer the rest to roadmap?"
+These routings fold into the single batch in Step 3 — they're proposals to confirm, not a separate round of questions. The only TO-DOs you surface as questions are the ones you genuinely can't call for the user — a real open decision. Hold those for "Needs your call" below.
 
 ## Step 3: Harvest the session and update the files
 
@@ -93,7 +94,9 @@ Your richest material — the gotchas, the decisions, the *what we learned* — 
 
 **→ ROADMAP.md** — if priorities shifted: deferred TO-DOs → **Later**; items promoted out of Later → **Next**; completed sprints → **Done (recent)**.
 
-**→ PLAYBOOK.md** — if the user gave genuine, specific praise (or said "record this") with a *transferable* lesson, offer to capture it (skip casual acknowledgement):
+**→ PROJECT.md** — keep the at-a-glance status current. PROJECT is the stable identity (what / who / north-star / safety invariant), so most sessions leave it untouched. But its **Phase / focus** line is living: update it when the project's lifecycle stage moves (e.g. greenfield → building → launched to users), when a major piece ships, or when the focus shifts to a new thing. Keep it coarse — sprint-level detail lives in ROADMAP; this is just "where is this project right now."
+
+**→ PLAYBOOK.md** — when the user genuinely praises an *approach* (or says "record this"), judge whether it's a lesson worth carrying across the whole project — one that'll matter for the big picture, beyond this sprint. If so, offer to capture it:
 
 > "Earlier you said `<the praise>` — worth recording so we repeat it? I'd capture: *`<pattern>`*. General (any project), or `<project>`-specific?"
 
@@ -106,7 +109,12 @@ Reuse when: <the situation to apply it again>
 Axis: <output | tone | structure | approach>
 ```
 
-**Present + apply:** show the routed diffs in one batch, each labeled by file — and put the consequential ones (a structural ARCHITECTURE edit, a new decision) front and center so they get a deliberate yes. The user approves all, or edits/rejects individual ones; apply the confirmed ones as parallel writes (independent files). Nothing lands in `.claude/` silently.
+**Present in two clear parts, so the user knows exactly what — if anything — they need to answer:**
+
+1. **Needs your call** — only the genuinely open decisions where the user's input changes the outcome (a TO-DO you can't responsibly decide, a real fork). Ask these with `AskUserQuestion`, each with your recommendation. If there are none, say so in a line — open questions you're simply *filing for later* (like a parked refinement) belong in the proposed updates below, not here; they don't need an answer now.
+2. **Proposed updates** — grouped by file. This is where the user sees what the session produced and what context is about to be saved for future sessions, so show enough substance for them to follow what we did and judge it worth keeping — the real facts, decisions, and priority shifts, synthesized and readable. Lead with the consequential ones. The user confirms all, or edits/rejects individual items.
+
+Then apply the confirmed changes as parallel writes (independent files). Nothing lands in `.claude/` silently.
 
 ## Step 4: Check sprint completion
 

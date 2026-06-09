@@ -154,7 +154,7 @@ Don't fabricate. If the user says "I don't know," leave it blank or mark `<TBD>`
 
 Pull together all of these in one pass:
 
-- **PROJECT.md** — from the Q&A.
+- **PROJECT.md** — from the Q&A. Keep the **Phase** line to the coarse lifecycle stage (discovery / build / launch / iterate / maintain); sprint-level detail belongs in ROADMAP, and `/wrap` keeps this line current as the project moves.
 - **ARCHITECTURE.md** — **Map section first** (stack / services / where things live / key patterns), then the detail sections (data model, functions, gotchas). Greenfield: drafted from answers with `<TBD>` markers.
 - **ROADMAP.md** — from Q5 + Q6, or the deep roadmap dive.
 - **DECISIONS.md** — from Q7; may be just a header.
