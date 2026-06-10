@@ -4,19 +4,23 @@
 The path to the goal: what to build next, in what order. Now/Next/Later carries
 priority — no fake dates. Add a real date inline only when a real event exists
 (a launch, a demo, an external deadline), as a scope ceiling.
+Items are a short title plus as much context as helps — a one-liner, or a full
+blurb (the problem, why it matters, links, a paste). Don't shorten for its own sake.
 -->
 
 ## Goal: <the outcome you're driving toward now>
 <one line — what's true when you get there>
 
 ## Now (the next sprint or two)
-1. <item> — <what it unlocks>   <!-- brief: research/<slug>.md, if one exists -->
+1. <title> — <what it unlocks>   <!-- brief: research/<slug>.md, if one exists -->
+   <optional context: the problem, why it matters, links, a dumped blurb — as much as helps>
 
 ## Next (after that, ordered)
-- <item> — <why>
+- <title> — <why>
+  <optional context, indented under the item>
 
 ## Later (parked — the capture inbox, unordered)
-- <ideas; "add to roadmap X" lands here>
+- <title — plus a fuller blurb whenever there's context worth keeping; "add to roadmap X" lands here>
 
 ## Done (recent)
 - sprint-NNN-<slug>: <what shipped>

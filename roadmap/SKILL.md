@@ -29,13 +29,15 @@ It's light and living — fed continuously, re-ordered often. There are two ways
 <one line — what's true when you get there>   [real date only if a real event exists]
 
 ## Now (the next sprint or two)
-1. <item> — <what it unlocks>   [brief: research/<slug>.md — if one exists]
+1. <title> — <what it unlocks>   [brief: research/<slug>.md — if one exists]
+   <optional context: the problem, why it matters, links, a dumped blurb — as much as helps>
 
 ## Next (after that, ordered)
-- <item> — <why>
+- <title> — <why>
+  <optional context, indented under the item>
 
 ## Later (parked — the capture inbox, unordered)
-- <ideas>
+- <title — plus a fuller blurb whenever there's context worth keeping>
 
 ## Done (recent)
 - sprint-NNN-<slug>: <what shipped>
@@ -43,11 +45,13 @@ It's light and living — fed continuously, re-ordered often. There are two ways
 
 **On dates:** use Now/Next/Later for priority, not a dated plan. Add a real date inline only when a real event exists (a launch, a demo, an external deadline) — and treat it as a scope ceiling, not a velocity estimate. Don't invent month targets.
 
+**On item depth:** an item is a **short title plus as much context as is useful** — a one-liner when that's all there is, a fuller blurb (the problem, why it matters, a link, a paste) when you've got it. Don't shorten for its own sake: richer items let Ship Spotter triage and research better, and nothing's lost between capture and the sprint.
+
 ---
 
 ## Mode 1: Quick capture
 
-When the user says "add to roadmap …" (in any mode), append the item to ROADMAP.md with no ritual. Default it to **Later** unless they say where, or unless it's clearly the next thing (then offer Now/Next). One line, done — get back to what they were doing. This is also where `/build`'s deferred discoveries and `/wrap`'s deferred TO-DOs land.
+When the user says "add to roadmap …" (in any mode), append it to ROADMAP.md with no ritual — capture it the way they gave it, a title or a full blurb; don't trim the context, it helps later. Default to **Later** unless they say where, or unless it's clearly the next thing (then offer Now/Next). One move, done — get back to what they were doing. This is also where `/build`'s deferred discoveries and `/wrap`'s deferred TO-DOs land.
 
 ---
 
@@ -95,7 +99,7 @@ As quick-captures pile up, the work isn't just sorting the pile — it's surfaci
 Consider the route, not just the order — sometimes the smartest path is to validate before building, ship a thin slice end-to-end, or take the riskiest thing first. (The technical *how* for an item is `/start`'s job.)
 
 ### Scope Now/Next enough to investigate
-Give each **Now/Next** item a one-line definition sharp enough that it could be researched — what it is and what unlocks. This matters because of the background routine (below): a well-scoped item gets pre-sprint research done ahead of time; a vague dump can't. If an item is too fuzzy to define, that's fine — it stays in Later until it's ready.
+Give each **Now/Next** item a clear definition — a sharp title plus whatever context helps — so it could be researched: what it is and what it unlocks. More context here is better, not worse; it's what lets the background routine (below) judge whether an item's worth investigating. If an item is too fuzzy to define at all, that's fine — it stays in Later until it's ready.
 
 ### Hand off
 The top of **Now** is the next sprint candidate. Offer to go straight to `/start` for it. If a research brief already exists for it (`research/<slug>.md`), say so — `/start` will use it and skip the slow research step.
