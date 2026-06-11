@@ -12,7 +12,7 @@ Because it reads the project's local `.claude/` files, create it as a **Local** 
 
 ## What each run does
 
-Read state first (cheap — don't deep-read everything): `.claude/ROADMAP.md` (Goal + Now/Next), `.claude/PROJECT.md`, the `.claude/ARCHITECTURE.md` Map, and the sprint archive (what's shipped lately).
+Read state first (cheap — don't deep-read everything): `.claude/ROADMAP.md` (Goal + Now/Next), `.claude/PROJECT.md`, the `.claude/ARCHITECTURE.md` Map, the **active sprint files** (`.claude/sprints/*.md` — they scope the Now work; read for context, never modify), and the sprint archive (what's shipped lately).
 
 ### Job 1 — Ship Captain (keep the goal in view)
 
@@ -22,37 +22,30 @@ Read what's shipped recently against the goal, and give an honest, encouraging t
 - What's the highest-leverage next move — the one thing that unlocks the goal soonest?
 - Anything to speed up, ship sooner, or stop polishing?
 
-This is roadmap's orient-to-the-goal thinking (value × dependency, the one thing, what you're avoiding) applied to recent history. Keep it short and encouraging — a captain holding the heading, not a scold. Celebrate real progress, then point at what matters next.
+This is roadmap's orient-to-the-goal thinking (value × dependency, the one thing, what you're avoiding) applied to recent history. Keep it short and encouraging — a captain holding the heading, not a scold. Celebrate real progress, then point at what matters next. If the priority order looks off, *suggest* a reshuffle in the digest — never silently reorder the roadmap.
 
-### Job 2 — Ship Spotter (scout upcoming work)
+### Job 2 — Ship Spotter (scout upcoming work — ask first)
 
-Triage each Now/Next item (ignore Later — don't research the junk drawer):
+**Don't research autonomously. Propose, then ask.** Across the Now/Next items (ignore Later) pick the *one* most worth researching before the user starts it — large, uncertain, or unfamiliar tech/integration; skip routine work, verification, copy-writing, and anything already scoped in an active sprint. In the digest, name it, say why in a line, and ask for the 1–2 pieces of context that would make the research good. If nothing upcoming genuinely needs it, propose nothing — a quiet run is fine. Skip items that already have a fresh `.claude/research/<slug>.md` brief.
 
-- **Worth investigating?** Large, uncertain, or unfamiliar tech/integration → yes. Routine → skip. (Same generous gate as `/start` Stage 2.2.)
-- **Already has a fresh brief?** If `.claude/research/<slug>.md` exists and the framing hasn't changed → skip.
-- **Ready to research?** Defined enough to have a research target?
-  - Worth it + ready + no fresh brief → research it.
-  - Worth it + too vague → don't research; ask the user to reshape it (a one-line definition makes it researchable next run).
-
-Research using the same approach as `/start` Stage 2.2 — read `../../start/SKILL.md`'s "Research the approach" stage and follow it (the generous gate, Tier 1 inline / Tier 2 subagent, structured research, investigate-don't-speculate). Produce the same output: 2–3 approach options + grounding (`path:line` and web sources) + pitfalls — a brief, not a plan or code. Write it to `.claude/research/<slug>.md`, stamped with the date and the framing it was based on (so `/start` can tell if it's gone stale), and add a `brief: research/<slug>.md` pointer to that item in ROADMAP.md.
+The research itself happens **when the user replies with context** (a live session, not the scheduled run): follow `/start` Stage 2.2's "Research the approach" (`../../start/SKILL.md`) — investigate-don't-speculate; 2–3 options + grounding (`path:line` and web sources) + pitfalls — a brief, not a plan or code. Write it to `.claude/research/<slug>.md` stamped with the date + framing, and append a `brief: research/<slug>.md` pointer to that item in ROADMAP.md (append only — never restructure).
 
 ## The digest
 
 End each run with one short digest to the user's Claude chat:
 
-- **Ship Captain:** how they're tracking toward the goal + the highest-leverage next move.
-- **Ship Spotter:** what got a brief (with file paths), and which items need a one-line reshape to be researchable.
+- **Ship Captain:** how they're tracking toward the goal + the highest-leverage next move (and any priority-reshuffle suggestion).
+- **Ship Spotter:** the one upcoming item worth researching + the 1–2 pieces of context needed to do it well. If a previously-proposed item got context, note the brief it produced (with path).
 
-For items too vague to research, ask plainly:
+Spotter's ask, plainly:
 
-> "Roadmap item '<item>' looks worth researching but it's loosely scoped — reply with a one-line definition (what it is + what it unlocks) and I'll research the approach before your next sprint."
+> "'<item>' is coming up — worth researching first because <reason>. Share <1–2 context questions> and I'll dig in before your next sprint."
 
-When the user replies, that reshapes the item; the next run researches it.
+When the user replies with context, research it then (live) and write the brief.
 
 ## Guardrails
 
-- **Opt-in, low-noise.** The user turned this on — keep the digest short and worth reading. Encourage, don't nag.
-- **Now/Next only for research.** Never research Later. Dedupe (skip fresh briefs) and cap how many items you research per run.
+- **Opt-in, low-noise.** Keep the digest short and worth reading. A quiet run with nothing to propose is fine — never manufacture work.
+- **Ask first; Now/Next only.** Don't research autonomously — propose + ask. Research only on the user's reply, Now/Next only, never Later. Skip items with a fresh brief; propose at most one per run.
 - **Briefs are head-starts, not gospel.** `/start` re-validates against the current framing and refreshes anything stale.
-- **Inform, don't decide.** Write only to `.claude/research/` and the ROADMAP brief pointer. Don't touch sprints, write decisions, or change scope or priorities — that's the user's call in a real `/roadmap` session.
-- **Ping, don't guess.** When an item is too vague, ask the user to reshape it — never research a guess at what they meant.
+- **Inform, don't decide.** *Suggest* reprioritization in the digest; never silently restructure ROADMAP. The only writes are research files in `.claude/research/` + their `brief:` pointers, and only after a reply. Don't touch sprints, decisions, scope, or order.
