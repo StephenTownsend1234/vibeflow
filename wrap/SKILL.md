@@ -17,7 +17,7 @@ Save this session's context, learnings, and progress into the `.claude/` files s
 
 That gives you the test for every action here: *would a fresh session need this to understand the project and proceed well?* If yes, it goes in a file. If no, skip it.
 
-**What a good job looks like here:** the session's decisions, learnings, and what worked are captured cleanly, so the project's context *compounds* instead of evaporating when the chat closes. This is the step that makes every future session smarter — so it's worth real care. Act as the project's thorough reviewer and maintainer: take your time, mine the whole session, and get the records right.
+**What a good job looks like here:** the session's decisions, learned facts, and priority shifts saved so the next cold session starts **smarter and more accurate** — the closed loop that compounds project context instead of letting it evaporate. Aim for **precision, not volume**: capture each thing once, in its one right place. Most sessions need only a decision entry, a couple of stale-doc fixes, and a roadmap tick. If you're repeating a fact across files or writing long prose, you've overshot — tighten it.
 
 ## Principles
 
@@ -32,6 +32,7 @@ That gives you the test for every action here: *would a fresh session need this 
   | a shift in priorities | ROADMAP |
   | a change in the project's phase or focus | PROJECT |
 
+- **One home per fact.** Each decision, fact, or shift lands in a single canonical place. Git history, the commit message, and the archived sprint already hold *what shipped* — so wrap captures what they can't: the *why* (DECISIONS), the now-stale docs (ARCHITECTURE), the changed priorities (ROADMAP). Reference across files; don't re-narrate the same event into three of them.
 - **Build positives, not negatives.** Capture what worked and what we learned — not a log of what went wrong. Bad habits (guessing before investigating, over-engineering) are fenced by the skill's own guardrails and crowded out by good PLAYBOOK examples; they don't need a graveyard.
 - **Ground in the diff, not memory.** Before claiming what shipped, look at the actual changes (see Step 1). Use the conversation for *why* and *which sprint*; use the diff for *what*.
 - **Keep the docs current — but don't manufacture.** Whenever this session genuinely changed or taught something relevant — an architecture shift, a decision, a learned fact, a priority change — capture it. Keeping ARCHITECTURE / DECISIONS / ROADMAP accurate for the next session is the whole point of wrap. The flip side: don't invent an update where nothing actually changed; a quiet execution session legitimately updates only the sprint progress.
@@ -94,7 +95,7 @@ Your richest material — the gotchas, the decisions, the *what we learned* — 
 
 **→ ROADMAP.md** — if priorities shifted: deferred TO-DOs → **Later**; items promoted out of Later → **Next**; completed sprints → **Done (recent)**.
 
-**→ PROJECT.md** — keep the at-a-glance status current. PROJECT is the stable identity (what / who / north-star / safety invariant), so most sessions leave it untouched. But its **Phase / focus** line is living: update it when the project's lifecycle stage moves (e.g. greenfield → building → launched to users), when a major piece ships, or when the focus shifts to a new thing. Keep it coarse — sprint-level detail lives in ROADMAP; this is just "where is this project right now."
+**→ PROJECT.md** — keep the at-a-glance status current. PROJECT is the stable identity (what / who / north-star / safety invariant), so most sessions leave it untouched. But its **Phase / focus** line is living: update it when the project's lifecycle stage moves (e.g. greenfield → building → launched to users), when a major piece ships, or when the focus shifts. **Rewrite it in place — replace the old status, don't append.** It's a one-to-two-line "where is this project right now," not a running log (that detail lives in ROADMAP).
 
 **→ PLAYBOOK** — when the user genuinely praises an *approach* (or says "record this") and it's worth repeating, offer to capture it — routed by reach: specific to **this project** → `.claude/PLAYBOOK.md`; useful on **any** project → the **global** `~/.claude/vibeflow/playbook.md`.
 
