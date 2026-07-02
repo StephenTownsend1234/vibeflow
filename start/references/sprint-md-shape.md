@@ -68,10 +68,6 @@ reasoning. The user may revise during the sprint; that's fine.>
 - <concrete, testable pass/fail gates>
 ```
 
-## Sections banned from SPRINT.md
+## Keep out of SPRINT.md
 
-- No "Realistic effort", "Timeline", "Effort estimate", or "Execution order" with hours.
-- No day assignments, no hour estimates anywhere.
-- No "Phase 1 / Phase 2 / Phase 3" temporal slicing — order the step list and mark checkpoints; that's the slicing.
-
-Scope is conveyed through step ordering, checkpoints, and the `[unknowns]` / `[blocked]` tags only.
+No effort/timeline/day-or-hour estimates and no "Phase 1/2/3" temporal slicing — ordering, checkpoints, and the `[unknowns]`/`[blocked]` tags convey scope. Checkpoints note whether they're machine-verifiable (a fresh-context verifier handles them) or human-only (visual/device — the user checks).

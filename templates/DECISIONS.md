@@ -1,17 +1,22 @@
 # Decisions
 
 <!--
-The record of why the project is shaped the way it is — choices made and the
-reasoning behind them. This is living context for a fresh session ("here's how
-we got here"), NOT a set of locked verdicts. Any of these can be revisited; the
-rationale is what lets a future session judge whether it still holds.
+A registry of WHY things are the way they are — grouped by area, not by date, so a
+session working on one area reads one section. Each entry ≤6 lines.
 
-Log a choice when knowing WHY it was made would help a future session understand
-the project or make a coherent related choice — and there was a real alternative.
-Skip routine or obvious calls.
+Rules that keep this file useful:
+- Merge, don't append: a new call on an existing topic amends that entry in place —
+  strike the old line (~~old~~ superseded YYYY-MM-DD: why) rather than adding a
+  contradicting entry elsewhere.
+- Log only decisions a future session would act differently for knowing, where a real
+  alternative existed. Routine calls stay in the archived sprint.
+- No transient states here (deploy pending, migration unapplied) — those are sprint
+  TO-DOs. Entries record the timeless part only.
+- Area headings should mirror ARCHITECTURE's sections where possible.
 -->
 
-## YYYY-MM-DD: <short title>
+## <Area — e.g. Onboarding, Voice, Auth, Build & release, Product>
+
+### <topic> (YYYY-MM-DD)
 **Chose:** <what>
 **Because:** <the rationale — the load-bearing part>
-**Affects:** <what it touches>   (optional)
