@@ -46,6 +46,20 @@ OUT=$(
     n=$(git diff --stat "$last_wrap"..HEAD 2>/dev/null | tail -1)
     unc=$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')
     echo "Since last wrap commit: ${n:-nothing committed}; uncommitted files: $unc"
+  else
+    tc=$(git rev-list --count HEAD 2>/dev/null)
+    unc=$(git status --porcelain 2>/dev/null | wc -l | tr -d ' ')
+    [ -n "$tc" ] && echo "No wrap checkpoint yet ($tc commits, $unc uncommitted) — sprint files may be stale"
+  fi
+
+  # Once-daily vibeflow update check (fail-silent, compares the installed branch)
+  D="$HOME/.claude/skills/vibeflow"; S="$D/.last-update-check"
+  if [ -d "$D/.git" ] && [ "$(cat "$S" 2>/dev/null)" != "$(date +%F)" ]; then
+    date +%F > "$S" 2>/dev/null
+    BR=$(git -C "$D" rev-parse --abbrev-ref HEAD 2>/dev/null)
+    L=$(git -C "$D" rev-parse HEAD 2>/dev/null)
+    R=$(git -C "$D" ls-remote -q origin "$BR" 2>/dev/null | awk 'NR==1{print $1}')
+    [ -n "$R" ] && [ "$L" != "$R" ] && echo "vibeflow update available — run: bash ~/.claude/skills/vibeflow/update"
   fi
 
   echo "</vibeflow-orientation>"

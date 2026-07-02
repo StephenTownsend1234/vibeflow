@@ -5,7 +5,7 @@ description: The project's path to its goal — capture ideas onto the roadmap w
 
 # /roadmap
 
-Read `~/.claude/skills/vibeflow/CORE.md` first. Stance: **work out the path — what to build next and in what order — and pressure-test it honestly.**
+Read `~/.claude/skills/vibeflow/CORE.md` (or `CORE.md` at the vibeflow pack root, wherever it's installed) first. Stance: **work out the path — what to build next and in what order — and pressure-test it honestly.**
 
 The roadmap answers one question: what do I build next to reach my goal? It's light and living. ROADMAP.md is two-tier (template: `../templates/ROADMAP.md`): **top = the path in strict one-liners** (all `/start` and the hook ever read), **Details below the fold** = each item's fuller context, keyed by slug (what Ship Spotter researches from).
 

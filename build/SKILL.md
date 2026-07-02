@@ -5,7 +5,7 @@ description: Execute vibeflow work — a planned sprint or direct iteration (Fre
 
 # /build
 
-Read `~/.claude/skills/vibeflow/CORE.md` first (skip if already in context). Stance: **execute within the plan's guardrails — trust your reasoning on a coarse step, hold the line on scope.**
+Read `~/.claude/skills/vibeflow/CORE.md` (or `CORE.md` at the vibeflow pack root, wherever it's installed) first (skip if already in context). Stance: **execute within the plan's guardrails — trust your reasoning on a coarse step, hold the line on scope.**
 
 `/build` supplies what a fresh chat lacks: the project's context and the sprint's locked approach, the user's working preferences, and guardrails against the ways autonomous coding goes wrong. It is a frame, not a procedure — trust your execution on well-scoped steps.
 
@@ -19,7 +19,7 @@ Read `~/.claude/skills/vibeflow/CORE.md` first (skip if already in context). Sta
 
 Derive it from the plan; don't ask. Announce in one line and proceed:
 
-- **One-shot** (default after a thorough plan): work straight through; user-facing changes collect into a single verification pass at the end. "Running one-shot — say *checkpoint me* to change it."
+- **One-shot** (default after a thorough plan): work straight through; user-facing changes collect into a single verification pass at the end. "Working straight through — say *check in with me more* to switch."
 - **Verify-each** only when the sprint has `[unknowns]` steps or genuinely risky user-facing surfaces (irreversible operations, money, data migrations).
 
 For a long mechanical one-shot sprint, offer once to run it to completion under a goal: "I can set a goal — every step checked off or a blocker recorded — so this runs until done." Use the harness's `/goal` feature if available; otherwise just state the completion condition and work to it. Blockers recorded in the sprint file are a valid exit, not a stall.

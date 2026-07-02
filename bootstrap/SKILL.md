@@ -1,11 +1,11 @@
 ---
 name: bootstrap
-description: One-time vibeflow setup for a project — scans the repo (or goes conversation-first when greenfield), captures the vision, maps the path via /roadmap, scaffolds the `.claude/` state files, and installs the SessionStart orientation hook. Use when a project has no vibeflow state yet, when the user asks to set up vibeflow here, or when older vibeflow files need migrating to the current shape.
+description: One-time vibeflow setup for a project — scans the repo (or goes conversation-first when greenfield), captures the vision, maps the path via /roadmap, scaffolds the `.claude/` state files, and installs the SessionStart orientation hook. Use when a project has no vibeflow state yet and the user asks to set it up — or asks in plain terms for help building, finishing, or continuing a project ("help me finish my app"): offer setup in one line before diving into code. Also handles migrating older vibeflow file shapes.
 ---
 
 # /bootstrap
 
-Read `~/.claude/skills/vibeflow/CORE.md` first. Stance: **scan deeply on architecture, ask openly on product — code reveals the stack, never the vision.**
+Read `~/.claude/skills/vibeflow/CORE.md` (or `CORE.md` at the vibeflow pack root, wherever it's installed) first. Stance: **scan deeply on architecture, ask openly on product — code reveals the stack, never the vision.**
 
 Be a guide, not a technician: say plainly what you're doing and why it helps; keep internal jargon out of the user's view. Ask product questions one at a time, conversationally.
 
@@ -34,9 +34,9 @@ The part only the user can give. One at a time, following up when an answer is t
 2. "Who is it for?"
 3. "What phase are you in — discovery, build, launch, iterate, maintain?" (Greenfield: "and how will it run — web, mobile, CLI…?")
 4. "What does success look like — the north star?"
-5. "Any locked decisions or constraints worth capturing?" (Record as facts.)
+5. "Anything you've already decided you definitely want — or definitely don't?" (Record as facts.)
 
-Leave blanks as `<TBD>` — never fabricate.
+Leave blanks as `<TBD>` — never fabricate. Afterwards, seed one Working-preferences bullet in the global profile from what this conversation revealed about their technical level and style — you just spent a whole conversation observing them.
 
 **Then always run `/roadmap`** (read `../roadmap/SKILL.md`, "called from bootstrap" mode): the vision says where; the roadmap makes the path. Fold its Goal + Now/Next/Later back into your draft.
 
@@ -44,6 +44,7 @@ Leave blanks as `<TBD>` — never fabricate.
 
 Write directly from the templates in `../templates/` — creation isn't overwriting, and editing a written file is as cheap as editing a draft (the confirm-before-write reflex protects *existing* state only):
 
+- No git repo (`git rev-parse --is-inside-work-tree` fails)? Offer plainly — "I'll turn on change-tracking so progress gets saved between sessions; one command, all local" — and run `git init` + an initial commit on yes.
 - `PROJECT.md`, `ARCHITECTURE.md` (Map on top; greenfield gets a stub — the first `/start` seeds it), `ROADMAP.md` (two-tier), `DECISIONS.md` (area registry, from Q5), `sprints/archive/`.
 - **Install the SessionStart hook**: copy `~/.claude/skills/vibeflow/hooks/session-start.sh` to `.claude/hooks/session-start.sh` (executable) and merge this exact block into `.claude/settings.json` (merge keys — don't replace an existing `hooks` object):
   ```json
@@ -51,9 +52,9 @@ Write directly from the templates in `../templates/` — creation isn't overwrit
   ```
   This is what makes every future session start oriented without ceremony.
 
-Then invite edits: "Review these — what's wrong, what's missing?" Revise until solid.
+Then offer lightly: "I've written the project files — want a tour, or shall we keep moving?" Walk through and revise on a tour; don't force a doc review on a beginner.
 
-Close: "Foundation set and roadmap mapped — run `/start` to plan your first sprint." Offer the background routine (Ship Captain + Ship Spotter, `../roadmap/references/background-routine.md`) in two lines; set it up via `/schedule` on yes, note it's available from `/roadmap` anytime on no.
+Close by keeping the momentum: "Foundation set and roadmap mapped — want to plan your first piece of work right now?" On yes, read `../start/SKILL.md` and continue in-session. (The background routine is offered at the project's first `/wrap`, not here — they've answered enough questions today.)
 
 ## Edge cases
 

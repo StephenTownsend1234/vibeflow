@@ -5,13 +5,13 @@ description: End a vibeflow session by saving its progress, decisions, and learn
 
 # /wrap
 
-Read `~/.claude/skills/vibeflow/CORE.md` first (skip if already in context). Stance: **save this session so a cold session with no memory of this chat starts smarter — nothing it needs should live only here.**
+Read `~/.claude/skills/vibeflow/CORE.md` (or `CORE.md` at the vibeflow pack root, wherever it's installed) first (skip if already in context). Stance: **save this session so a cold session with no memory of this chat starts smarter — nothing it needs should live only here.**
 
 The test for every action: *would a fresh session need this to proceed well?* Precision over volume — each fact lands once, in its one home. Wrap often runs with context nearly gone, so the order below is deliberate: cheapest, highest-value work first, and everything front-loaded into batches.
 
 ## 1 — Ground (one silent batch)
 
-In one parallel pass: `git status` + `git diff` (uncommitted) + `git log` since the last wrap commit (find it via the `docs(wrap):` prefix); every in-flight sprint file; the target docs you may edit (DECISIONS + ARCHITECTURE — skim whole, you'll edit only diff-touched areas — and ROADMAP top); `.claude/.last-session.md` if present. Reading targets now prevents mid-apply read-thrash later.
+In one parallel pass: `git status` + `git diff` (uncommitted) + `git log` since the last wrap commit (find it via the `docs(wrap):` prefix); every in-flight sprint file; the target docs you may edit (DECISIONS + ARCHITECTURE — skim whole, you'll edit only diff-touched areas — and ROADMAP top); `.claude/.last-session.md` if present. Reading targets now prevents mid-apply read-thrash later. No git repo? Skip diff reconciliation and the checkpoint commit — ground in the conversation, still write every `.claude/` update, and suggest turning on git next session.
 
 Base "what shipped" on the diff and log — the conversation supplies the *why* and the attribution, not the *what*. Stamp dates from the environment, never from memory (long sessions carry a stale sense of today).
 
@@ -44,11 +44,13 @@ Routing rules (from CORE.md, applied here): transient states → sprint TO-DOs o
 
 ## 4 — Propose once, apply once
 
-Present a **compact proposal** in one message: any genuinely open "needs your call" forks (AskUserQuestion, with recommendations — say "none" if none) together with one line per file describing what you'll write. Not full drafts — one scannable list the user can veto items from ("skip design tho"). Answering the forks — or a bare go-ahead — is the single confirmation; apply immediately, honoring any vetoes. A session with nothing worth saving: say so in one line and stop — no proposal, no commit.
+Present a **compact proposal** in one message: any genuinely open "needs your call" forks (AskUserQuestion, with recommendations — say "none" if none) together with one line per file describing what you'll write. Not full drafts — one scannable list the user can veto items from ("skip design tho"). Flag in the line when a change rewrites a pre-existing claim rather than adding ("ARCHITECTURE: +1 gotcha, rewrites stale model-ID line"). Answering the forks — or a bare go-ahead — is the single confirmation; apply immediately, honoring any vetoes. A session with nothing worth saving: say so in one line and stop — no proposal, no commit.
 
 On that confirmation: apply all writes in parallel, including `.claude/.last-session.md` — a 2–3 line carry-forward (what shipped, what's unverified/undeployed, where iteration stalled), overwritten each wrap; it's what a future session or parallel chat reads first, and the only trace a no-sprint Freebuild session leaves. Archive any fully-checked sprint (`sprints/archive/<sprint-NNN>-<slug>.md`, next sequential NNN), then make the checkpoint commit (`docs(wrap): <summary>` plus any uncommitted session work the user wants included). Never push.
 
 Then **one** final summary: the commit hash, one line per file changed, and the carry-forward for next session. No second recap.
+
+On a project's **first** wrap (no prior `docs(wrap):` commit): offer the background routine once — Ship Captain + Ship Spotter, [../roadmap/references/background-routine.md](../roadmap/references/background-routine.md), set up via `/schedule`.
 
 ## 5 — If a sprint was archived
 

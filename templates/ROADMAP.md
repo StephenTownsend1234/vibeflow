@@ -21,7 +21,7 @@ Slug rule: slug = kebab-case of the title; the top line and its Details heading 
 - <title> — <why>   [→ details]
 
 ## Later (parked inbox, unordered)
-- <title>
+- <title>   [→ details, when context was captured]
 
 ## Done (recent — cap ~10 lines, oldest drop off)
 - <slug>: <what shipped>

@@ -1,11 +1,11 @@
 ---
 name: start
-description: Begin or resume a vibeflow work session — orients on project state, then routes to resuming an in-flight sprint, planning a new sprint (research-driven), or building directly (Freebuild). Use at the start of a session, when the user asks "where were we" / "what's next", or when they name a roadmap item to work on. Requires vibeflow state in `.claude/` (else point to `/bootstrap`).
+description: Begin or resume a vibeflow work session — orients on project state, then routes to resuming an in-flight sprint, planning a new sprint (research-driven), or building directly (Freebuild). Use at the start of a session, when the user asks "where were we" / "what's next" / "let's keep going" / "continue where we left off", or when they name a roadmap item to work on. Requires vibeflow state in `.claude/` (else point to `/bootstrap`).
 ---
 
 # /start
 
-Read `~/.claude/skills/vibeflow/CORE.md` first (skip if already in context). Stance for this mode: **turn rough intent into a grounded approach before any code — planning is the expensive-to-reverse part; code is cheap to redo.**
+Read `~/.claude/skills/vibeflow/CORE.md` (or `CORE.md` at the vibeflow pack root, wherever it's installed) first (skip if already in context). Stance for this mode: **turn rough intent into a grounded approach before any code — planning is the expensive-to-reverse part; code is cheap to redo.**
 
 Second principle: **stay forward-oriented.** Aim for the minimum version of the goal running, not a flawless version of every step. Park worthwhile extras on the roadmap rather than folding them in; finalizing can be its own later sprint.
 
@@ -26,7 +26,7 @@ Now: <top 1-2 roadmap items>
 Last session: <one sentence, incl. where iteration stalled if noted>
 ```
 
-Route with one AskUserQuestion: resume (an option per in-flight sprint), pull from roadmap, plan something new, or Freebuild. Shape the options to reality — a completed sprint offers "wrap & archive" instead; no sprints means no resume option; if the sprints plus routes exceed the 4-option cap, collapse resumes into one "Resume a sprint…" option and disambiguate in a follow-up.
+Route with one AskUserQuestion: resume (an option per in-flight sprint), pull from roadmap, plan something new, or Freebuild. Shape the options to reality — a completed sprint offers "wrap & archive" instead; no sprints means no resume option; if the sprints plus routes exceed the 4-option cap, collapse resumes into one "Resume a sprint…" option and disambiguate in a follow-up. Label options in plain language — "Just build, no plan needed" for Freebuild.
 
 ## Resume and Freebuild → build, now
 
@@ -62,7 +62,7 @@ Present 2–3 options from first principles as Decision cards (CORE.md format), 
 - **Challenge inferred infrastructure:** if the shape adds a route/table/flag/reimplementation the user never stated, surface it as its own Decision — the simplest shape meeting the stated goal wins unless they confirm the addition.
 - If the sprint has grown past the item's original intent, say so and offer: trim, accept, or split.
 
-On a greenfield project's first sprint, the stack itself is this decision — research and recommend it here.
+Keep a visible "Decisions so far" list as options resolve. On a greenfield project's first sprint, the stack itself is this decision — research and recommend it here.
 
 ### 4 — Plan mode (the single gate)
 
