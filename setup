@@ -24,3 +24,6 @@ done
 
 echo "✅ vibeflow installed — commands:$linked"
 echo "   Update anytime:  bash \"$SRC/update\""
+echo ""
+echo "👉 Next: open Claude Code in your project and say \"set up vibeflow here\" (or run /bootstrap)."
+echo "   After that, each session is just: /start to begin, /wrap to finish."

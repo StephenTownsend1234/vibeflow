@@ -2,7 +2,7 @@
 
 One routine, run daily as a **Local** scheduled task (it reads the project's `.claude/` files, so cloud routines can't see it). Set up via `/schedule`; task prompt:
 
-> "Run the vibeflow background routine for this project: follow `roadmap/references/background-routine.md` against this project's `.claude/`."
+> "Run the vibeflow background routine for this project: follow `~/.claude/skills/vibeflow/roadmap/references/background-routine.md` against this project's `.claude/`."
 
 Each run reads (cheap, don't deep-read everything): ROADMAP top tier + the Details blocks of Now/Next items, PROJECT.md, the ARCHITECTURE Map, active sprint files (context only — never modify), and recent archive entries.
 

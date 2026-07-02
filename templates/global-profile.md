@@ -20,7 +20,7 @@ observed corrections, not praise. Delete bullets that stop being true. -->
 positive or negative, no praise required. Keep only lessons that would change how a
 future session on ANY project behaves. -->
 
-## YYYY-MM-DD — <short title>
+### YYYY-MM-DD — <short title>
 What worked / what failed: <the approach and outcome>
 Why: <the transferable lesson>
 Reuse when: <the situation to apply it again>

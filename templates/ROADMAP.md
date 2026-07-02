@@ -8,6 +8,7 @@ quick-capture appends to and what Ship Spotter reads before researching.
 No fake dates: a real date appears only when a real event exists, as a scope ceiling.
 Delete items when shipped (top line + details block) — the knowledge lives on in the
 archived sprint and DECISIONS. No cross-section pointers ("see above") — they rot.
+Slug rule: slug = kebab-case of the title; the top line and its Details heading must match.
 -->
 
 ## Goal: <the outcome you're driving toward now>

@@ -6,6 +6,10 @@ A kit of Claude Code skills for building real products across many sessions: pla
 
 **Ask when the answer changes *what* gets built; build when it only changes *how*.** Genuine forks get one clear decision with a recommendation; everything inside a confirmed direction runs autonomously; assumptions get surfaced, never silently built on.
 
+## New here? Two commands.
+
+You only need to remember two: **`/start`** when you sit down, **`/wrap`** when you're done. Everything else happens in flow — setup is offered the first time you `/start` an unconfigured project, building begins automatically once a plan is agreed, and saying things like "add X to the roadmap" or "let's wrap up" just works without slash commands.
+
 ## The commands
 
 | Command | What it does | When |

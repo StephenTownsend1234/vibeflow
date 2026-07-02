@@ -11,9 +11,9 @@ Second principle: **stay forward-oriented.** Aim for the minimum version of the 
 
 ## Orient (silent)
 
-The SessionStart hook usually injects orientation (project identity, Map, roadmap top, sprint status, work-since-last-wrap). Don't re-read what's already injected. Fill gaps silently, in one parallel batch: sprint files for detail, `~/.claude/vibeflow/playbook.md` (global profile), `.claude/.last-session.md` if present.
+The SessionStart hook usually injects orientation (project identity, Map, roadmap top, sprint status, work-since-last-wrap). Don't re-read what's already injected. Fill gaps silently, in one parallel batch: sprint files for detail, `~/.claude/vibeflow/playbook.md` (global profile), `.claude/.last-session.md` if present. If no `<vibeflow-orientation>` block was injected (hook not installed), read the orientation yourself in the same batch: PROJECT.md, ARCHITECTURE's Map section, ROADMAP top, sprint status.
 
-If `.claude/` has no vibeflow state, point to setup in one line: "This project isn't set up yet — run `/bootstrap` and I'll scaffold it."
+If `.claude/` has no vibeflow state, offer in one line: "This project isn't set up for vibeflow yet — want me to set it up now?" On yes, run `/bootstrap` directly.
 
 **Verify before briefing.** Sprint files are claims; the repo is truth. Check `git log` since the last wrap commit — where a sprint file and the repo disagree (steps shipped but unchecked, work landed in another chat), the brief says so plainly: "sprint file says X pending; git shows it shipped in `<hash>`." Never brief confidently from a file the diff contradicts.
 
@@ -26,13 +26,13 @@ Now: <top 1-2 roadmap items>
 Last session: <one sentence, incl. where iteration stalled if noted>
 ```
 
-Route with one AskUserQuestion: resume (an option per in-flight sprint), pull from roadmap, plan something new, or Freebuild. Shape the options to reality — a completed sprint offers "wrap & archive" instead; no sprints means no resume option.
+Route with one AskUserQuestion: resume (an option per in-flight sprint), pull from roadmap, plan something new, or Freebuild. Shape the options to reality — a completed sprint offers "wrap & archive" instead; no sprints means no resume option; if the sprints plus routes exceed the 4-option cap, collapse resumes into one "Resume a sprint…" option and disambiguate in a follow-up.
 
 ## Resume and Freebuild → build, now
 
 Don't end the turn telling the user to type `/build`. On **Resume**, or **Freebuild** with a stated target: confirm the next step in one line, read `~/.claude/skills/vibeflow/build/SKILL.md`, and continue working in this session under its rules. Only pause if the route genuinely needs input (Freebuild with no target yet: ask what they want to work on).
 
-## Plan a sprint
+## Plan a sprint (pull-from-roadmap or something new)
 
 The job: from vague intent to an approach a fresh `/build` could run cold. In this mode your outputs are questions, research findings, and approach options — code starts after the approach is confirmed and plan mode approves the plan.
 

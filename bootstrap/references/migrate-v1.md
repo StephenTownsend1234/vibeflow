@@ -1,4 +1,6 @@
-# Migrating an existing project into v2 structure
+# Migrating a pre-v2 project (step 1 of 2)
+
+**This reference lands files in the v2 shape. Always finish with [migrate-v2-to-v3.md](migrate-v2-to-v3.md)** — it converts DECISIONS to the area registry, ROADMAP to two tiers, retires PLAYBOOK.md, and installs the SessionStart hook.
 
 When a project already has docs in an older shape — a single accreted ARCHITECTURE doc (current state + changelog + decisions + debt all in one), or pre-v2 vibeflow files — **don't overwrite, and don't ingest the blob whole.** Split and reshape it into the v2 file structure. This reorganizes `.claude/` markdown only — it never touches application code, the database, or migrations. Lose nothing; collaborate with the user and confirm each file.
 

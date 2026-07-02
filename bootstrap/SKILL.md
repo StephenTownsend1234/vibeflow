@@ -13,7 +13,7 @@ Be a guide, not a technician: say plainly what you're doing and why it helps; ke
 
 - **Existing project** (real source + manifests): full flow below.
 - **Greenfield** (empty / README only): skip the scan; go conversation-first from step 3. Don't propose a stack — that's a researched decision in the first `/start`.
-- **Existing `.claude/`**: vibeflow files already there? If they're in an older shape (date-ordered append-only DECISIONS, single-tier ROADMAP, a PLAYBOOK.md, monolithic ARCHITECTURE), this is a **migration** — offer it and read [references/migrate-v1.md](references/migrate-v1.md) plus the v3 file shapes in `../templates/`. Only harness files → treat as fresh; they coexist fine.
+- **Existing `.claude/`**: vibeflow files already there? Route by shape: a **pre-v2 monolith** (one accreted ARCHITECTURE mixing state + history + decisions) → [references/migrate-v1.md](references/migrate-v1.md), then finish with [references/migrate-v2-to-v3.md](references/migrate-v2-to-v3.md); the **v2 shape** (date-ordered append-only DECISIONS, single-tier ROADMAP, a PLAYBOOK.md) → [references/migrate-v2-to-v3.md](references/migrate-v2-to-v3.md) directly. Already in the v3 shape → ask in one line: merge/refresh or cancel — never re-scaffold over live state. Only harness files → treat as fresh; they coexist fine.
 - Related work nearby (a sibling project, an old plan doc)? Ask before reading it in — a new project is a clean slate unless the user says otherwise.
 
 On first-ever vibeflow use (no `~/.claude/vibeflow/playbook.md`): create it from `../templates/global-profile.md`. Don't interview for working style — the Working preferences block fills itself from observed corrections at `/wrap`.
@@ -45,7 +45,11 @@ Leave blanks as `<TBD>` — never fabricate.
 Write directly from the templates in `../templates/` — creation isn't overwriting, and editing a written file is as cheap as editing a draft (the confirm-before-write reflex protects *existing* state only):
 
 - `PROJECT.md`, `ARCHITECTURE.md` (Map on top; greenfield gets a stub — the first `/start` seeds it), `ROADMAP.md` (two-tier), `DECISIONS.md` (area registry, from Q5), `sprints/archive/`.
-- **Install the SessionStart hook**: copy `~/.claude/skills/vibeflow/hooks/session-start.sh` to `.claude/hooks/session-start.sh` (executable) and register it in `.claude/settings.json` under `hooks.SessionStart` (command type, `$CLAUDE_PROJECT_DIR/.claude/hooks/session-start.sh`). Merge into existing settings — don't clobber. This is what makes every future session start oriented without ceremony.
+- **Install the SessionStart hook**: copy `~/.claude/skills/vibeflow/hooks/session-start.sh` to `.claude/hooks/session-start.sh` (executable) and merge this exact block into `.claude/settings.json` (merge keys — don't replace an existing `hooks` object):
+  ```json
+  {"hooks": {"SessionStart": [{"hooks": [{"type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/session-start.sh"}]}]}}
+  ```
+  This is what makes every future session start oriented without ceremony.
 
 Then invite edits: "Review these — what's wrong, what's missing?" Revise until solid.
 

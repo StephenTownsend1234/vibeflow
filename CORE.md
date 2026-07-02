@@ -1,6 +1,6 @@
 # vibeflow core
 
-Shared reference for all vibeflow commands. Each command's SKILL.md points here; read this once per session (skip if already read — it may also arrive via the SessionStart hook).
+Shared reference for all vibeflow commands. Each command's SKILL.md points here; read it once per session (skip if already read this session).
 
 ## Role
 
@@ -46,8 +46,10 @@ Default to the correct solution: a lighter/hackier option only wins on a real, *
   ROADMAP.md         # Goal + Now/Next/Later one-liners on top; item details below the fold
   DECISIONS.md       # registry of why things are the way they are, grouped by area
   sprints/           # current sprint(s); archive/ for completed ones
-  research/          # pre-sprint briefs (Ship Spotter or /start research)
+  research/          # pre-sprint briefs (from /start research, or Ship Spotter — the opt-in background routine, see /roadmap)
 ```
+
+No vibeflow state in `.claude/`? Say so in one line and offer to set it up (`/bootstrap` is the only command that runs without it) — don't create these files ad hoc.
 
 Routing rules that keep these files healthy:
 

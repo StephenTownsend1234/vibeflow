@@ -11,13 +11,13 @@ The test for every action: *would a fresh session need this to proceed well?* Pr
 
 ## 1 — Ground (one silent batch)
 
-In one parallel pass: `git status` + `git diff` (uncommitted) + `git log` since the last wrap commit; every in-flight sprint file; the target docs you may edit (DECISIONS, ARCHITECTURE areas the diff touched, ROADMAP top); `.claude/.last-session.md` if present. Reading targets now prevents mid-apply read-thrash later.
+In one parallel pass: `git status` + `git diff` (uncommitted) + `git log` since the last wrap commit (find it via the `docs(wrap):` prefix); every in-flight sprint file; the target docs you may edit (DECISIONS + ARCHITECTURE — skim whole, you'll edit only diff-touched areas — and ROADMAP top); `.claude/.last-session.md` if present. Reading targets now prevents mid-apply read-thrash later.
 
 Base "what shipped" on the diff and log — the conversation supplies the *why* and the attribution, not the *what*. Stamp dates from the environment, never from memory (long sessions carry a stale sense of today).
 
 ## 2 — Attribute
 
-Map changed paths → sprint scopes **explicitly** when more than one sprint is in flight, and say the mapping in one line ("profile components → profile-vault; bridge → hotfix task D — updating both"). Every touched sprint file gets its status updated — never consolidate two sprints' work into one file. Changes this session didn't discuss get flagged, not folded in ("`payments/` also changed — other chat's sprint, or unrelated? Leaving it out unless you say otherwise").
+Map changed paths → sprint scopes **explicitly** when more than one sprint is in flight, and say the mapping in one line ("profile components → profile-vault; bridge → hotfix task D — updating both"). A path both sprints could claim: attribute by which sprint's step it advances. Every touched sprint file gets its status updated — never consolidate two sprints' work into one file. Changes this session didn't discuss get flagged as a line in the proposal, not a standalone question ("`payments/` also changed — leaving it out as another chat's work unless you say otherwise").
 
 Update each touched sprint: check off what the diff proves shipped; "Last session" one-liner; "Next up" with the context to resume cleanly — **including where iteration stalled mid-conversation** ("user was mid-feedback on the Me page; reflection treatment undecided"), which is often the most valuable line in the file. Route open TO-DOs yourself (promote to a step / defer to ROADMAP Later / resolve into DECISIONS / drop) — only genuinely open forks go to the user.
 
@@ -44,11 +44,11 @@ Routing rules (from CORE.md, applied here): transient states → sprint TO-DOs o
 
 ## 4 — Propose once, apply once
 
-Present a **compact proposal**: any genuinely open "needs your call" forks first (AskUserQuestion, with recommendations — say "none" if none), then one line per file describing what you'll write. Not full drafts — one scannable list the user can veto items from ("skip design tho").
+Present a **compact proposal** in one message: any genuinely open "needs your call" forks (AskUserQuestion, with recommendations — say "none" if none) together with one line per file describing what you'll write. Not full drafts — one scannable list the user can veto items from ("skip design tho"). Answering the forks — or a bare go-ahead — is the single confirmation; apply immediately, honoring any vetoes. A session with nothing worth saving: say so in one line and stop — no proposal, no commit.
 
-On one confirmation: apply all writes in parallel, archive any fully-checked sprint (`sprints/archive/<sprint-NNN>-<slug>.md`, next sequential NNN), and make the checkpoint commit (`docs(wrap): <summary>` plus any uncommitted session work the user wants included). Never push.
+On that confirmation: apply all writes in parallel, including `.claude/.last-session.md` — a 2–3 line carry-forward (what shipped, what's unverified/undeployed, where iteration stalled), overwritten each wrap; it's what a future session or parallel chat reads first, and the only trace a no-sprint Freebuild session leaves. Archive any fully-checked sprint (`sprints/archive/<sprint-NNN>-<slug>.md`, next sequential NNN), then make the checkpoint commit (`docs(wrap): <summary>` plus any uncommitted session work the user wants included). Never push.
 
-Then **one** final summary: the commit hash, one line per file changed, and the carry-forward for next session (undeployed things, the next step, open threads). No second recap.
+Then **one** final summary: the commit hash, one line per file changed, and the carry-forward for next session. No second recap.
 
 ## 5 — If a sprint was archived
 

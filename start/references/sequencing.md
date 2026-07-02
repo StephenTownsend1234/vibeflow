@@ -32,6 +32,6 @@ Sprint 1 is what we plan in detail today. Confirm the lineup and the Sprint 1 cu
 
 ## After the lineup is confirmed
 
-Only Sprint 1 goes through Stage 2.3 → Pre-Plan Handshake → plan mode. The rest live as proposed candidates the user can return to via a later `/start`.
+Only Sprint 1 continues through the planning stages (sharpen → research → decide → plan mode). The rest live as proposed candidates the user can return to via a later `/start`.
 
 If the user wants the lineup written into ROADMAP.md as proposed-next-sprints, offer to do that. Don't do it unprompted.

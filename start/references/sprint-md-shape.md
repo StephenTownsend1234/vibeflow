@@ -17,7 +17,7 @@ reading cold needs to understand why this matters.>
 
 ## Approach
 <The approach locked during planning, in 2-4 sentences — the option chosen in
-Stage 2.3 and why. Include the grounding that made it the right call (a web
+the Decide-the-approach stage and why. Include the grounding that made it the right call (a web
 finding, a constraint from our stack). This is the expensive-to-reverse decision;
 state it plainly so /build doesn't drift from it.>
 
@@ -41,14 +41,15 @@ A short ordered list of coarse steps — each a span /build can one-shot — wit
 explicit checkpoints. ~3-6 steps total, not a micro-checklist. Tag steps
 `[PORT]` / `[NEW]` / `[REUSE]`. Tag complexity only when `unknowns` or `blocked`.
 
-Mark checkpoints with `→ CHECKPOINT:`. At each one, /build offers to verify — the
-user can check it there, or one-shot through and verify at the end.
+Mark checkpoints with `→ CHECKPOINT (machine):` or `→ CHECKPOINT (human):`. Machine-
+verifiable ones (behavior, contracts, data flow) go to a fresh-context verifier without
+pausing; human-only ones (visual, feel, on-device) interrupt with a concrete action list.
 
 - [ ] [NEW] <coarse step — an outcome, not a micro-task> — <file paths>
-- [ ] → CHECKPOINT: <what to verify and how — e.g. "confirm streaming latency feels right">
+- [ ] → CHECKPOINT (human): <what to verify and how — e.g. "confirm streaming latency feels right">
 - [ ] [PORT] <next coarse step> — <file paths>
 - [ ] [NEW] [unknowns] <step with real design risk> — <file paths>
-- [ ] → CHECKPOINT: <final verification>
+- [ ] → CHECKPOINT (machine): <final verification — e.g. "end-to-end flow returns the right shape">
 
 ## Reuse as-is (read, do not modify)
 - <paths to existing files the sprint depends on but does not change>

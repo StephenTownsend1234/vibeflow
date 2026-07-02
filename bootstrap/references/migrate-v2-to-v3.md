@@ -20,6 +20,6 @@ Shape is unchanged. While touching it: re-verify the Map's greppable claims agai
 
 ## Install the hook
 
-Copy `hooks/session-start.sh` into `.claude/hooks/` and register under `hooks.SessionStart` in `.claude/settings.json` (merge, don't clobber) — v2 projects predate it.
+Copy `~/.claude/skills/vibeflow/hooks/session-start.sh` into `.claude/hooks/` and register it exactly as bootstrap's "Install the SessionStart hook" step shows (`../SKILL.md`) — v2 projects predate it.
 
 In-flight sprint files: leave untouched. New sprints get the v3 shape via `/start`.
