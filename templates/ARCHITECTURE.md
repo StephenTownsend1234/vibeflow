@@ -18,6 +18,8 @@ Ship Spotter read. Detail below = read on demand when working an area.
 
 **Key patterns:** <e.g. server actions for mutations; shadcn components in components/ui; one route file per resource>
 
+**Run & verify:** <how to see a change working — dev command, device/simulator, test command, deploy step. What /build uses to verify its own work.>
+
 ## Detail
 
 ### Data model

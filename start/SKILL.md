@@ -1,6 +1,6 @@
 ---
 name: start
-description: Begin or resume a vibeflow work session — orients on project state, then routes to resuming an in-flight sprint, planning a new sprint (research-driven), or building directly (Freebuild). Use at the start of a session, when the user asks "where were we" / "what's next" / "let's keep going" / "continue where we left off", or when they name a roadmap item to work on. Requires vibeflow state in `.claude/` (else point to `/bootstrap`).
+description: Begin or resume a work session — orients on project state, then routes to resuming an in-flight sprint, planning a new sprint (research-driven), or building directly (Freebuild). Use at the start of a session, when the user asks "where were we" / "what's next" / "let's keep going" / "continue where we left off", or when they name a roadmap item to work on. Requires vibeflow state in `.claude/` (else point to `/bootstrap`).
 ---
 
 # /start
@@ -15,7 +15,7 @@ The SessionStart hook usually injects orientation (project identity, Map, roadma
 
 If `.claude/` has no vibeflow state, offer in one line: "This project isn't set up for vibeflow yet — want me to set it up now?" On yes, run `/bootstrap` directly.
 
-**Verify before briefing.** Sprint files are claims; the repo is truth. Check `git log` since the last wrap commit — where a sprint file and the repo disagree (steps shipped but unchecked, work landed in another chat), the brief says so plainly: "sprint file says X pending; git shows it shipped in `<hash>`." Never brief confidently from a file the diff contradicts.
+**Verify before briefing — proportional to the gap.** Sprint files are claims; the repo is truth. If the orientation shows nothing committed since the last wrap and a clean tree, trust the files and skip reconciliation. When there IS a gap (commits since wrap, uncommitted work, another chat active), check `git log` since the last wrap commit — where a sprint file and the repo disagree (steps shipped but unchecked, work landed in another chat), the brief says so plainly: "sprint file says X pending; git shows it shipped in `<hash>`." Never brief confidently from a file the diff contradicts.
 
 Then brief in ~10 seconds of reading:
 
