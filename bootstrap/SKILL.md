@@ -51,6 +51,7 @@ Write directly from the templates in `../templates/` — creation isn't overwrit
   {"hooks": {"SessionStart": [{"hooks": [{"type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/session-start.sh"}]}]}}
   ```
   This is what makes every future session start oriented without ceremony.
+- **Runnable app?** Offer to run the harness's `/run-skill-generator` once — it records the launch recipe as a per-project skill that `/run` and `/verify` follow, which is what makes /build's machine checkpoints able to verify against the real app. Note the one-liner in the Map's Run & verify line.
 
 Then offer lightly: "I've written the project files — want a tour, or shall we keep moving?" Walk through and revise on a tour; don't force a doc review on a beginner.
 

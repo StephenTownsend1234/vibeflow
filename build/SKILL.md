@@ -44,7 +44,7 @@ Before checking off a step that lands a new surface (an endpoint, a schema chang
 
 At a `→ CHECKPOINT:` (or the end-of-sprint pass), split the verification:
 
-- **Machine-verifiable** (behavior, contracts, data flow): dispatch a fresh-context verifier — the `/verify` skill, or a subagent given only the step's contract and the diff — instead of pausing for the user. Fresh eyes outperform self-review.
+- **Machine-verifiable** (behavior, contracts, data flow): dispatch a fresh-context verifier — the `/verify` skill (it follows the project's recorded run skill, if `/run-skill-generator` has been run), or a subagent given only the step's contract and the diff — instead of pausing for the user. Fresh eyes outperform self-review.
 - **Human-only** (visual, feel, on-device): give the user a concrete action list — "open X, tap Y — does Z happen?" — and wait. These are the only checkpoints that interrupt. In one-shot mode they defer to the end pass — unless a later step depends on their outcome, in which case the dependency-bearing checkpoint interrupts even in one-shot.
 
 **Before reporting progress or completion, audit each claim against a tool result from this session** — a diff, a test run, a command output. Unverified things are reported as unverified.
