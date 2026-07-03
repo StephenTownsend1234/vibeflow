@@ -82,6 +82,6 @@ When the approach is confirmed, enter plan mode (`EnterPlanMode`). Inside:
 
 ### 5 — Write the sprint and go
 
-Write the approved plan to `.claude/sprints/<slug>.md` (kebab-case; new filename if it collides — never overwrite an in-flight sprint). On a greenfield first sprint, also seed ARCHITECTURE.md from the stack decision (Map-on-top; template at `../templates/ARCHITECTURE.md`).
+The harness saves the approved plan to `.claude/plans/<file>.md` — **`cp` it to `.claude/sprints/<slug>.md`** (kebab-case; new filename if it collides — never overwrite an in-flight sprint): exact fidelity to what was approved, zero re-synthesis. Then one `Edit` pass: add the Status header (run mode, date, 0/N steps) and make sure steps are `- [ ]` checkboxes (the SessionStart hook counts them). Only `Write` from memory if no saved plan file exists. On a greenfield first sprint, also seed ARCHITECTURE.md from the stack decision (Map-on-top; template at `../templates/ARCHITECTURE.md`).
 
 Then flow straight into building under `/build`'s rules unless the user said they're stopping here — in that case: "Sprint written to `.claude/sprints/<slug>.md` — pick it up anytime."
