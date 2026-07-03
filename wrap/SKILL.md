@@ -42,16 +42,20 @@ Routing rules (from CORE.md, applied here): transient states → sprint TO-DOs o
 
 **Preferences:** if the user corrected *how* you worked this session (verbosity, check-ins, framing, scope appetite), update the Working preferences block in the global profile — edit in place, max ~10 bullets.
 
+**Then ask the session one question: what did it teach — learnings, lessons, preferences, frictions?** (Surprises, corrections, contradictions with docs, deployed-but-unverified risks all count.) Route what passes the would-a-future-session-act-differently test to its home — gotcha, DECISIONS, sprint TO-DO, global profile. Let one-off friction go unrecorded: this is a harvest, not an incident log.
+
 ## 4 — Propose once, apply once
 
 Present a **compact proposal** in one message: any genuinely open "needs your call" forks (AskUserQuestion, with recommendations — say "none" if none) together with one line per file describing what you'll write. Not full drafts — one scannable list the user can veto items from ("skip design tho"). Flag in the line when a change rewrites a pre-existing claim rather than adding ("ARCHITECTURE: +1 gotcha, rewrites stale model-ID line"). Answering the forks — or a bare go-ahead — is the single confirmation; apply immediately, honoring any vetoes. A session with nothing worth saving: say so in one line and stop — no proposal, no commit.
 
-On that confirmation: apply all writes in parallel, including `.claude/.last-session.md` — a 2–3 line carry-forward (what shipped, what's unverified/undeployed, where iteration stalled), overwritten each wrap; it's what a future session or parallel chat reads first, and the only trace a no-sprint Freebuild session leaves. Archive any fully-checked sprint (`sprints/archive/<sprint-NNN>-<slug>.md`, next sequential NNN), then make the checkpoint commit (`docs(wrap): <summary>` plus any uncommitted session work the user wants included). Never push.
+On that confirmation: apply all writes in parallel, including `.claude/.last-session.md` — a 2–3 line carry-forward (what shipped, what's unverified/undeployed, where iteration stalled), overwritten each wrap; it's what a future session or parallel chat reads first, and the only trace a no-sprint Freebuild session leaves. Archive any fully-checked sprint (`sprints/archive/<sprint-NNN>-<slug>.md`, next sequential NNN), then make the checkpoint commit (`docs(wrap): <summary>` plus any uncommitted session work the user wants included). Offer a push with it — a checkpoint that only lives on this laptop isn't a backup — but push only on their yes.
 
 Then **one** final summary: the commit hash, one line per file changed, and the carry-forward for next session. No second recap.
 
 On a project's **first** wrap (no prior `docs(wrap):` commit): offer the background routine once — Ship Captain + Ship Spotter, [../roadmap/references/background-routine.md](../roadmap/references/background-routine.md), set up via `/schedule`.
 
 ## 5 — If a sprint was archived
+
+If the sprint ran on its own branch and its verification is done, offer the merge back to main first (squash is a fine default) — an archived sprint shouldn't leave a stranded branch.
 
 Offer once: plan the next sprint now (read `../start/SKILL.md`, run its planning), or defer — "next session, `/start` picks up from here."
