@@ -36,13 +36,20 @@ Don't end the turn telling the user to type `/build`. On **Resume**, or **Freebu
 
 The job: from vague intent to an approach a fresh `/build` could run cold. In this mode your outputs are questions, research findings, and approach options — code starts after the approach is confirmed and plan mode approves the plan.
 
-### 1 — Sharpen the target
+### 1 — Gather (the user's context is the sprint's raw material)
 
 Open with `## Sprint planning: <topic>` (≤6 words).
 
+The best research can't recover what only the user knows — what they're imagining, what they've seen work elsewhere, what they dread, what done looks like. Sprint quality is capped by how much of that you draw out before planning, so drawing it out IS this stage's work, not a delay before it. **If the user has barely spoken and you're filling the silence with your own choices, you're deciding their sprint for them — stop and ask.**
+
 If the target is a roadmap item, pull its top line + its Details block + its research brief (`research/<slug>.md`) if one exists, and read the goal and what's queued after it — you're planning to fit the trajectory. Play the item back and ask what's changed.
 
-Sharpen until the target is defined well enough to research: the user experience step-by-step, the why, what success looks like, the edges that matter. These are goals, not a script — a small sprint may need one question, a fuzzy one several rounds. Group related questions and attach a lean ("I'd go (a) because…") so the user reacts instead of answering cold. Then synthesize back in a few lines and confirm before researching.
+The rhythm (goals to hit in whatever order fits — a small sprint may need one question, a fuzzy one several rounds):
+
+- **Invite the dump first:** "tell me everything in your head about this — rough and unordered is fine." Then play it back in a short paragraph and let them correct you.
+- **For user-facing work, walk the experience before any tech:** first contact, the happy path, the moment something goes wrong, what it says and in whose voice. Experience forks usually decide the technical forks — surface them first.
+- **Alternate, don't interview:** themed rounds of 2–3 questions with your lean attached ("I'd go (a) because…"), interleaved with what you're learning from the roadmap and a quick look at the code — back-and-forth, not a form and not a monologue.
+- Then synthesize what you heard in a few lines and confirm before researching.
 
 If the intent bundles multiple independent goals, read [references/sequencing.md](references/sequencing.md) and propose a lineup — plan only Sprint 1 today.
 
@@ -51,7 +58,7 @@ If the intent bundles multiple independent goals, read [references/sequencing.md
 This stage prevents "we shipped a worse approach because we never looked at how it's done." Don't plan a meaningful feature from priors alone; skip research only when the approach is genuinely routine for this codebase.
 
 - A brief at `research/<slug>.md` is the fast path — use it, refresh only what's stale.
-- Otherwise: read the relevant project code + ARCHITECTURE + the area's DECISIONS entries, and search the web for how this is done well and the known pitfalls. Decide yourself whether to work inline or spawn a research subagent (Explore for codebase fan-out, general-purpose for web, the deep-research skill for a genuinely large unknown) — no permission needed for internal work.
+- Otherwise: read the relevant project code + ARCHITECTURE + the area's DECISIONS entries, and search the web for how this is done well and the known pitfalls. Decide yourself whether to work inline or spawn a research subagent (Explore for codebase fan-out, general-purpose for web, the deep-research skill for a genuinely large unknown) — no permission needed for internal work. **Keep delegation one level deep:** prefer Explore agents for fan-out (they can't spawn sub-agents); when a general-purpose researcher is genuinely needed, instruct it not to spawn its own — you own the fan-out and the synthesis.
 - Never describe our existing code from memory — open the file. Options must rest on what the code actually does.
 
 ### 3 — Decide the approach

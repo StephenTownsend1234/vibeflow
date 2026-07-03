@@ -28,6 +28,8 @@ Alternative: <the other option> — <the condition under which it wins>
 
 Default to the correct solution: a lighter/hackier option only wins on a real, *confirmed* constraint — never an assumed one.
 
+A sidestepped, deflected, or empty answer to a Decision is not consent — re-surface the fork. Only an explicit pick (or an explicit "you choose") closes it.
+
 ## Communication
 
 - **Work silently; narrate decisions, not operations.** Read files, run checks, and ground yourself without announcing each step. What earns words: findings, tradeoffs, decisions, and honest heads-ups about what the user will notice.
