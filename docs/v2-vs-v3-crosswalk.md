@@ -1,0 +1,192 @@
+# vibeflow v2 → v3 crosswalk
+
+A mechanism-by-mechanism accounting of the redesign. **How to read it:** each row is one v2 mechanism — what it was, how it worked, and what happened to it. Review by asking one question per row: *do I agree with this disposition?* Line-by-line file comparison is the wrong unit (the mapping isn't positional); this is the right one.
+
+**Dispositions:**
+- **KEPT** — survives essentially intact (possibly shorter)
+- **MOVED** — same mechanism, new home
+- **REPLACED** — same *job*, different mechanism doing it
+- **CUT** — gone, with the reason (native model behavior / failed its field test / harness does it)
+- **INVERTED** — v3 deliberately does the opposite
+
+Sizes: v2 = 1,068 lines of SKILL.md + 76-line registered overview. v3 = 383 lines of SKILL.md + 68-line CORE (unregistered) + 76-line hook script.
+
+---
+
+## The shared layer (v2 overview skill + role blocks → v3 CORE.md)
+
+| v2 mechanism | How it worked | Disposition | v3 home | Why |
+|---|---|---|---|---|
+| Registered `vibeflow` overview skill | 76 lines whose own instruction was "don't trigger on a slash command" — a skill that existed to never fire; its description loaded into every session | REPLACED | `CORE.md`, unregistered, read by path from each skill | The job (shared reference) was real; registering it wasn't. CORE is the *only* home for shared pieces, so nothing is stated five times |
+| The "Batman & Robin" `<role>` block ×5 | ~160 words of identity/aspiration prose duplicated verbatim in every skill (~1,000 tokens re-injected per chained command) | REPLACED | CORE `## Role` (3 lines) + one mode-stance line per skill | Fable 5 guidance: anti-laziness/aspiration prompting now causes over-triggering. **But the ambition was deliberately kept** — "No idea is too big — never discourage on difficulty grounds; make building feel fun" — after the v2-defender showed the theatrics deserved to die but the ambition didn't (it counteracts hedging on big asks) |
+| "Slash commands only" global principle | Every skill's description said "Triggered only by the command, not natural-language phrasing" | INVERTED | Descriptions now carry plain-English triggers ("help me finish my app", "let's keep going", "wrap it up") | Your call: the pack is proven enough to trigger naturally. This is also what makes it work for a new user who knows zero commands |
+| "Draft before writing — propose inline, write only after confirm" | Applied to *every* `.claude/` write in every mode | REPLACED | Wrap: compact proposal → ONE confirm → apply. Bootstrap: write-directly-then-invite-edits for brand-new files | Writes are git-checkpointed, so the risk shrank from "silent wrong write" to "one `git diff` away." The proposal step survives (your "skip design tho" veto proved its value) but as one scannable list, not full drafts |
+| "Synthesize, don't dump" / "Protect the user's flow" | Global principles in the overview | REPLACED | CORE `## Communication`: "work silently; narrate decisions, not operations" + "lead with the outcome" + **"Silent ≠ invisible"** (one line before any long autonomous stretch) | Same intent, sharpened by field evidence — the 6-minute silent re-grounding wall showed pure silence is a failure mode too |
+| Decision format card (duplicated in start + build) | The Recommend / Rests-on / Alternative / Constraint-check template | KEPT (deduped) | CORE `## Decision card`, referenced everywhere | Jumbo-proven (the Apple Sign-In brief → decision → shipped chain). Now stated once. **New tail:** "a sidestepped, deflected, or empty answer is not consent" — from the notification-planning session where "[No preference]" + an off-topic reply got both forks locked |
+| "Capture good examples" praise-capture block ×3 | When the user praised something, offer to save it to PLAYBOOK — duplicated in start, build, wrap | REPLACED | Wrap's harvest question + the global profile | **Failed its field test:** 2 entries in ~16 sprints despite three copies. The praise gate was the wrong trigger; see the wrap section |
+
+**Mechanism explainer — why CORE exists at all:** every skill opens with "read CORE.md first (skip if already in context)." In a chained session (start→build→wrap) it loads once. The cost of the old design wasn't just tokens — five diverging copies meant every principle edit had five chances to drift.
+
+---
+
+## /start (334 → 89 lines)
+
+| v2 mechanism | How it worked | Disposition | v3 home | Why |
+|---|---|---|---|---|
+| Orient: parallel-read PROJECT + ROADMAP + all sprint files + global playbook, every session | 4+ file reads and synthesis before the user saw anything | REPLACED | SessionStart hook injects orientation deterministically (identity, Map, roadmap top, sprint status lines, last-session, since-last-wrap delta); start reads only the global profile | The hook is free, instant, and fires even in sessions where you'd never type /start. **Field fix (your flag):** full sprint files are read *lazily* — only after you pick one — because the hook's title + N/M + next-step line is the right altitude for routing |
+| Daily update-check bash block | 17 lines of shell run inside the planning prompt every /start | MOVED | `hooks/session-start.sh` (throttled once daily, branch-aware) | Infrastructure in prompt space was the worst-value tokens in the pack. Same script, deterministic home |
+| 5-case sprint-state table (A–E) + 4-option-cap AskUserQuestion choreography | Enumerated one active / one ready / one complete / multiple / none, with per-case option shaping and a nested second question | REPLACED | One routing sentence + the cap note + plain-language labels ("Just build, no plan needed") | Fable derives the cases; the enumeration was scaffolding for a weaker model. The 4-option-cap rule was re-added after a critic showed it's a real AskUserQuestion constraint, not scaffolding |
+| Brief template | The ~10-second project/goal/sprints/last-session block | KEPT (tightened) | `## Orient`, plus **"verify before briefing — proportional to the gap"** | New spine: *sprint files are claims; the repo is truth.* Born from the stale-brief cascade (v2 briefed confidently from a file the diff contradicted, costing you two long correction messages). Proportional = clean tree + nothing since wrap → skip reconciliation entirely (your "overkill" flag) |
+| Resume path: "Run /build to start" | Ended the turn telling you to type another command | INVERTED | `## Resume and Freebuild → build, now` — reads the chosen sprint + build's rules and keeps working in-session | The dead-end handoff was the institutionalized version of Fable's early-stopping failure mode. **Field fix:** on stale/multi-threaded sprints the one-line confirm is a *real question that waits* ("Next per the file is B; C/F also open — that one, or something else?") — from the 6-minute silent re-grounding incident |
+| Stage 2.1 "Surface the target" + 5-step example script | Sharpening objectives with a worked example session | REPLACED | `### 1 — Gather` | The biggest v3 redesign inside start. v2's ceremony was accidentally load-bearing — it forced turns where only you could talk. v3 makes the *purpose* explicit ("the best research can't recover what only the user knows… drawing it out IS this stage's work") with a rhythm: invite the dump → play it back → **experience walk before any tech for user-facing work** → alternating themed rounds with a lean attached. Plus the tripwire: "if the user has barely spoken and you're filling the silence with your own choices, you're deciding their sprint for them — stop and ask." Born directly from the notification-planning session where you barely gave input |
+| Research gate + Tier 1/Tier 2 taxonomy + "confirm which tier to spawn" | Generous gate, two named tiers, permission question before spawning a researcher | REPLACED | `### 2` — gate sentence kept, tiers collapsed to judgment, permission question cut, **one-level delegation rule added** | Fable dispatches subagents natively; asking permission for internal read-only work is friction. The delegation rule (prefer Explore; forbid general-purpose researchers from spawning their own) is from the runaway 5-sub-agent mess |
+| "Investigate, don't speculate" / brief-first fast path | Never describe code from memory; use a Ship Spotter brief if present | KEPT | `### 2` bullets | Proven value, unchanged |
+| "Research structured — competing hypotheses, self-critique" | Told the model how to think during research | CUT | — | "Claude's reasoning frequently exceeds what a human would prescribe" — this is native at current model strength |
+| Stage 2.3 approach options + inferred-infrastructure check + fits-the-path | 2–3 grounded Decision cards; challenge unstated routes/tables; minimal-but-roadmap-aware | KEPT | `### 3 — Decide the approach` | The heart of planning, essentially verbatim (compressed). "Decisions so far" list restored after the v2-defender flagged its loss |
+| Stage 2.5 Pre-Plan Handshake | A second approval gate between the approach decision and ExitPlanMode, with three paragraphs justifying why two gates exist | REPLACED | Folded into the ExitPlanMode plan (goal/approach/scope in-out travel inside the plan itself) | Stage 2.3 already confirms the approach; ExitPlanMode already approves the plan. The handshake was a third confirmation of agreed content. The *useful* content (scope check: trim/accept/split) survives in stage 3 |
+| Stage 2.6 plan mode: ground truth + coarse steps + checkpoints | Grep/read the load-bearing files, cite path:line, produce outcome-steps | KEPT | `### 4 — Plan mode (the single gate)` | The pack's proven core — active-sprint citations verified against HEAD in the audit. Untouched in substance |
+| Stage 2.7 `cp` from `.claude/plans/` | Copy the harness-saved plan verbatim, then trim | CUT → **RESTORED** (field fix) | `### 5` — cp-first, one Edit pass for the status header + checkboxes, Write only as fallback | I cut it for coupling to a harness path; the first real v3 sprint re-synthesized 101 lines from memory and you caught it. v2 was right: exact fidelity to the approved plan beats re-synthesis |
+| Sprint-file naming / never-overwrite-in-flight | Kebab slug, collision → discriminator | KEPT | `### 5` | |
+| Greenfield: seed ARCHITECTURE from the first stack decision | | KEPT | `### 5` | |
+| — | | **NEW** | Branch suggestion: migration / native module / live-prompt change → `sprint/<slug>` branch | From your git-workflow question; risk-scoped, not ritual |
+
+---
+
+## /build (184 → 58 lines)
+
+| v2 mechanism | How it worked | Disposition | v3 home | Why |
+|---|---|---|---|---|
+| "The three things /build supplies" framing | Context + calibration + guardrails; frame not procedure | KEPT (compressed) | Intro | The correct self-description |
+| Entry matrix (warm/cold × sprint/freebuild), ~20 lines | 2×2 enumeration with sub-bullets per cell | REPLACED | Three `## Entry` bullets | One principle covers it: don't re-read what's warm; ask when nothing's loaded. Multi-sprint cold entry (pick via one question) re-added after a critic caught the gap; Freebuild's formalize-offer kept with a pointer to the sprint template so captured sprints parse correctly |
+| Mandatory checkpoint-preference AskUserQuestion | Every planned sprint opened with "verify-each or one-shot?" | REPLACED | `## Run mode` — **derived from the plan, announced in one line** with an override phrase | Your field experience decided this: "after a thorough plan mode, one-shot always works great; checkpoints make Claude overbuild between steps." One-shot is the default; verify-each only for `[unknowns]` or genuinely risky surfaces. `/goal` offered for long mechanical runs (with a fallback if unavailable) |
+| Working philosophy (6 bullets) | Simple-over-clever, revert-before-stacking, transparency, feedback-loop cost, research-first, manual help | SPLIT | Feedback-loop cost + manual-help + research-before-inventing kept in `## While building`; simple-over-clever and revert-before-stacking cut as native (revert-first lives in `## When things break`) | The kept three are genuinely non-native for a solo-founder loop; the cut ones restate harness defaults |
+| Guardrails: don't over-engineer / don't game / don't speculate / don't expand scope | The four failure-mode holds | KEPT | `## While building` guardrails — **deliberately, against the leanness guidance** | Your call, and the right one: "I find claude still likes to overbuild." Sharpened with the transcript-4 lesson: "unrequested additions are where sessions break — polish beyond the stated goal is a Decision card, not a silent inclusion." Don't-game was cut then restored by a critic |
+| Per-step pre-flight (5 numbered items) | Announce, tag handling, inferred-infra challenge, research unknowns, offer parallel work | REPLACED | Tag semantics = one line in `## While building`; the rest cut or already covered | Items 1 and 5 prescribed native behavior; research-unknowns duplicated the philosophy section; inferred-infra consolidated into /start (where the plan is shaped) |
+| Stage 5 verify + integration sweep | User-facing = real check; sweep callers/consumers/migrations before check-off | KEPT | Sweep = one line; verification = `## Checkpoints` | Sweep restored by a critic after I over-cut it |
+| Checkpoint semantics: pause and ask the user at each `→ CHECKPOINT` | Every checkpoint was a human interrupt (under verify-each) | REPLACED | **Machine-verifiable → fresh-context verifier** (the `/verify` skill, which follows the project's recorded run recipe); **human-only → concrete action list**; in one-shot, human checks defer to the end unless a later step depends on them | The autonomy upgrade with the best evidence: Fable guidance says fresh-context verifiers outperform self-review, and v2's one-shot mode verified *nothing* until the end — v3's one-shot still machine-verifies mid-sprint. Sprint files now mark `(machine)` / `(human)` at plan time |
+| Debugging ladder (7 steps) | What-changed → revert → first-principles → diagnose-before-reattempt → ask for logs → simple-first → 2-strikes-stop | REPLACED | Two rules + the 2-strikes stop in `## When things break` | Steps 1–3 and 6 are native competent debugging; the two *non-native* disciplines survive: "state with evidence why fix N failed before fix N+1" and "two failed fixes without a confirmed cause → stop, summarize, ask for the data the user can get faster" |
+| — | | **NEW** | "Before reporting progress, audit each claim against a tool result from this session" | Straight from the Fable docs — nearly eliminated fabricated status reports in Anthropic's testing. Field-validated by the notification build (the dirty-typecheck-baseline forensics) |
+| Completion: verify pass → suggest /wrap, never auto-run | | KEPT | `## Completion` | Observed working ("Want me to run it? I won't auto-run") |
+
+---
+
+## /wrap (145 → 61 lines)
+
+| v2 mechanism | How it worked | Disposition | v3 home | Why |
+|---|---|---|---|---|
+| Core job + the fresh-session test | "Would a cold session need this to proceed well?" | KEPT | Intro | The load-bearing sentence of the whole skill |
+| Ground in the diff, not memory | git status/diff/log before claiming what shipped | KEPT (hardened) | `## 1 — Ground` — one parallel batch including **all target docs up front**, dates stamped from the environment | Two field findings drove the hardening: both observed wraps thrashed on read-before-edit mid-apply, and the date-mis-stamping incident (a long session thought it was June 15 on July 1) explains DECISIONS' broken chronology |
+| "Attribute carefully with parallel sprints" | One warning sentence aimed at *other chats'* work | REPLACED | `## 2 — Attribute` — explicit diff-paths → sprint-scopes mapping, said aloud; every touched sprint updated; **never consolidate two sprints into one file** | v2's sentence didn't prevent the misfiling cascade (profile work filed under the hotfix sprint → next session briefed from a stale file → you hand-reconstructed state). v3 makes the mapping an explicit, visible step. Validated in the July 7 wrap under genuinely messy conditions |
+| Harvest table (what → where) | progress→sprint, fact→ARCHITECTURE, why→DECISIONS, priority→ROADMAP, phase→PROJECT | KEPT | `## 3` table | The strongest evidence-backed mechanism in v2. One row changed: PLAYBOOK → global profile |
+| "Build positives, not negatives" | Don't log what went wrong | INVERTED | "Lessons positive **or** negative" (CORE + wrap) | Your own best artifacts contradicted it — the six labeled failed AutoFitText attempts and the wipe gotcha are the strongest compounding wins in Jumbo. The guard against a grievance graveyard is the future-session test, not a valence filter |
+| — | | **NEW** | **Re-verify existing claims:** for each diff-touched area, check the Map / ROADMAP top / matching gotchas still hold; fix stale sentences now | The single highest-value addition. Doc rot was v2's one systematic failure (same-day Map staleness hiding the `user_medications` bug). First real outing caught the exact "both on 4.6" line the original audit flagged — and the July 7 wrap corrected a false "bridge DONE" product claim |
+| PLAYBOOK praise-capture | Offer on genuine praise → per-project PLAYBOOK.md | REPLACED | The **harvest question**: "what did this session teach — learnings, lessons, preferences, frictions?" gated by the future-session test, routed to gotcha/DECISIONS/TO-DO/global profile; "let one-off friction go unrecorded — this is a harvest, not an incident log" | Praise was the wrong trigger (2 entries / 16 sprints). Your framing set the final shape: harvest generally, don't build a don't-list |
+| — | | **NEW** | **Working preferences** block in the global profile, updated from *observed corrections* (how you steered verbosity/check-ins/scope), edit-in-place, ≤10 bullets | The auto-memory idea in a file you own and can read — replaces both the praise gate and bootstrap's working-style interview |
+| Two-part present (needs-your-call / proposed updates) + draft-everything | Full grouped drafts, then apply, then re-summarize | REPLACED | `## 4 — Propose once, apply once`: forks + one-line-per-file proposal in ONE message; answering = the single confirmation; apply in parallel; **one** final summary with the hash | The observed v2 wrap printed the same content three times while context was dying. The proposal survives because your "skip design tho" veto proved it earns its keep — as a scannable list with rewrite-flags ("rewrites stale model-ID line"), not drafts |
+| Transient states written into docs | "Committed but not yet deployed" notes in DECISIONS entries, edited later when state changed | INVERTED | CORE routing rule: **transient states never enter DECISIONS/ARCHITECTURE** — they live in sprint TO-DOs, which get checked off and die | Observed churn: deploy-state prose had to be re-edited the moment you deployed. Docs describe what *is*; sprints track what's in flight |
+| Append-only DECISIONS entries | New dated entry per decision, forever | REPLACED | Merge-don't-append: amend the existing topic entry in place (`~~superseded~~`), ≤6 lines, area-grouped (template) | 614 lines / broken chronology / two entries contradicting each other on the wipe mechanism. The registry shape makes chronology non-load-bearing and contradictions structurally hard |
+| Archive + checkpoint commit, never push | | KEPT (extended) | Archive + **merge-back offer** for completed sprint branches + commit + **push offer** ("a checkpoint that only lives on this laptop isn't a backup") + **own-code-by-path rule** (never leave your own changes floating in a shared tree) | The extensions are all from your git-workflow question + the July 7 wrap's one real gap (its own +7 left uncommitted) |
+| — | | **NEW** | `.claude/.last-session.md` — ≤8-line carry-forward, overwritten each wrap, injected by the hook next session | Formalizes the handoff-bullets protocol you hand-invented during the stale-brief incident. The 8-line cap exists because the hook injects only the head (the first field wrap wrote 32 lines; 24 were invisible) |
+| Step 6: plan-next / defer after archive | | KEPT | `## 5` | |
+
+---
+
+## /bootstrap (200 → 62 lines)
+
+| v2 mechanism | How it worked | Disposition | v3 home | Why |
+|---|---|---|---|---|
+| Verbatim welcome script ("keep that verbatim") + command tour | ~20 scripted lines | REPLACED | "A short, warm intro… in your own words — no script" | A greeting isn't fragile; scripting it violated the freedom-matching principle |
+| Working-style interview → global profile | Ask how hands-on-technical they are, save globally | REPLACED | No interview. Bootstrap **seeds one Working-preferences bullet from what the setup conversation revealed** (it just spent a whole conversation observing them); wrap maintains it from corrections thereafter | Revealed preference beats stated preference — and the v2-defender's cold-start concern is covered by the seed + CORE's "read it from how they talk; err toward guidance" |
+| Scenario detection (existing / greenfield / existing-.claude) | | KEPT (extended) | `## 1` — plus v2-shape → migrate-v2-to-v3 routing, v3-shape → merge/refresh ask, and the don't-ingest-adjacent-context rule | The migration routing was a critic-caught blocker (the v2→v3 guide was orphaned; migrate-v1 landed files in a shape v3 immediately calls "older") |
+| Tier 1/2/3 scan enumeration | Prescribed exactly which files to read at each tier | REPLACED | One sentence: manifests, configs, schema, one exemplar per convention; skip tests/build outputs | Current models discover repo state natively; the deep-on-architecture *intent* is what earns words |
+| Share findings in Map shape → iterate | | KEPT | `## 2` | |
+| Vision Q&A (5 questions, one at a time) | The product context only the user holds | KEPT | `## 3` — Q5 reworded from "locked decisions or constraints" to "anything you've already decided you definitely want — or definitely don't?" | The new-user sim: Q5's original phrasing blanks a novice |
+| Always flow into /roadmap | | KEPT | `## 3` tail | |
+| Stage 5/6/7 draft → iterate → write (with an 8-line essay on when the confirm gate applies) | | REPLACED | `## 4` — write directly from templates ("creation isn't overwriting"), then "want a tour, or shall we keep moving?" | A novice can't evaluate an ARCHITECTURE doc; forced review is fatigue. The confirm reflex protects *existing* state only |
+| Close: "run /start to plan your first sprint" + background-routine offer | | REPLACED | Close flows into /start in-session on a yes; **background routine offer moved to the project's first /wrap** | The last dead-end handoff, killed; and the routine pitch moved off the most fatigued moment of the user's day |
+| — | | **NEW** | Hook install (exact settings.json block — a critic showed the schema would otherwise be guessed wrong and fail silently), `git init` offer for repo-less projects, `/run-skill-generator` offer for runnable apps | The infrastructure bootstrap now sets up so every later session benefits |
+| Edge cases (monorepo / thin project / bail) | | KEPT | `## Edge cases` | |
+
+---
+
+## /roadmap (129 → 45 lines)
+
+| v2 mechanism | How it worked | Disposition | v3 home | Why |
+|---|---|---|---|---|
+| Quick capture, zero ceremony | "add to roadmap X" → append as given, don't trim | KEPT (retargeted) | `## Quick capture` — one-liner to the right tier, full context to its Details block | Same behavior against the new two-tier file |
+| ROADMAP.md single-tier shape (items with inline context blurbs) | Rich items directly in Now/Next/Later | REPLACED | **Two-tier file** (your design): top = strict one-liners (~30–40 lines, all /start and the hook ever read); `## Details` below the fold keyed by slug (what Spotter researches from); briefs stay separate files with a pointer | Jumbo's ROADMAP hit 384 lines (280 = Later blurbs) and every reader paid for all of it. The split is also what makes the hook's cheap orientation possible |
+| Three altitudes (Vision / Goal / Path) as named taxonomy | | REPLACED | One judgment sentence ("a quick re-order takes a minute; a genuine 'what's next' is a real session; a pivot revisits the vision") | The labels were internal vocabulary; the judgment survives |
+| Explore-the-vision listening + goal-setting + push-if-vague | | KEPT | `## Work the roadmap` | Roadmap's real value — context that lives in the user's head |
+| Ordering sanity checks (really-three-things / what-unlocks-what / what-are-you-avoiding / the-one-thing) | | KEPT verbatim | `## Work the roadmap` | The rare enumerated list that earns its tokens — questions only a session can ask |
+| — | | **NEW** | Hygiene-while-ordering: delete shipped items (top line + Details), fix dead pointers, cap Done | The audit's rot findings (a ✅ DONE item topping "Now" for three weeks; two dead section pointers) made hygiene an explicit duty of every ordering pass |
+| Ship Captain | Daily digest: progress vs goal, highest-leverage next move, suggest-never-reorder | KEPT | `references/background-routine.md` Job 1 | Unchanged |
+| Ship Spotter: "don't research autonomously — propose, then ask; research on reply" | The double round-trip | INVERTED | **Research-by-default**: answers its own context questions from Details/PROJECT/ARCHITECTURE/archive, writes the brief immediately with a mandatory **"Assumptions I made"** block on top; digest says "brief written — correct these assumptions if wrong" | The field test was decisive: 2 briefs in 10 weeks, both consumed, both plan-changing — a proven mechanism throttled by its own permission gate. The Assumptions block replaces asking-first with auditable-after |
+| Called-from-bootstrap mode | | KEPT | `## Called from /bootstrap` | |
+| — | | **NEW** | Micro-brief offer on quick capture (background subagent for large/uncertain items, skippable) | Closes the gap the nightly Spotter can't: ideas captured mid-session that become the next sprint before the nightly run sees them |
+
+---
+
+## References, templates, infrastructure
+
+| Item | Disposition | Notes |
+|---|---|---|
+| `sprint-md-shape.md` | KEPT (light trim) | The pack's proven core artifact. Banned-sections list → one line; checkpoints now typed `(machine)` / `(human)` so the sprint file itself says who verifies |
+| `sequencing.md` | KEPT | Stage references updated to v3 names |
+| `migrate-v1.md` | KEPT (retargeted) | Now explicitly step 1 of 2 → finish with `migrate-v2-to-v3.md` |
+| `migrate-v2-to-v3.md` | NEW | The DECISIONS→registry, ROADMAP→two-tier, PLAYBOOK-retirement, hook-install path — written for Jumbo's own migration |
+| `templates/PROJECT.md` | KEPT | Unchanged |
+| `templates/ARCHITECTURE.md` | KEPT (+1 line) | "Run & verify" pointer line (dev command + recorded run skill) |
+| `templates/ROADMAP.md` | REPLACED | Two-tier shape, slug rule, delete-when-shipped, no-cross-pointers |
+| `templates/DECISIONS.md` | REPLACED | Area registry, merge-don't-append, ≤6 lines, no transient states |
+| `templates/PLAYBOOK.md` | CUT | Failed field test; replaced by `templates/global-profile.md` (Working preferences + Lessons) |
+| `hooks/session-start.sh` | NEW | The deterministic orientation layer: date, PROJECT head, Map section, roadmap top, sprint checkbox counts, last-session head, briefs list, since-last-wrap delta, daily update check. Fail-silent, 120-line + 16KB caps. Shell-reviewed and live-tested against Jumbo |
+| `setup` / `update` scripts | KEPT (+3 lines) | Setup now prints the next step ("say 'set up vibeflow here'") and the two-command rhythm |
+
+---
+
+## In v2, not in v3 — the pure cuts (nothing replaced them)
+
+Each of these is *gone on purpose*. If any feels wrong, it's a one-line restore:
+
+1. **The aspiration theatrics** ("Ask and you shall receive is your mantra… Batman and Robin") — the ambition survived in CORE; the persona prose didn't. *Reason: over-triggering risk on current models; zero behavioral content beyond the kept lines.*
+2. **"Guide, don't lecture" / "plain, concise vocabulary"** style rules — *native communication behavior now.*
+3. **"Research structured: competing hypotheses, note confidence, self-critique"** — *prescribing reasoning steps degrades current-model output per the docs.*
+4. **Tier 1/2/3 scan enumerations** (bootstrap) and **Tier 1/2 research taxonomy** (start) as named systems — the judgment survives as sentences; the taxonomies don't.
+5. **All permission-asks for internal work** — confirm-the-research-tier, confirm-before-subagents. *Directly anti-autonomy; Fable delegates well natively.*
+6. **The Pre-Plan Handshake as a gate** — its fields live on inside the plan; the extra approval doesn't.
+7. **"Move your existing ARCHITECTURE doc into .claude/, or keep a pointer?" ask** (bootstrap) — subsumed by the use-as-base + migration flows. *Flagged below — arguably a small loss.*
+8. **Per-project PLAYBOOK.md** — the praise-gated capture and the file itself. *2 entries in 16 sprints; contents route to DECISIONS/gotchas/global profile.*
+9. **v2's "Freebuild" as a separately documented path in wrap's step 6** — wrap now just offers plan-next or defer; freebuilding after an archive needs no instruction.
+10. **Calendar-day estimate bans stated per-file** — now once, in CORE.
+
+## In v3, no v2 ancestor — reviewed only by field use
+
+These never had a "was this a good trade?" review against a predecessor, so give them extra scrutiny on your read:
+
+1. **The guiding principle** (CORE): ask when the answer changes *what*, build when it only changes *how*; assumptions surfaced, never silently built on; sidestep ≠ consent. — *distilled from your transcript 4 + the notification-planning failure.*
+2. **The SessionStart hook** — deterministic orientation; the single biggest UX change in the pack.
+3. **Repo-outranks-files + proportional verification** (CORE + start) — *from the stale-brief cascade.*
+4. **The Gather stage's tripwire** ("you're deciding their sprint for them — stop and ask").
+5. **Experience-walk-before-tech** for user-facing work — *from the notification UX gap you called out.*
+6. **Fresh-context checkpoint verifiers** + `(machine)`/`(human)` checkpoint typing.
+7. **Evidence-grounded progress claims** (build + implicit in wrap's diff-grounding).
+8. **The re-verify-existing-claims step** (wrap) — the anti-rot mechanism.
+9. **Transient-state routing rule** (CORE).
+10. **`.last-session.md`** + hook injection — the cross-session/parallel-chat handoff.
+11. **One-level delegation rule** (start research).
+12. **Git-workflow judgment**: branch-when-risky, push offer, merge-back offer, own-code-by-path.
+13. **`/run-skill-generator` + `/verify` wiring** (bootstrap offer + build checkpoints).
+14. **Autonomous Ship Spotter with the Assumptions block.**
+15. **The harvest question** (wrap) — your "learnings, lessons, preferences, frictions — generally" framing.
+
+---
+
+## Flags — things I noticed while writing this (for discussion, nothing applied)
+
+1. **start's frontmatter contradicts its body.** The description still ends "Requires vibeflow state in `.claude/` (else point to `/bootstrap`)" but the body now *offers to run* bootstrap inline. Cosmetic, but descriptions are the trigger surface — "point to" could make a session point instead of offer. One-word fix.
+2. **The hook's wrap-commit grep only matches `docs(wrap):`.** Jumbo history also contains bare `wrap:` commits (e.g. `5bd8062`). Until the first v3-format wrap lands in a repo, "since last wrap" measures from further back than reality. Self-healing after one wrap; worth knowing, probably not worth code.
+3. **`sequencing.md` still says "sharpen"** where start's stage 1 is now "Gather." Purely cosmetic drift from the field fixes; one word.
+4. **The bootstrap "existing architecture doc" flow lost its move-or-pointer question** (cut #7 above). If your brother has a `docs/ARCHITECTURE.md`, v3 uses it as the scan base but never resolves where the living copy should end up — two architecture docs could drift. Worth one line if you care about that case.
+5. **Nothing tells a *cold Freebuild* session about CORE.** The skills each load CORE, and the hook injects project state — but a session where you never invoke any command (just start typing about code) gets the orientation *without* the working rules (Decision cards, silent-work, transient-state routing). That's mostly fine — the harness has its own defaults — but it means the "vibeflow experience" only fully exists inside command-initiated flows. If you wanted more, the hook could inject a 3-line digest of the guiding principle. Genuinely unsure it's worth the per-session tokens — flagging, not recommending.
+6. **`wrap` and `build` don't read the global profile explicitly.** start reads it in Orient; build's cold entry mentions "orientation gaps" loosely; wrap never mentions it — yet wrap *writes* Working preferences to it, and build is supposed to calibrate to it. In a chained session it's in context via start; in a *cold* `/build` or `/wrap` it may never load. One clause in each entry/ground step would close it.
+7. **Checkpoint semantics drifted across eras of sprint files.** Old sprints have untyped `→ CHECKPOINT:` markers; new ones are `(machine)`/`(human)`. build handles both (untyped falls to judgment), but during the transition the guarantee "human checks always reach you" is softer on old files. The Jumbo migration is the natural moment to re-type any live sprint's checkpoints.
