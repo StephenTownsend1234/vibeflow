@@ -30,7 +30,7 @@ Route with one AskUserQuestion: resume (an option per in-flight sprint), pull fr
 
 ## Resume and Freebuild → build, now
 
-Don't end the turn telling the user to type `/build`. On **Resume**: NOW read the chosen sprint file (just that one) + `~/.claude/skills/vibeflow/build/SKILL.md`, confirm the next step in one line, and continue working in this session under its rules. **Freebuild** with a stated target: same, minus the sprint file. Only pause if the route genuinely needs input (Freebuild with no target yet: ask what they want to work on).
+Don't end the turn telling the user to type `/build`. On **Resume**: NOW read the chosen sprint file (just that one) + `~/.claude/skills/vibeflow/build/SKILL.md`. If the sprint has one clear next step and its ground truth is current, confirm in one line and keep going. But if it has **several open tasks, stale checkboxes, or grounding that predates real commits** — common on long-running sprints — that confirm is a real question, and you wait: "Next per the file is <task>; the sprint also has <B/C/F> open. That one, or something else? Anything changed since this was planned?" The user often resumes a sprint *with a specific task and fresh context in mind* — draw that out before spending minutes re-grounding a task they didn't pick. **Freebuild** with a stated target: read build's rules and go. Only pause if the route genuinely needs input (Freebuild with no target yet: ask what they want to work on).
 
 ## Plan a sprint (pull-from-roadmap or something new)
 
