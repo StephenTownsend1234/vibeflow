@@ -37,6 +37,12 @@ OUT=$(
     fi
   done
 
+  # Last-session carry-forward (written by /wrap; absent until the first v3 wrap)
+  if [ -f .claude/.last-session.md ]; then
+    echo "--- Last session ---"
+    head -8 .claude/.last-session.md
+  fi
+
   # Research briefs available
   ls .claude/research/*.md 2>/dev/null | while read -r b; do echo "Brief: $b"; done
 

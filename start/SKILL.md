@@ -11,7 +11,7 @@ Second principle: **stay forward-oriented.** Aim for the minimum version of the 
 
 ## Orient (silent)
 
-The SessionStart hook usually injects orientation (project identity, Map, roadmap top, sprint status, work-since-last-wrap). Don't re-read what's already injected. Fill gaps silently, in one parallel batch: sprint files for detail, `~/.claude/vibeflow/playbook.md` (global profile), `.claude/.last-session.md` if present. If no `<vibeflow-orientation>` block was injected (hook not installed), read the orientation yourself in the same batch: PROJECT.md, ARCHITECTURE's Map section, ROADMAP top, sprint status.
+The SessionStart hook usually injects orientation (project identity, Map, roadmap top, sprint status lines, last-session carry-forward, work-since-last-wrap). That's enough to brief and route — **don't read full sprint files before the user has picked one**; the hook's title + count + next-step line is the right altitude until a route is chosen. The only silent read now is `~/.claude/vibeflow/playbook.md` (global profile). If no `<vibeflow-orientation>` block was injected (hook not installed), read the orientation yourself in one batch: PROJECT.md, ARCHITECTURE's Map section, ROADMAP top, sprint status.
 
 If `.claude/` has no vibeflow state, offer in one line: "This project isn't set up for vibeflow yet — want me to set it up now?" On yes, run `/bootstrap` directly.
 
@@ -30,7 +30,7 @@ Route with one AskUserQuestion: resume (an option per in-flight sprint), pull fr
 
 ## Resume and Freebuild → build, now
 
-Don't end the turn telling the user to type `/build`. On **Resume**, or **Freebuild** with a stated target: confirm the next step in one line, read `~/.claude/skills/vibeflow/build/SKILL.md`, and continue working in this session under its rules. Only pause if the route genuinely needs input (Freebuild with no target yet: ask what they want to work on).
+Don't end the turn telling the user to type `/build`. On **Resume**: NOW read the chosen sprint file (just that one) + `~/.claude/skills/vibeflow/build/SKILL.md`, confirm the next step in one line, and continue working in this session under its rules. **Freebuild** with a stated target: same, minus the sprint file. Only pause if the route genuinely needs input (Freebuild with no target yet: ask what they want to work on).
 
 ## Plan a sprint (pull-from-roadmap or something new)
 
