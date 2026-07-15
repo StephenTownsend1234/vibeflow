@@ -1,8 +1,7 @@
 ---
-
-## name: bootstrap
-
+name: bootstrap
 description: Sets up project scaffolding and context state files once per project. Scans existing repos or starts conversation-first for fresh projects. Captures project vision, maps product build plan via /roadmap, scaffolds the `.claude/` state files, and installs the SessionStart orientation hook. Use when a project has no vibeflow state yet and the user asks to set it up — or asks in plain terms for help building, finishing, or continuing a project. Offer setup in one line before diving into code. Also handles migrating older vibeflow file shapes.
+---
 
 # /bootstrap
 
