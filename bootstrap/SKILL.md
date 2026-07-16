@@ -46,11 +46,15 @@ Write directly from the templates in `../templates/` — creation isn't overwrit
 
 - No git repo (`git rev-parse --is-inside-work-tree` fails)? Offer plainly — "I'll turn on change-tracking so progress gets saved between sessions; one command, all local" — and run `git init` + an initial commit on yes.
 - `PROJECT.md`, `ARCHITECTURE.md` (Map on top; greenfield gets a stub — the first `/start` seeds it), `ROADMAP.md` (two-tier), `DECISIONS.md` (area registry, from Q5), `sprints/archive/`.
-- **Install the SessionStart hook**: copy `~/.claude/skills/vibeflow/hooks/session-start.sh` to `.claude/hooks/session-start.sh` (executable) and merge this exact block into `.claude/settings.json` (merge keys — don't replace an existing `hooks` object):
+- **Install the hooks**: copy `~/.claude/skills/vibeflow/hooks/session-start.sh` and `session-snapshot.sh` to `.claude/hooks/` (executable) and merge this exact block into `.claude/settings.json` (merge keys — don't replace an existing `hooks` object):
   ```json
-  {"hooks": {"SessionStart": [{"hooks": [{"type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/session-start.sh"}]}]}}
+  {"hooks": {
+    "SessionStart": [{"hooks": [{"type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/session-start.sh"}]}],
+    "SessionEnd":   [{"hooks": [{"type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/session-snapshot.sh"}]}],
+    "PreCompact":   [{"hooks": [{"type": "command", "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/session-snapshot.sh"}]}]
+  }}
   ```
-  This is what makes every future session start oriented without ceremony.
+  Orientation on every start; a deterministic breadcrumb whenever a session ends or compacts without wrapping.
 - **Runnable app?** Offer to run the harness's `/run-skill-generator` once — it records the launch recipe as a per-project skill that `/run` and `/verify` follow, which is what makes /build's machine checkpoints able to verify against the real app. Note the one-liner in the Map's Run & verify line.
 
 Then offer lightly: "I've written the project files — want a tour, or shall we keep moving?" Walk through and revise on a tour; don't force a doc review on a beginner.

@@ -37,6 +37,22 @@ OUT=$(
     fi
   done
 
+  # Hot areas: where the project's energy went recently (one line, no diffs)
+  hot_since() {
+    git log --since="$1" --name-only --pretty=format: 2>/dev/null | \
+      grep -v '^$' | grep -v '^\.claude/' | cut -d/ -f1-2 | sort | uniq -c | \
+      sort -rn | head -3 | awk '{printf "%s(%s) ", $2, $1}'
+  }
+  hot=$(hot_since 7.days); label="Active this week"
+  if [ -z "$hot" ]; then hot=$(hot_since 14.days); label="Active in the last 2 weeks"; fi
+  [ -n "$hot" ] && echo "$label: $hot"
+
+  # Unwrapped-session snapshot (written at SessionEnd/PreCompact; wrap deletes it)
+  if [ -f .claude/.session-snapshot.md ]; then
+    echo "--- Unwrapped session snapshot ---"
+    head -6 .claude/.session-snapshot.md
+  fi
+
   # Last-session carry-forward (written by /wrap; absent until the first v3 wrap)
   if [ -f .claude/.last-session.md ]; then
     echo "--- Last session ---"

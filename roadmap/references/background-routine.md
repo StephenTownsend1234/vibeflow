@@ -29,6 +29,10 @@ Pick the **one** Now/Next item most worth researching before the user starts it 
 
 The Assumptions block is the safety mechanism: the user can audit your framing in ten seconds and correct it in one reply. Append a `[brief: research/<slug>.md]` pointer to the item's top line in ROADMAP (append-only — never restructure). Fall back to asking in the digest only when an item is too vague to research at all — and say what would unblock it.
 
+## Job 3 — Doc-truth spot-check (optional, report-only)
+
+Grep-verify the mechanically checkable claims: model IDs in the Map vs the strings in code, tables described live vs retired, ROADMAP pointer targets. Report drift as a short list in the digest; never edit the docs — /wrap fixes them with the user.
+
 ## The digest
 
 One short message: Captain's read (tracking + highest-leverage next move) and, if Spotter ran, "brief written for <item> — check the assumptions block, correct anything wrong." Short enough to always be worth reading.
