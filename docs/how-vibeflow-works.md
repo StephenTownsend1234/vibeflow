@@ -38,6 +38,12 @@ Two design choices make the tiers work:
 
 **The on-demand tier is lazily loaded.** Sprint files are 10–30KB each; a session reads only the one it's actually resuming, *after* you've picked it. The always-on tier carries just titles and progress counts — the right altitude for choosing. (Memory-systems people call this progressive disclosure; the practical version is "don't read files about work I haven't chosen yet.")
 
+### The three layers — memory, skills, mods
+
+The agent-systems world describes three adaptive layers: **memory** (what the agent knows), **skills** (procedures it can run), and **mods** (changes to the harness itself — the tools, the commands, and how context is assembled before the model ever sees it). vibeflow spans all three, each deliberately small: five markdown files are the memory; five plain-language commands are the skills; and one 76-line shell script — the orientation hook — is the mod, assembling context deterministically at the start of every session.
+
+Notice how the trust requirement tightens as you descend. A bad memory entry gives you one wrong fact. A bad skill gives you one bad procedure. But a bad *mod* silently reshapes what every future session perceives — it's the highest-privilege write in the system. That's why vibeflow's single mod was proposed, explained, reviewed, and tested before it was installed, and why the agent never modifies its own harness unprompted. Systems that let agents generate and enable their own runtime modifications by default are optimizing for the agent evolving itself; vibeflow optimizes for the human trusting what evolved.
+
 ---
 
 ## Principle 1 — The repo outranks the files
