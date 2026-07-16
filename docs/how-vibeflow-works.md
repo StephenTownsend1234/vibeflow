@@ -107,6 +107,10 @@ This layer is why the memory stays *trustworthy*: nothing enters canon that the 
 
 Why so strict? We watched a competing system's research agents return from the web and write findings *directly into canonical memory*, auto-committed. If that research misread a regulation, the project's compliance file is now confidently wrong — in canon, wearing the same authority as human-vetted facts. A wrong vibeflow brief is a throwaway file. **Canon is earned at the moment a human confirms — never before.** The pipeline is: autonomous research → disposable brief → human-confirmed plan → then, and only then, permanent memory.
 
+### Corollary — provenance through structure
+
+Memory systems increasingly bolt provenance fields onto individual facts ("user-stated" vs "agent-inferred") so agents know how much to trust them. vibeflow gets provenance for free, from *location*: every tier has a known epistemic source. Ground-truth citations are code-verified (`path:line`). Research briefs are agent-inferred — and say so, in their mandatory Assumptions block. The project vision is user-stated by construction (setup only asks; it never infers the product). The user profile is observed behavior. A fact's address tells you how it was earned — no metadata schema required. The rule generalizes: **when each container admits facts from only one source, the container *is* the provenance.**
+
 ---
 
 ## Principle 6 — Fresh eyes verify
