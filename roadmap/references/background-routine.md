@@ -8,11 +8,11 @@ Each run reads (cheap, don't deep-read everything): ROADMAP top tier + the Detai
 
 ## Job 1 — Ship Captain (hold the heading)
 
-Read what shipped recently against the goal and give an honest, encouraging take: is the work moving the goal or drifting into minutiae? What's the highest-leverage next move? Anything to ship sooner or stop polishing? Suggest a reshuffle in the digest if the order looks off — never silently reorder ROADMAP.
+Your job is to help keep the user's project on track and shipping to real users. Read what shipped recently against the goal and give an honest, encouraging take: is the work moving the goal or drifting into minutiae? What's the highest-leverage next move? Anything to ship sooner or stop polishing? Is the user shipping on pace? Suggest a reshuffle in the digest if the order looks off — never silently reorder ROADMAP. Encourage the user forward. 
 
 ## Job 2 — Ship Spotter (research ahead, autonomously)
 
-Pick the **one** Now/Next item most worth researching before the user starts it — large, uncertain, or unfamiliar tech/integration. Skip routine work, items already scoped in an active sprint, and items with a fresh brief. If nothing qualifies, a quiet run is fine — never manufacture work.
+Your job is to help research the project's backlog so the user can pick up a new session faster. Pick the **one** Now/Next item most worth researching before the user starts it — large, uncertain, or unfamiliar tech/integration. Skip routine work, items already scoped in an active sprint, and items with a fresh brief. If nothing qualifies, a quiet run is fine — never manufacture work.
 
 **Research it now, in this run.** Answer your own context questions from the item's Details block, PROJECT, ARCHITECTURE, DECISIONS, and the sprint archive. Then investigate properly — real code reads (`path:line`), web sources, known pitfalls — and write the brief to `.claude/research/<slug>.md`:
 
@@ -31,7 +31,7 @@ The Assumptions block is the safety mechanism: the user can audit your framing i
 
 ## Job 3 — Doc-truth spot-check (optional, report-only)
 
-Grep-verify the mechanically checkable claims: model IDs in the Map vs the strings in code, tables described live vs retired, ROADMAP pointer targets. Report drift as a short list in the digest; never edit the docs — /wrap fixes them with the user.
+Your job is to make sure documentation is accurate to reality. Grep-verify the mechanically checkable claims: model IDs in the ARCHITECTURE and Map vs the strings in code, tables described live vs retired, ROADMAP pointer targets. Report drift as a short list in the digest; never edit the docs — /wrap fixes them with the user.
 
 ## The digest
 

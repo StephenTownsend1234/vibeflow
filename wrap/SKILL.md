@@ -5,9 +5,11 @@ description: End a vibeflow session by saving its progress, decisions, and learn
 
 # /wrap
 
-Read `~/.claude/skills/vibeflow/CORE.md` (or `CORE.md` at the vibeflow pack root, wherever it's installed) first (skip if already in context). Stance: **save this session so a cold session with no memory of this chat starts smarter — nothing it needs should live only here.**
+Read `~/.claude/skills/vibeflow/CORE.md` (or `CORE.md` at the vibeflow pack root, wherever it's installed) first (skip if already in context). 
 
-The test for every action: *would a fresh session need this to proceed well?* Precision over volume — each fact lands once, in its one home. Wrap often runs with context nearly gone, so the order below is deliberate: cheapest, highest-value work first, and everything front-loaded into batches.
+Mode stance: **Archivist. Save this session's context, learnings, and progress so a cold session with no memory of this chat starts smarter — nothing it needs should live only here.**
+
+The test for every action: *would a fresh session need this to proceed well?* Precision over volume — each fact lands once, in its one home. Close the loop so that project context compounds instead of evaporating. Wrap often runs with context nearly gone, so the order below is deliberate: cheapest, highest-value work first, and everything front-loaded into batches.
 
 ## 1 — Ground (one silent batch)
 
@@ -44,19 +46,19 @@ Routing rules (from CORE.md, applied here): transient states → sprint TO-DOs o
 
 **Distill when a doc outgrows a comfortable read** (a sprawling DECISIONS area, a gotcha list past a screen): merge same-fact duplicates into the richest single version, compress verbose entries to their load-bearing why, and fold long superseded chains into one line. Distilling means **condensing, not cutting** — knowledge only compounds if it survives. Delete an entry only when it's clearly superseded or shipped; when unsure whether something still matters, keep it or ask — never reason it away on a hunch. Propose the distill as its own item in the proposal (the wrap commit makes every distill fully recoverable).
 
-**Promote hard-won rules down the stack — and demote their prose.** A gotcha with a greppable trigger and a high violation cost is a hook candidate (the migration-wipe guard is the model) — suggest the promotion; the user decides. And once a rule IS a deterministic guard, trim its prose copies (CLAUDE.md, gotchas, old entries) to one line pointing at the hook: mechanized rules don't need re-reading every session, and lingering prose keeps old incidents alive in every conversation.
+**Promote hard-won rules down the stack** A gotcha with a greppable trigger and a high violation cost is a hook candidate (the migration-wipe guard is the model) — suggest the promotion; the user decides. And once a rule IS a deterministic guard, trim its prose copies (CLAUDE.md, gotchas, old entries) to one line pointing at the hook: mechanized rules don't need re-reading every session, and lingering prose keeps old incidents alive in every conversation.
 
 **Then ask the session one question: what did it teach — learnings, lessons, preferences, frictions?** (Surprises, corrections, contradictions with docs, deployed-but-unverified risks all count.) Route what passes the would-a-future-session-act-differently test to its home — gotcha, DECISIONS, sprint TO-DO, global profile. Let one-off friction go unrecorded: this is a harvest, not an incident log.
 
 ## 4 — Propose once, apply once
 
-Present a **compact proposal** in one message: any genuinely open "needs your call" forks (AskUserQuestion, with recommendations — say "none" if none) together with one line per file describing what you'll write. Not full drafts — one scannable list the user can veto items from ("skip design tho"). Flag in the line when a change rewrites a pre-existing claim rather than adding ("ARCHITECTURE: +1 gotcha, rewrites stale model-ID line"). Answering the forks — or a bare go-ahead — is the single confirmation; apply immediately, honoring any vetoes. A session with nothing worth saving: say so in one line and stop — no proposal, no commit.
+Present a **compact proposal** in one message: any genuinely open "needs your call" forks (AskUserQuestion, with recommendations — say "none" if none) together with one line per file describing what you'll write. Not full drafts — one scannable list the user can veto items from. Flag in the line when a change rewrites a pre-existing claim rather than adding ("ARCHITECTURE: +1 gotcha, rewrites stale model-ID line"). Answering the forks — or a bare go-ahead — is the single confirmation; apply immediately, honoring any vetoes. A session with nothing worth saving: say so in one line and stop — no proposal, no commit.
 
 On that confirmation: apply all writes in parallel, including `.claude/.last-session.md` — a carry-forward of **≤8 lines** (what shipped, what's unverified/undeployed, where iteration stalled), overwritten each wrap. The SessionStart hook injects only the head of this file, so anything longer silently truncates — point to sprint files for detail. It's what a future session or parallel chat reads first, and the only trace a no-sprint Freebuild session leaves. Delete `.claude/.session-snapshot.md` (now reconciled). Archive any fully-checked sprint (`sprints/archive/<sprint-NNN>-<slug>.md`, next sequential NNN), then make the checkpoint commit (`docs(wrap): <summary>`). **Your own session's code changes get committed by path alongside it — or explicitly deferred with a reason ("leaving X uncommitted until the visual pass"). Never left silently floating in a shared tree** for another chat to sweep into an unrelated commit. Offer a push with it — a checkpoint that only lives on this laptop isn't a backup — but push only on their yes.
 
 Then **one** final summary: the commit hash, one line per file changed, and the carry-forward for next session. No second recap.
 
-On a project's **first** wrap (no prior `docs(wrap):` commit): offer the background routine once — Ship Captain + Ship Spotter, [../roadmap/references/background-routine.md](../roadmap/references/background-routine.md), set up via `/schedule`.
+On a project's **first** wrap (no prior `docs(wrap):` commit): offer the background routine once — Ship Captain + Ship Spotter, [../roadmap/references/background-routine.md](../roadmap/references/background-routine.md), set up via `/schedule`. This is their first time learning about this, so congratulate them on running through their first vibeflow flow of start, build, wrap, explain to them in a few sentences how this compounds knowledge and memory over time, and then offer the Ship Captain + Ship Spotter with brief explanations of them as agentic scheduled tasks they can run. 
 
 ## 5 — If a sprint was archived
 

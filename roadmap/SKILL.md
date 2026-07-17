@@ -1,25 +1,27 @@
 ---
 name: roadmap
-description: The project's path to its goal — capture ideas onto the roadmap with zero ceremony, or run a session that orders everything into Now/Next/Later toward a concrete goal. Use for "add to roadmap X" quick captures, when priorities shift, when the user asks what to build next, or when the goal itself needs resetting. Also runs inside /bootstrap to map the initial path.
+description: The project's path to its goal — capture ideas onto the roadmap, or run a session that orders everything into Now/Next/Later toward a concrete goal. Use for "add to roadmap X" quick captures, when priorities shift, when the user asks what to build next, or when the goal itself needs resetting. Also runs inside /bootstrap to map the initial path.
 ---
 
 # /roadmap
 
-Read `~/.claude/skills/vibeflow/CORE.md` (or `CORE.md` at the vibeflow pack root, wherever it's installed) first. Stance: **work out the path — what to build next and in what order — and pressure-test it honestly.**
+Read `~/.claude/skills/vibeflow/CORE.md` (or `CORE.md` at the vibeflow pack root, wherever it's installed) first. 
+
+Mode stance: **Strategist. Work out the path to the goal — what to build next and in what order — and pressure-test it.**
 
 The roadmap answers one question: what do I build next to reach my goal? It's light and living. ROADMAP.md is two-tier (template: `../templates/ROADMAP.md`): **top = the path in strict one-liners** (all `/start` and the hook ever read), **Details below the fold** = each item's fuller context, keyed by slug (what Ship Spotter researches from).
 
-## Quick capture (the common case)
+## Mode 1: Quick capture
 
-"Add to roadmap X" — append with zero ceremony, in any mode: one-liner in the right tier (default Later unless it's clearly next), full context into its Details block exactly as given — don't trim, richness is what makes later research good. One move, back to what they were doing. This is also where `/build`'s deferred discoveries and `/wrap`'s deferred TO-DOs land.
+For when the user asks to add something to roadmap for future work. Detect "Add to roadmap X" — append with zero ceremony, in any mode: one-liner in the right tier (default Later unless it's clearly next), full context into its Details block exactly as given — don't trim, richness is what makes later research good. One move, back to what they were doing. This is also where `/build`'s deferred discoveries and `/wrap`'s deferred TO-DOs land.
 
 If the item is large, uncertain, or unfamiliar tech, offer in one line to queue a background micro-brief (a subagent writing `research/<slug>.md` while you keep working) — skippable, never automatic for small items.
 
-## Work the roadmap
+## Mode 2: Work the roadmap
 
-Judge the altitude the session needs — a quick re-order takes a minute; "help me figure out what's next" is a real session; a genuine pivot revisits the vision. Orient silently from what's loaded plus the sprint archive (what's shipped is reflection fuel: "you've shipped X and Y — does that change the goal?").
+For when a user wants to orient their work on the project. Judge the altitude the session needs — a quick re-order takes a minute; "help me figure out what's next" may need a real session; a genuine pivot revisits the vision. Orient silently from what's loaded plus the sprint archive (what's shipped is reflection fuel: "you've shipped X and Y — does that change the goal?").
 
-**Explore.** The context that improves a project lives in the user's head, not the code. Invite the whole picture — what would make it great, what they're avoiding — and play it back before structuring. Keep it conversational; Decision cards are `/start`'s tool.
+**Explore.** The context that improves a project lives in the user's head, not the code. Invite the whole picture — what would make it great, what they're avoiding — and play it back before structuring. Keep it conversational. Play it back: "Here's what I'm hearing you're building toward". 
 
 **Set the goal.** Near-term and concrete ("a usable v1 I can show people"), not an abstract milestone. Push gently if vague: "launch what, to whom — what's true when it's done?" Plan the near, rough the far.
 
