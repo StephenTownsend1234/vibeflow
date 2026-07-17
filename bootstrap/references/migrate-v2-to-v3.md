@@ -38,4 +38,10 @@ Leave their content untouched — never rewrite mid-flight work. One optional of
 
 ## Finish
 
-One checkpoint commit — `docs(migrate): .claude state → v3 shapes` — covering the reshaped files and the archived originals. Never push. Then verify: run the SessionStart hook manually (`CLAUDE_PROJECT_DIR=<project> bash .claude/hooks/session-start.sh`) and confirm the orientation reads sanely; check the ROADMAP top tier is ~40 lines or less; spot-check two or three merged DECISIONS entries against their originals in the archive. The next `/start` is the real acceptance test.
+One checkpoint commit — `docs(migrate): .claude state → v3 shapes` — covering the reshaped files and the archived originals. Never push. Then verify, cheapest first:
+
+1. **Mechanical:** run the SessionStart hook manually (`CLAUDE_PROJECT_DIR=<project> bash .claude/hooks/session-start.sh`) and confirm the orientation reads sanely; check the ROADMAP top tier is ~40 lines or less; script a representation check (every dated `## YYYY-MM-DD` heading in the archived DECISIONS has its date or a distinctive title keyword somewhere in the new file — catches silently dropped entries).
+2. **Blind fidelity exam** (a migration has two failure modes — knowledge loss and introduced drift; this catches the first): one fresh-context agent reads ONLY the archived files and writes ~12 hard questions a future session would need answered (rationales, mechanisms, gotchas, trigger conditions — include several obscure-but-load-bearing details, exclude deliberately-relocated transient states), each with a gold answer. A second fresh agent answers from ONLY the new files. Grade against gold; anything unanswerable or degraded is knowledge the rewrite lost — restore it.
+3. **Doc-vs-code sweep** (catches the second failure mode): a fresh agent samples ~12 greppable claims from the reshaped files and verifies each against the repo. Expect it to also surface *inherited* drift the old docs already carried — the migration is the one moment everything is in context, so fix those too, scoped precisely (first run of this on a mature project found a pre-existing overstated claim, not migration damage).
+
+The next `/start` is the real acceptance test.

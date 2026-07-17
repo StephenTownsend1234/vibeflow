@@ -62,6 +62,6 @@ On a project's **first** wrap (no prior `docs(wrap):` commit): offer the backgro
 
 ## 5 — If a sprint was archived
 
-If the sprint ran on its own branch and its verification is done, offer the merge back to main first (squash is a fine default) — an archived sprint shouldn't leave a stranded branch.
+If the sprint ran on its own branch and its verification is done, offer the merge back to main first (squash is a fine default) — an archived sprint shouldn't leave a stranded branch. If it ran in its own worktree, offer `git worktree remove <path>` after the merge too (Claude-managed worktrees clean themselves up); anything with a deploy step ships from main after this merge, not from the worktree.
 
 Offer once: plan the next sprint now (read `../start/SKILL.md`, run its planning), or defer — "next session, `/start` picks up from here."

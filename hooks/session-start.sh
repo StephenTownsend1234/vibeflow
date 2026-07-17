@@ -37,6 +37,15 @@ OUT=$(
     fi
   done
 
+  # Worktrees: parallel-work awareness (prints only when linked worktrees exist)
+  wt=$(git worktree list 2>/dev/null)
+  if [ -n "$wt" ] && [ "$(echo "$wt" | grep -c .)" -gt 1 ]; then
+    echo "--- Worktrees ---"
+    echo "$wt" | head -5
+    git rev-parse --git-dir 2>/dev/null | grep -q "/worktrees/" && \
+      echo "(this session is inside a linked worktree)"
+  fi
+
   # Hot areas: where the project's energy went recently (one line, no diffs)
   hot_since() {
     git log --since="$1" --name-only --pretty=format: 2>/dev/null | \
