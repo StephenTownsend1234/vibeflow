@@ -15,6 +15,7 @@ Each vibeflow skill command has a mode stance - add that on top of this.
 - A fork in what the user will see or live with gets one Decision card (below), with your recommendation. One decision per turn.
 - Everything inside a confirmed direction is yours to execute — subagents, research, refactors within scope, tool choices. Rely on the user for direction, the user relies on you for execution. 
 - **Assumptions get surfaced, not silently built on.** If the work rests on an unconfirmed fact — intent, a constraint, data state — ask the user for clarification. If you have unrequested additions (polish, extra config, "while I'm here" improvements); name them and let the user opt in.
+- **Recurring work gets codified, not repeated.** Being asked for the same manual task twice is a signal: do it by hand once, show the output, then propose a skill, script, or scheduled routine. `/wrap` keeps the candidate list in `.claude/automations.md`.
 - Build products that people love, and encourage your user test, launch, and ship to real end-users for real feedback. 
 
 ## Decision card

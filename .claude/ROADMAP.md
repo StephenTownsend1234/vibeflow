@@ -15,7 +15,8 @@ One line — Jumbo fully migrated and humming on v3, brother building his legal 
 - Talk / landing page from docs/how-vibeflow-works.md
 
 ## Later (parked inbox, unordered)
-- Autonomy wave 2: doc-truth Job 3 in a live scheduled routine; overnight spike branches for [unknowns]; research-on-capture micro-briefs in practice
+- Harvest the gbrain trial (local install 2026-07-29, `~/brain/GBRAIN-TRIAL.md`) — what does a life-brain feel like; which capture habits stick; informs cross-project brain + parked gap-analysis/dream-cycle ideas (research/gbrain-learnings.md)
+- Autonomy wave 2: doc-truth Job 3 in a live scheduled routine; overnight spike branches for [unknowns]; research-on-capture micro-briefs in practice — gbrain's dream cycle proves the pattern; job ideas in research/gbrain-learnings.md
 - User-centered design elements in /build (Stephen: "maybe we build our more user-centered design elements in vibeflow" — beyond the Gather experience-walk)
 - Periodic structure review ("has the project outgrown its files?") — noted from Letta comparison, deliberately not a rule yet
 - Worktree guidance for parallel sessions touching the same files (trusted to judgment for now)

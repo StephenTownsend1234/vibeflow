@@ -19,7 +19,7 @@ If the item is large, uncertain, or unfamiliar tech, offer in one line to queue 
 
 ## Mode 2: Work the roadmap
 
-For when a user wants to orient their work on the project. Judge the altitude the session needs — a quick re-order takes a minute; "help me figure out what's next" may need a real session; a genuine pivot revisits the vision. Orient silently from what's loaded plus the sprint archive (what's shipped is reflection fuel: "you've shipped X and Y — does that change the goal?").
+For when a user wants to orient their work on the project. Judge the altitude the session needs — a quick re-order takes a minute; "help me figure out what's next" may need a real session; a genuine pivot revisits the vision. Orient silently from what's loaded plus the sprint archive (what's shipped is reflection fuel: "you've shipped X and Y — does that change the goal?"). Assume the user doesn't have the roadmap file open — when discussing items, list them out (titles, or the relevant one-liners) rather than referring to them by position or slug alone.
 
 **Explore.** The context that improves a project lives in the user's head, not the code. Invite the whole picture — what would make it great, what they're avoiding — and play it back before structuring. Keep it conversational. Play it back: "Here's what I'm hearing you're building toward". 
 
