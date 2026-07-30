@@ -58,6 +58,10 @@ Registry of why the pack is shaped this way — grouped by area, merge-don't-app
 **Chose:** one end-of-session question ("what did this teach — learnings, lessons, preferences, frictions?") gated by the future-session test; distill passes merge/compress but delete only the provably superseded/shipped — unsure → keep or ask.
 **Because:** praise-gated capture failed (2 entries/16 sprints); pure-friction capture risks a don't-list; Stephen: compounding knowledge, not bloat, and never scrap what we might need.
 
+### Automation ticker + friction/delight log (2026-07-29, from gbrain)
+**Chose:** wrap tracks recurring-smelling manual tasks in `.claude/automations.md` (line + dates; 2+ dates → automate-or-delete fork) and appends ≤1 friction/delight line per session to the global `~/.claude/vibeflow/friction.md`. Gap analysis deliberately parked.
+**Because:** gbrain deep-dive (research/gbrain-learnings.md) — "asked twice = automate" was the one instinct vibeflow lacked; friction capture makes the brother's field-fix loop work without Stephen mediating. Stephen: keep both super simple, no overlogging.
+
 ### Promotion/demotion lifecycle (2026-07-16)
 **Chose:** greppable, high-cost gotchas get promoted to deterministic hooks; once promoted, their prose demotes to one pointer line.
 **Because:** the db-push guard worked, yet four prose copies (incl. always-loaded CLAUDE.md) kept the incident alive in every session's conversation. Mechanized rules don't need re-reading.

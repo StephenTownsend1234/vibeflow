@@ -4,7 +4,7 @@
 
 **Who it's for:** Stephen first; his brother (legal platform, first external user) next; vibecoder community eventually.
 
-**Phase:** v3 built + field-tuned (July 2026). Live locally via symlinks on branch `v3`; not yet pushed to GitHub (main = v2). Now: dogfooding, distribution, and the autonomy wave.
+**Phase:** v3 built + field-tuned (July 2026). Live locally via symlinks on branch `v3`; pushed to GitHub 2026-07-30 (main = v2 until the post-brother-test-drive merge decision). Now: dogfooding, distribution, and the autonomy wave.
 
 **North star:** compounding knowledge without bloat, autonomy without lost trust — the human understands every line that governs them.
 
