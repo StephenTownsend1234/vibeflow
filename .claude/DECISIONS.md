@@ -39,10 +39,17 @@ Registry of why the pack is shaped this way — grouped by area, merge-don't-app
 ### Fresh-context verifiers + typed checkpoints (2026-07-02)
 **Chose:** `→ CHECKPOINT (machine)` dispatches to /verify (fed by the /run-skill-generator recipe); `(human)` interrupts with a concrete action list; humans only see what only humans can judge.
 **Because:** the writing session grades its own homework generously; Fable docs confirm fresh-context verification outperforms self-critique.
+Re-examined 2026-07-30 vs the Opus 5 prompting guide (which calls verifier instructions redundant): kept unchanged — the 07-17 overnight-run evidence (5 real bugs the builder rationalized past) outranks; revisit only if field sessions show over-verification.
 
 ### Anti-overbuild guardrails kept despite leanness guidance (2026-07-02)
 **Chose:** keep don't-overbuild / don't-speculate / verify-with-tools even though official guidance says such prompts are now redundant.
 **Because:** Stephen's standing field observation — "claude still likes to overbuild" — outranks generic guidance. Do not remove on a doc's authority.
+
+## Design
+
+### Reference layer, not a sixth skill (2026-07-30)
+**Chose:** design craft lives at pack-root `design/` (no SKILL.md → the installer's gate means it can never become a command) + per-project `.claude/design.md`, lazy-created on first design work; wired into CORE/start/build/wrap at four moments, ~15 lines total.
+**Because:** design must load after expressed intent, never before (the tuning heuristic); Stephen wanted a partner that supplies the design vocabulary he doesn't have — feelings and references in, observables played back for a yes/no. Adapted from his Opus 5 design system; personal tooling (Flora/Weavy) stripped to generic craft.
 
 ## Wrap & memory files
 

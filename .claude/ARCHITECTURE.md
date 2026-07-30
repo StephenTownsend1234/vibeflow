@@ -13,7 +13,10 @@ CORE.md                 shared layer: role, guiding principle, Decision card,
 start/references/       sprint-md-shape.md (the sprint template) · sequencing.md
 bootstrap/references/   migrate-v1.md (→v2 shapes) · migrate-v2-to-v3.md
 roadmap/references/     background-routine.md (Ship Captain + autonomous Spotter)
-templates/              the five project-state file shapes + global-profile.md
+design/                 design references — lane picker (README), vocabulary
+                        translation, ui-design, image-prompting; read on visual
+                        work per CORE's Design section (no SKILL.md = never a skill)
+templates/              the project-state file shapes (incl. design.md) + global-profile.md
 hooks/                  session-start.sh (orientation) · session-snapshot.sh
                         (SessionEnd/PreCompact breadcrumb) · statusline.sh
 docs/                   v2-vs-v3-crosswalk.md · how-vibeflow-works.md
@@ -28,7 +31,7 @@ setup / update          installer (symlinks each cmd dir into ~/.claude/skills/)
 ## Detail
 
 ### Distribution model
-`setup` symlinks each command dir (any dir containing SKILL.md) into `~/.claude/skills/`. Consequence: **the checked-out branch is live everywhere, immediately** — editing on `v3` changes behavior in every project on this machine. `git checkout main` reverts to v2 instantly. Remote: GitHub `StephenTownsend1234/vibeflow`; main = v2, `v3` unpushed as of 2026-07-16.
+`setup` symlinks each command dir (any dir containing SKILL.md) into `~/.claude/skills/`. Consequence: **the checked-out branch is live everywhere, immediately** — editing on `v3` changes behavior in every project on this machine. `git checkout main` reverts to v2 instantly. Remote: GitHub `StephenTownsend1234/vibeflow`; main = v2, `v3` pushed 2026-07-30 (the brother's install line cites `--branch v3`).
 
 ### Gotchas / learnings
 - **Markdown format-on-save destroys YAML frontmatter** (turns `name:` into a `## name:` heading and strips the closing `---`), silently unregistering the skill — it shows a blank description in the skills list. Happened 2026-07-15 to bootstrap. Exclude SKILL.md from formatters, and check `head -4` after editing in an external editor.

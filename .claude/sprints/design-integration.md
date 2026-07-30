@@ -1,6 +1,7 @@
 # Sprint: design-integration
 
-**Status:** one-shot · started 2026-07-30 · 5/6 steps — built + machine-verified; human checkpoint open (Stephen plays with it; field test = next Jumbo session)
+**Status:** one-shot · started 2026-07-30 · 5/6 steps — built + machine-verified (aa980ee); human checkpoint open
+**Next up:** Stephen plays with it (any project: "make X feel calmer", ask for an asset); the real field test + seeding Jumbo's `.claude/design.md` happen in the Jumbo migration session.
 
 ## Goal
 Design craft integrated into the vibeflow pack as a reference layer (not a sixth skill): generic design references at the pack root, per-project design state in `.claude/design.md`, and small wiring edits so design fires at four moments in the existing loop — with Stephen's personal tooling (Flora/Weavy) stripped to generic craft.
