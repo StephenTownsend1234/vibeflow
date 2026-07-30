@@ -28,6 +28,13 @@ load-bearing claims the plan depends on. Examples:
 - "transcribe/index.ts:42 hardcodes audio/m4a — needs a content-type branch for webm"
 These are the facts the rest of the sprint is built on. If one is wrong, replan.>
 
+## Design (user-facing sprints only — omit otherwise)
+<The design decisions locked during the experience walk: the screen's single job,
+the primary action, the worst state and its treatment, and the feel parameters
+(density / contrast / radius / motion / copy register — cite the project's
+`.claude/design.md` if it exists, or seed it now). /build treats a step's states
+(empty, loading, error) as part of the step, not deferred polish.>
+
 ## Port map (only if porting existing work)
 Include PORT rows only. REUSE goes in the "Reuse as-is" list below. Omit entirely
 for greenfield sprints.

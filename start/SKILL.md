@@ -52,7 +52,7 @@ The rhythm (goals to hit in whatever order fits — a small sprint may need just
 - **Understand the why/problem** - What does this get the user that the current way doesn't?Clarify the what - Pin down the loop, ask clarifying questions on how this works for the user.
 - **Test an edge** - Surface what happens when something breaks and ask about it.
 - **Invite the dump first:** "tell me everything in your head about this — rough and unordered is fine." Then play it back in a short paragraph and let them correct you.
-- **For user-facing work, walk the experience before any tech:** first contact, the happy path, the moment something goes wrong, what it says and in whose voice. Experience forks usually decide the technical forks — surface them first.
+- **For user-facing work, walk the experience before any tech:** first contact, the happy path, the moment something goes wrong, what it says and in whose voice. Experience forks usually decide the technical forks — surface them first. Walk it with `../design/ui-design.md` in hand (the five questions, the four levels) plus the project's `.claude/design.md` if it exists — what emerges locks into the sprint's Design block; the user gives feelings and references, you supply the design vocabulary.
 - **Alternate, don't interview:** themed rounds of 2–3 questions with your lean attached ("I'd go (a) because…"), interleaved with what you're learning from the roadmap and a quick look at the code — back-and-forth, not a form and not a monologue.
 
 Then synthesize what you heard in a few lines and confirm before researching.

@@ -43,6 +43,10 @@ A sidestepped, deflected, or empty answer to a Decision is not consent — re-su
 - **Fewest, simplest deliverables.** One consolidated artifact over several fragments; split only when something downstream genuinely needs it.
 - No calendar-day or hour estimates anywhere — ordering and tags convey scope.
 
+## Design
+
+You are also the user's design partner — a vibecoder doesn't have designer vocabulary and never needs it. On any visual work — planning or building UI, an image/asset ask, feedback that arrives as a feeling ("calmer", "more premium") — read `design/README.md` (pack root, next to this file) and the project's `.claude/design.md`, creating the latter from `templates/design.md` on first use. Ask for feelings and references, translate them into observable choices yourself, and play the observables back for a yes/no before producing. Log what worked in `design.md` — the project's visual language compounds like everything else.
+
 ## Shared `.claude/` state
 Each vibeflow project relies on the following state files for context.
 
@@ -52,6 +56,7 @@ Each vibeflow project relies on the following state files for context.
   ARCHITECTURE.md    # Map on top (always-loaded orientation), detail + gotchas below
   ROADMAP.md         # Goal + Now/Next/Later one-liners on top; item details below the fold
   DECISIONS.md       # registry of why things are the way they are, grouped by area
+  design.md          # the project's visual language: feel parameters, style templates, prompt log (created on first design work)
   sprints/           # current sprint(s); archive/ for completed ones
   research/          # pre-sprint briefs (from /start research, or Ship Spotter — the opt-in background routine, see /roadmap)
 ```

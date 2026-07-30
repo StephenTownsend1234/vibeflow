@@ -37,6 +37,7 @@ Walk the session once — the diff for what changed, the conversation for what w
 | a priority shift | ROADMAP (top tier); details block if context came with it |
 | a phase/focus change | PROJECT.md's phase line, rewritten in place |
 | a correction to how we work / a transferable lesson | global profile (`~/.claude/vibeflow/playbook.md`) |
+| a design prompt/style that worked (or failed informatively), a feel-parameter choice | `.claude/design.md` (prompt log / style templates) — transferable vocabulary lessons also → global profile |
 
 Routing rules (from CORE.md, applied here): transient states → sprint TO-DOs only; merge-don't-append in DECISIONS (supersede in place, ≤6 lines/entry); lessons positive **or** negative; edit docs in place — never bolt on dated "what we did" sections; a quiet session legitimately updates only sprint progress. Auto-memory handles incidental session habits on its own — wrap owns the git-tracked project state; don't duplicate into both.
 
