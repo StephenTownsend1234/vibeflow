@@ -4,7 +4,7 @@
 
 **Who it's for:** Stephen first; his brother (legal platform, first external user) next; vibecoder community eventually.
 
-**Phase:** v3 built + field-tuned (July 2026). Live locally via symlinks on branch `v3`; pushed to GitHub 2026-07-30 (main = v2 until the post-brother-test-drive merge decision). Now: dogfooding, distribution, and the autonomy wave.
+**Phase:** v3 built + field-tuned (July 2026), and **shipped on `main`** — merged 2026-07-31, so a plain clone of GitHub `StephenTownsend1234/vibeflow` installs v3. Development happens on main directly; the pre-v3 tree survives as tag `v2`. Live locally via symlinks. Now: dogfooding, distribution, and the autonomy wave.
 
 **North star:** compounding knowledge without bloat, autonomy without lost trust — the human understands every line that governs them.
 

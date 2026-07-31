@@ -84,3 +84,7 @@ Re-examined 2026-07-30 vs the Opus 5 prompting guide (which calls verifier instr
 ### v3 as a branch; symlinks make it live (2026-07-02)
 **Chose:** develop on branch `v3` in the installed repo; accept that the checked-out branch is live everywhere; main stays v2 until Stephen merges.
 **Because:** instant test-and-revert (`git checkout main`) beat parallel suffixed commands; the symlink liveness is documented as a gotcha, not fought.
+
+### v3 merged to main; develop on main (2026-07-31)
+**Chose:** fast-forward `main` to `v3` and work on main going forward. The old tree is preserved as tag `v2`, not as a branch.
+**Because:** main is the default branch, so a cold-start user — the brother, the next roadmap item — cloned v2 and would have needed a `--branch v3` instruction to get the version actually being supported. That friction is the exact thing onboarding is meant to remove. The rollback case a stale main was holding open is served better by a tag. Supersedes the 2026-07-02 decision above; the earlier merge trigger ("after the brother's test drive") was dropped because he'd be test-driving v3 either way.

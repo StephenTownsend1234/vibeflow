@@ -31,7 +31,7 @@ setup / update          installer (symlinks each cmd dir into ~/.claude/skills/)
 ## Detail
 
 ### Distribution model
-`setup` symlinks each command dir (any dir containing SKILL.md) into `~/.claude/skills/`. Consequence: **the checked-out branch is live everywhere, immediately** — editing on `v3` changes behavior in every project on this machine. `git checkout main` reverts to v2 instantly. Remote: GitHub `StephenTownsend1234/vibeflow`; main = v2, `v3` pushed 2026-07-30 (the brother's install line cites `--branch v3`).
+`setup` symlinks each command dir (any dir containing SKILL.md) into `~/.claude/skills/`. Consequence: **the checked-out branch is live everywhere, immediately** — an edit on the checked-out branch changes behavior in every project on this machine. Remote: GitHub `StephenTownsend1234/vibeflow`; **main = v3** since the 2026-07-31 fast-forward merge, and development happens on main directly. The pre-v3 tree is preserved as tag `v2` (`git checkout v2` to revert). The README's plain clone now installs v3 with no `--branch` flag.
 
 ### Gotchas / learnings
 - **Markdown format-on-save destroys YAML frontmatter** (turns `name:` into a `## name:` heading and strips the closing `---`), silently unregistering the skill — it shows a blank description in the skills list. Happened 2026-07-15 to bootstrap. Exclude SKILL.md from formatters, and check `head -4` after editing in an external editor.
