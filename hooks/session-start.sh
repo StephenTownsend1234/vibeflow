@@ -93,6 +93,14 @@ OUT=$(
     [ -n "$R" ] && [ "$L" != "$R" ] && echo "vibeflow update available — run: bash ~/.claude/skills/vibeflow/update"
   fi
 
+  # Hook-copy drift check (/bootstrap installs copies; they don't self-update — trust gradient).
+  # Prints a nudge for Claude to surface; never overwrites (the copy may be deliberately customized).
+  drift=""
+  for h in session-start.sh session-snapshot.sh; do
+    [ -f ".claude/hooks/$h" ] && [ -f "$D/hooks/$h" ] && ! cmp -s ".claude/hooks/$h" "$D/hooks/$h" && drift="$drift $h"
+  done
+  [ -n "$drift" ] && echo "Hook copies differ from the vibeflow pack:$drift — offer to refresh (cp from ~/.claude/skills/vibeflow/hooks/), or diff first if this project customized them"
+
   echo "</vibeflow-orientation>"
 )
 
