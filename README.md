@@ -65,7 +65,7 @@ Then open Claude Code in a project and run `/bootstrap`.
 bash ~/.claude/skills/vibeflow/update
 ```
 
-Pulls the latest and re-links any new commands — and `/start` nudges you when your copy is behind.
+Pulls the latest and re-links any new commands — vibeflow checks once a week and nudges you in-session when your copy is behind.
 
 ## Philosophy
 

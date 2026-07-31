@@ -83,10 +83,10 @@ OUT=$(
     [ -n "$tc" ] && echo "No wrap checkpoint yet ($tc commits, $unc uncommitted) — sprint files may be stale"
   fi
 
-  # Once-daily vibeflow update check (fail-silent, compares the installed branch)
+  # Once-weekly vibeflow update check (fail-silent, compares the installed branch)
   D="$HOME/.claude/skills/vibeflow"; S="$D/.last-update-check"
-  if [ -d "$D/.git" ] && [ "$(cat "$S" 2>/dev/null)" != "$(date +%F)" ]; then
-    date +%F > "$S" 2>/dev/null
+  if [ -d "$D/.git" ] && [ "$(cat "$S" 2>/dev/null)" != "$(date +%G-%V)" ]; then
+    date +%G-%V > "$S" 2>/dev/null
     BR=$(git -C "$D" rev-parse --abbrev-ref HEAD 2>/dev/null)
     L=$(git -C "$D" rev-parse HEAD 2>/dev/null)
     R=$(git -C "$D" ls-remote -q origin "$BR" 2>/dev/null | awk 'NR==1{print $1}')
