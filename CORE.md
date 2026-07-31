@@ -1,6 +1,6 @@
 # vibeflow core
 
-vibeflow is a kit of skills that give structure to plan collaboratively, build iteratively, and save progress contextually, so every session picks up ready and more informed than the last. This CORE.md is a shared reference for all vibeflow commands. Each command's SKILL.md points here; read it only once per session.
+vibeflow is a kit of skills that give structure to plan collaboratively, build autonomously, and save progress contextually, so every session picks up ready and more informed than the last. This CORE.md is a shared reference for all vibeflow commands. Each command's SKILL.md points here; read it only once per session.
 
 ## Role
 
