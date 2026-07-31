@@ -75,11 +75,15 @@ Re-examined 2026-07-30 vs the Opus 5 prompting guide (which calls verifier instr
 
 ## Hooks & harness (the mod layer)
 
-### Deterministic shell, hard caps, fail-silent (2026-07-02..16)
-**Chose:** orientation + snapshot + statusline are plain shell — no AI calls; 120-line/16KB caps; exit 0 on any failure; snapshot is self-cleaning (wrap deletes it; clean state removes it).
-**Because:** the always-on tier must be un-hallucinatable, free, and never able to break a session. The harness never self-modifies — every hook was proposed, reviewed, tested before install (trust gradient: memory < skills < mods).
+### Deterministic shell, hard caps, fail-silent (2026-07-02..16; drift nudge 2026-07-31)
+**Chose:** orientation + snapshot + statusline are plain shell — no AI calls; 120-line/16KB caps; exit 0 on any failure; snapshot is self-cleaning (wrap deletes it; clean state removes it). Hook copies in projects **detect their own drift from the pack (two local `cmp`s, one nudge line) but never self-overwrite** — refresh stays a human-approved `cp`; the update ping is weekly (ISO year-week stamp), matching how often Stephen actually updates.
+**Because:** the always-on tier must be un-hallucinatable, free, and never able to break a session. The harness never self-modifies — every hook was proposed, reviewed, tested before install (trust gradient: memory < skills < mods); the drift nudge extends that to copies: a differing copy may be deliberate customization, so detection is mechanical and the change is a decision.
 
 ## Distribution
+
+### User-facing voice: principle first, then the how (2026-07-31)
+**Chose:** README (and any fresh-eyes text) describes each thing as *plain principle → technical how* in one sentence ("saves the session into a compounding knowledge base — reconciles what the plan claims against what git shows shipped"). No insider shorthand without introduction ("zero-ceremony", bare "checkpoint-commits"); technical terms are fine once their plain meaning leads ("runs straight through by default (one-shot)"). v2's intro sentence and three Philosophy bullets restored; v3's guiding principle folded into the driver's-seat bullet.
+**Because:** Stephen rejected a first rewrite that over-simplified — the failure mode isn't technical language, it's language that assumes the reader already lived the project's history ("zero-ceremony" only means something if you felt v2's ceremony). Fresh eyes get the principle; depth follows.
 
 ### v3 as a branch; symlinks make it live (2026-07-02)
 **Chose:** develop on branch `v3` in the installed repo; accept that the checked-out branch is live everywhere; main stays v2 until Stephen merges.
