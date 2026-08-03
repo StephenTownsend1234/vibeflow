@@ -27,7 +27,7 @@ One line — Jumbo fully migrated and humming on v3, brother building his legal 
 - 2026-07-31: v3 merged to main (tag `v2` = rollback, `v3` branch deleted); README rewritten for fresh eyes; update check daily→weekly; hook-copy drift nudge; Jumbo's hook refreshed (jumbo dd32542)
 - 2026-07-30: design integration — pack-root design/ references + per-project design.md + four-moment wiring (aa980ee)
 - 2026-07-30: v3 pushed to GitHub (`origin/v3` @ ab9a641) — brother install unblocked
-- 2026-07-29: gbrain deep-dive — ask-twice automation ticker + friction/delight log adopted into CORE/wrap; local gbrain trial installed; brief in research/gbrain-learnings.md
+- 2026-07-29: gbrain deep-dive — ask-twice automation ticker + friction/delight log adopted into CORE/wrap (log retired 2026-08-03); local gbrain trial installed; brief in research/gbrain-learnings.md
 - 2026-07-16: adaptive mods batch — promotion/demotion lifecycle, distill pass (condense-not-cut), hot-areas line, SessionEnd/PreCompact snapshot, statusline, provenance corollary
 - 2026-07-16: brother feedback doc (GL-Brain-Vibeflow-Feedback.html in Downloads)
 - 2026-07-15: crosswalk review round; bootstrap frontmatter repaired after formatter mangling
