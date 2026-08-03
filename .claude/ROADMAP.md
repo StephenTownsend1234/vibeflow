@@ -23,16 +23,8 @@ One line — Jumbo fully migrated and humming on v3, brother building his legal 
 - Vector retrieval as a *finding* layer — only if/when multi-project or team scale arrives
 - Cross-project knowledge repo (company brain) — same architecture one level up
 
-## Done (recent — cap ~10)
-- 2026-07-31: v3 merged to main (tag `v2` = rollback, `v3` branch deleted); README rewritten for fresh eyes; update check daily→weekly; hook-copy drift nudge; Jumbo's hook refreshed (jumbo dd32542)
-- 2026-07-30: design integration — pack-root design/ references + per-project design.md + four-moment wiring (aa980ee)
-- 2026-07-30: v3 pushed to GitHub (`origin/v3` @ ab9a641) — brother install unblocked
-- 2026-07-29: gbrain deep-dive — ask-twice automation ticker + friction/delight log adopted into CORE/wrap (log retired 2026-08-03); local gbrain trial installed; brief in research/gbrain-learnings.md
-- 2026-07-16: adaptive mods batch — promotion/demotion lifecycle, distill pass (condense-not-cut), hot-areas line, SessionEnd/PreCompact snapshot, statusline, provenance corollary
-- 2026-07-16: brother feedback doc (GL-Brain-Vibeflow-Feedback.html in Downloads)
-- 2026-07-15: crosswalk review round; bootstrap frontmatter repaired after formatter mangling
-- 2026-07-07..08: field-fix wave from Jumbo dogfooding (lazy reads, resume sync, cp-first, Gather, consent, delegation, git-workflow lines)
-- 2026-07-02: v3 built (383 lines vs v2's 1,068), 7 review agents, all findings applied
+## Done
+→ `.claude/CHANGELOG.md` — the backward-orienting record (what changed and why, timestamped).
 
 ## Details
 
@@ -49,4 +41,4 @@ Flag #6 is the realest (wrap writes the global profile but never reads it; cold 
 Pack audited vs the Opus 5 prompting guide (platform.claude.com/docs → prompting-claude-opus-5) 2026-07-30. Aligned already: scope guardrails, narration rules, doc-length caps. Parked calls: (1) scope fresh-context verifiers to [unknowns]/risky/unattended runs vs today's blanket dispatch — guide says Opus 5 self-verifies; field evidence (07-17) says verifiers catch real bugs; Stephen kept as-is, revisit after a Jumbo sprint on Opus 5; (2) add a when-to-delegate guardrail to /build (Opus 5 delegates more readily; pack has depth-cap but no when); (3) watch CORE's "audit each claim against a tool result" for double-verification symptoms before trimming.
 
 ### eval-loop
-skill-creator plugin has the harness: define scenarios (does "help me finish my app" trigger bootstrap? does two-sprint wrap attribute correctly?), run with-skill vs baseline, grade, iterate. Do after brother onboarding supplies fresh failure cases.
+skill-creator plugin has the harness: define scenarios (does "help me finish my app" trigger bootstrap? does two-sprint wrap attribute correctly?), run with-skill vs baseline, grade, iterate. Do after brother onboarding supplies fresh failure cases. First scenario already banked: wrap overreach — Stephen's Jumbo audit-wrap transcript (see CHANGELOG 2026-08-03); grade a wrap on few-files restraint, rules-from-causes, plain naming.

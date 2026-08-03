@@ -1,6 +1,6 @@
 # Decisions
 
-Registry of why the pack is shaped this way — grouped by area, merge-don't-append, ≤6 lines. Full v2→v3 mechanism history lives in `docs/v2-vs-v3-crosswalk.md`; this file holds only the load-bearing calls a future session must not silently reverse.
+Registry of why the pack is shaped this way — grouped by area, merge-don't-append, ≤6 lines. This file holds only standing constraints and closed doors: the load-bearing calls a future session must not silently reverse. Chronological what-changed-and-why lives in `.claude/CHANGELOG.md`; full v2→v3 mechanism history in `docs/v2-vs-v3-crosswalk.md`.
 
 ## Core philosophy
 
@@ -69,6 +69,10 @@ Re-examined 2026-07-30 vs the Opus 5 prompting guide (which calls verifier instr
 **Chose:** wrap tracks recurring-smelling manual tasks in `.claude/automations.md` (line + dates; 2+ dates → automate-or-delete fork). Gap analysis deliberately parked. The friction/delight log (`~/.claude/vibeflow/friction.md`) is retired — it was one more harvest category feeding wrap-proposal sprawl (2026-08-03 Jumbo audit wrap: 5 files + a hook proposed for a no-code session), and Stephen flags pack friction directly anyway.
 **Because:** gbrain deep-dive (research/gbrain-learnings.md) — "asked twice = automate" was the one instinct vibeflow lacked. Stephen: keep it super simple, no overlogging — the friction log failed that test.
 
+### Changelog is the backward record (2026-08-03, dogfood)
+**Chose:** `.claude/CHANGELOG.md` — append-only, newest first, one dated what+why entry per meaningful session; /wrap appends it. ROADMAP's Done list retired into it. Dogfood in this repo only; promote to pack templates if it earns it.
+**Because:** Stephen: compounding needs a timestamped backward view to check work and go forward from; the Done list evicted at 10 and DECISIONS' history-shaped halves duplicated commit messages. DECISIONS keeps only what a changelog can't hold findably: closed doors.
+
 ### Promotion/demotion lifecycle (2026-07-16)
 **Chose:** greppable, high-cost gotchas get promoted to deterministic hooks; once promoted, their prose demotes to one pointer line.
 **Because:** the db-push guard worked, yet four prose copies (incl. always-loaded CLAUDE.md) kept the incident alive in every session's conversation. Mechanized rules don't need re-reading.
@@ -85,10 +89,6 @@ Re-examined 2026-07-30 vs the Opus 5 prompting guide (which calls verifier instr
 **Chose:** README (and any fresh-eyes text) describes each thing as *plain principle → technical how* in one sentence ("saves the session into a compounding knowledge base — reconciles what the plan claims against what git shows shipped"). No insider shorthand without introduction ("zero-ceremony", bare "checkpoint-commits"); technical terms are fine once their plain meaning leads ("runs straight through by default (one-shot)"). v2's intro sentence and three Philosophy bullets restored; v3's guiding principle folded into the driver's-seat bullet.
 **Because:** Stephen rejected a first rewrite that over-simplified — the failure mode isn't technical language, it's language that assumes the reader already lived the project's history ("zero-ceremony" only means something if you felt v2's ceremony). Fresh eyes get the principle; depth follows.
 
-### v3 as a branch; symlinks make it live (2026-07-02)
-**Chose:** develop on branch `v3` in the installed repo; accept that the checked-out branch is live everywhere; main stays v2 until Stephen merges.
-**Because:** instant test-and-revert (`git checkout main`) beat parallel suffixed commands; the symlink liveness is documented as a gotcha, not fought.
-
-### v3 merged to main; develop on main (2026-07-31)
-**Chose:** fast-forward `main` to `v3` and work on main going forward. The old tree is preserved as tag `v2`, not as a branch.
-**Because:** main is the default branch, so a cold-start user — the brother, the next roadmap item — cloned v2 and would have needed a `--branch v3` instruction to get the version actually being supported. That friction is the exact thing onboarding is meant to remove. The rollback case a stale main was holding open is served better by a tag. Supersedes the 2026-07-02 decision above; the earlier merge trigger ("after the brother's test drive") was dropped because he'd be test-driving v3 either way.
+### Develop on main; the checked-out branch is live (2026-07-02, main 2026-07-31)
+**Chose:** work happens on `main` in the installed repo (tag `v2` = rollback); symlinks mean the checked-out working tree is live everywhere — documented as a gotcha, not fought.
+**Because:** a cold-start user clones the default branch, so main must be the supported version (no `--branch` flag in the install path); instant test-and-revert via git beats parallel suffixed commands. Chronology of the branch→main move: CHANGELOG 2026-07-31.
