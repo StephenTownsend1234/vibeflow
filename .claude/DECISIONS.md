@@ -53,8 +53,8 @@ Re-examined 2026-07-30 vs the Opus 5 prompting guide (which calls verifier instr
 
 ## Wrap & memory files
 
-### Registry not diary; collision by design (2026-07-01..02)
-**Chose:** DECISIONS grouped by area, merge-don't-append, supersede-in-place with date+why, ≤6-line entries; transient states live only in sprint TO-DOs.
+### Registry not diary; collision by design (2026-07-01..02; playbook 2026-08-26)
+**Chose:** DECISIONS grouped by area, merge-don't-append, supersede-in-place with date+why, ≤6-line entries; transient states live only in sprint TO-DOs. Extended 2026-08-26 to the global playbook: lessons are principle-titled, undated, merge-first (same mechanism → amend in place), kernel + reuse-when only — its "append" header was the one exemption and bred a 23-entry diary with a six-entry duplicate family.
 **Because:** Jumbo's 614-line date-log grew contradictions 300 lines apart (the two wipe entries) and deploy-state prose that rotted on contact. Adjacency beats archaeology.
 
 ### Re-verify existing claims at wrap (2026-07-02)

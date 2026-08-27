@@ -4,11 +4,10 @@
 One line — Jumbo fully migrated and humming on v3, brother building his legal platform with it, and the pack's story tellable to a room.
 
 ## Now (the next sprint or two)
-1. Migrate Jumbo's docs to v3 shapes via /bootstrap — the migration reference's first real test   [→ details]
-2. Onboard the brother — first true cold-start user; his experience is the next round of field fixes   [→ details]
+1. Onboard the brother — first true cold-start user; his experience is the next round of field fixes   [→ details]
 
 ## Next (after that, ordered)
-- Jumbo hygiene: split the hotfix-onboarding-security rolling-bug-tracker sprint; wrap the ~22 files of unwrapped work the snapshot flagged
+- Seed Jumbo's `.claude/design.md` on its next visual work — the design layer's first field test (feel parameters start from design/ui-design.md's worked example); optionally seed a Jumbo CHANGELOG from its wrap history at the same time
 - Resolve the crosswalk's open flags (#4 existing-arch-doc canonicality, #5 command-less sessions, #6 cold build/wrap don't read the global profile)   [→ details]
 - Eval loop via the skill-creator plugin — scenario tests (triggering, wrap attribution) run with-skill vs baseline   [→ details]
 - Talk / landing page from docs/how-vibeflow-works.md
@@ -27,9 +26,6 @@ One line — Jumbo fully migrated and humming on v3, brother building his legal 
 → `.claude/CHANGELOG.md` — the backward-orienting record (what changed and why, timestamped).
 
 ## Details
-
-### jumbo-migration
-Bootstrap detects the v2 shape → `bootstrap/references/migrate-v2-to-v3.md`. DECISIONS (51 date-log entries) → area registry with merge/dedupe (two wipe entries contradict — ask which mechanism holds); ROADMAP (~384 lines) → two-tier; PLAYBOOK.md retires (entries route to DECISIONS/gotchas/global profile); re-type live sprints' checkpoints (machine)/(human) while in there. Preserve originals as `-pre-v3.md`. Also seed Jumbo's `.claude/design.md` (feel parameters live in design/ui-design.md's worked example) — the design layer's first field test.
 
 ### brother-onboarding
 He gets: the feedback doc (Downloads), install → `/bootstrap` on the legal-platform repo. Watch specifically: the plain-English trigger path ("help me finish my app"), the no-git fallback, question fatigue in bootstrap, whether the two-command story holds. His friction = the next field-fix wave. His report doubles as a ready-made ARCHITECTURE seed. (Resolved 2026-07-31: v3 merged to main early — he installs with the plain README clone line, no branch flag.)

@@ -16,11 +16,12 @@ observed corrections, not praise. Delete bullets that stop being true. -->
 
 ## Lessons
 
-<!-- Curated cross-project lessons, added when a transferable lesson was learned —
-positive or negative, no praise required. Keep only lessons that would change how a
-future session on ANY project behaves. -->
+<!-- Cross-project principles, positive or negative — not a diary. Merge-first: a new
+lesson that shares a mechanism with an existing entry amends that entry in place
+instead of adding a sibling. Keep the kernel + reuse-when; the war story stays in the
+project's own files. This file loads into every session of every project — an entry
+earns its place only if it would change how a session on a DIFFERENT project acts. -->
 
-### YYYY-MM-DD — <short title>
-What worked / what failed: <the approach and outcome>
-Why: <the transferable lesson>
+### <short principle title>
+<the mechanism — what actually causes the pain or the win, in 2–4 lines>
 Reuse when: <the situation to apply it again>

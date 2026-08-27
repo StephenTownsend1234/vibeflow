@@ -74,4 +74,4 @@ Routing rules that keep these files healthy:
 
 ## Global profile
 
-`~/.claude/vibeflow/playbook.md` (outside the repo; shared across projects) holds two things: **Working preferences** — a short edit-in-place block of how this user likes to work, maintained by `/wrap` from observed corrections — and **Lessons** — curated cross-project entries, added when a transferable lesson was learned (no praise required). Read it every session; keep it small and relevant.
+`~/.claude/vibeflow/playbook.md` (outside the repo; shared across projects) holds two things: **Working preferences** — a short edit-in-place block of how this user likes to work, maintained by `/wrap` from observed corrections — and **Lessons** — cross-project principles, merge-first: a new lesson that shares a mechanism with an existing entry amends that entry in place, kernel + reuse-when only (the war story stays in the project's files). Read it every session; it loads into every session of every project, so each line must earn its place.
