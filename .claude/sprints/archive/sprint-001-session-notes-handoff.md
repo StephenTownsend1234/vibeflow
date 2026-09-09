@@ -1,6 +1,6 @@
 # Sprint: Session notes handoff
 
-**Status:** planned 2026-09-09 · run mode: one-shot · 5/5 steps · on `main` · Jumbo hook refreshed (jumbo 93072ce)
+**Status:** planned 2026-09-09 · run mode: one-shot · 5/5 steps · ARCHIVED 2026-09-09 · on `main` · Jumbo hook refreshed (jumbo 93072ce)
 
 ## Goal
 A fresh chat starts knowing what recent chats worked on, what's still open, and what to do next — even when several chats wrapped at once.

@@ -26,9 +26,9 @@ Registry of why the pack is shaped this way — grouped by area, merge-don't-app
 **Chose:** ExitPlanMode is the only plan approval (Pre-Plan Handshake folded in). Sprint file = `cp` of the approved plan + status-header edit, never re-synthesis.
 **Because:** three gates confirmed already-agreed content; and the first v3 sprint re-wrote 101 plan lines from memory — fidelity drift Stephen caught immediately.
 
-### Orientation is deterministic and lazy (2026-07-02; lazy 2026-07-07)
-**Chose:** hook injects identity/Map/roadmap-top/sprint-status-lines; full sprint files load only after the user picks one; git reconciliation proportional to the gap.
-**Because:** anything before user intent must be near-instant; 6-minute pre-choice reading walls and unconditional git archaeology both got flagged in the field.
+### Orientation is deterministic, lazy, and recency-first (2026-07-02; lazy 2026-07-07; recency-first 2026-09-09)
+**Chose:** hook injects recency first — sprint status lines, other chats active now (transcript mtimes), last-36h commits, uncommitted count, snapshot, session notes — then a capped roadmap Now and Map; full sprint files load only after the user picks one. `.last-session.md` is a stack of ≤5-line per-chat notes (worked on / still open / next), prepended by each wrap, never rewritten by another chat, trimmed past 7 days; the hook shows the last 36h. ~~Single overwritten digest, merged on read~~ (raced when wraps overlapped; a digest of another chat's thread went stale in minutes).
+**Because:** anything before user intent must be near-instant; and what a fresh chat needs is what moved lately, which git and the sprint files already hold — the note carries only what they can't (unverified, stalled, next). Not a changelog: Stephen wants a guide's note, not a log of everything.
 
 ## Build
 
@@ -79,8 +79,8 @@ Re-examined 2026-07-30 vs the Opus 5 prompting guide (which calls verifier instr
 
 ## Hooks & harness (the mod layer)
 
-### Deterministic shell, hard caps, fail-silent (2026-07-02..16; drift nudge 2026-07-31)
-**Chose:** orientation + snapshot + statusline are plain shell — no AI calls; 120-line/16KB caps; exit 0 on any failure; snapshot is self-cleaning (wrap deletes it; clean state removes it). Hook copies in projects **detect their own drift from the pack (two local `cmp`s, one nudge line) but never self-overwrite** — refresh stays a human-approved `cp`; the update ping is weekly (ISO year-week stamp), matching how often Stephen actually updates.
+### Deterministic shell, hard caps, fail-silent (2026-07-02..16; drift nudge 2026-07-31; 9KB 2026-09-09)
+**Chose:** orientation + snapshot + statusline are plain shell — no AI calls; 9KB cap, recency first so the cap can only cut the Map (~~120-line/16KB~~ — the harness spills hook output above ~10KB to a file with a 2KB preview, and Jumbo's Map + roadmap alone filled 16KB before the sprint lines were emitted; every Jumbo session 2026-08-26 → 09-09 oriented on a preview); exit 0 on any failure; snapshot is self-cleaning (wrap deletes it; clean state removes it). Hook copies in projects **detect their own drift from the pack (two local `cmp`s, one nudge line) but never self-overwrite** — refresh stays a human-approved `cp`; the update ping is weekly (ISO year-week stamp), matching how often Stephen actually updates.
 **Because:** the always-on tier must be un-hallucinatable, free, and never able to break a session. The harness never self-modifies — every hook was proposed, reviewed, tested before install (trust gradient: memory < skills < mods); the drift nudge extends that to copies: a differing copy may be deliberate customization, so detection is mechanical and the change is a decision.
 
 ## Distribution

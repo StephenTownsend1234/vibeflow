@@ -11,6 +11,7 @@ One line — Jumbo fully migrated and humming on v3, brother building his legal 
 - Resolve the crosswalk's open flags (#4 existing-arch-doc canonicality, #5 command-less sessions, #6 cold build/wrap don't read the global profile)   [→ details]
 - Eval loop via the skill-creator plugin — scenario tests (triggering, wrap attribution) run with-skill vs baseline   [→ details]
 - Talk / landing page from docs/how-vibeflow-works.md
+- Bootstrap-migrate the Paravita support agent (`~/Desktop/paravita-vibing/support-agent-vibeflow`, v2 shape, hooks installed 2026-09-09) — a real-hands v3 migration test; wrap first, then `/bootstrap`
 
 ## Later (parked inbox, unordered)
 - Harvest the gbrain trial (local install 2026-07-29, `~/brain/GBRAIN-TRIAL.md`) — what does a life-brain feel like; which capture habits stick; informs cross-project brain + parked gap-analysis/dream-cycle ideas (research/gbrain-learnings.md)
