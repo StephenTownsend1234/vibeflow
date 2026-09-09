@@ -13,19 +13,20 @@ Second principle: **stay forward-oriented.** Be eager to start the next sprint, 
 
 ## Orient (silent)
 
-The SessionStart hook usually injects orientation (project identity, Map, roadmap top, sprint status lines, last-session carry-forward, work-since-last-wrap). That's enough to brief and route — **don't read full sprint files before the user has picked one**; the hook's title + count + next-step line is the right altitude until a route is chosen. The only silent read now is `~/.claude/vibeflow/playbook.md` (global profile). If no `<vibeflow-orientation>` block was injected (hook not installed), read the orientation yourself in one batch: PROJECT.md, ARCHITECTURE's Map section, ROADMAP top, sprint status.
+The SessionStart hook usually injects orientation, recency first: sprint status lines, other chats active now, commits from the last 36h, uncommitted count, any unwrapped-session snapshot, the recent session notes, then roadmap Now and the Map. That's enough to brief and route — **don't read full sprint files before the user has picked one**; the hook's title + count + next-step line is the right altitude until a route is chosen. The only silent read now is `~/.claude/vibeflow/playbook.md` (global profile). If no `<vibeflow-orientation>` block was injected (hook not installed), read the orientation yourself in one batch: PROJECT.md, ARCHITECTURE's Map section, ROADMAP top, sprint status.
 
 If `.claude/` has no vibeflow state, offer in one line: "This project isn't set up for vibeflow yet — want me to set it up now?" On yes, run `/bootstrap` directly.
 
-**Verify before briefing — proportional to the gap.** Sprint files are claims; the repo is truth. If the orientation shows nothing committed since the last wrap and a clean tree, trust the files and skip reconciliation. When there IS a gap (commits since wrap, uncommitted work, another chat active), check `git log` since the last wrap commit — where a sprint file and the repo disagree (steps shipped but unchecked, work landed in another chat), the brief says so plainly: "sprint file says X pending; git shows it shipped in `<hash>`." Never brief confidently from a file the diff contradicts.
+**Verify before briefing — proportional to the gap.** Sprint files are claims; the repo is truth. If the orientation shows nothing committed since the last wrap and a clean tree, trust the files and skip reconciliation. When there IS a gap (commits after the newest note, uncommitted work, an unwrapped snapshot), the hook's commit list is the evidence — where a sprint file and the repo disagree (steps shipped but unchecked, work landed in another chat), the brief says so plainly: "sprint file says X pending; git shows it shipped in `<hash>`." Never brief confidently from a file the diff contradicts. **Other chats active now** means their sprint files and uncommitted paths belong to them: say so in the brief and ask which thread this chat is before re-grounding anything.
 
-Then brief in ~10 seconds of reading:
+Then brief like a guide, in ~10 seconds of reading:
 
 ```
 Project: <one line>        Goal: <from ROADMAP>
+Lately: <what recent chats worked on and shipped — one sentence across threads>
 Sprints: <name — N/M done — one-line real state>  [or "none active"]
-Now: <top 1-2 roadmap items>
-Last session: <one sentence, incl. where iteration stalled if noted>
+Open: <unverified, undeployed, or stalled — from the notes and the commits>
+Next: <top 1-2 roadmap items, with your lean>
 ```
 
 Ask the user what they want to work on. Propose simple options below: resume an ongoing sprint (if any), pull from roadmap, plan a sprint, or Freebuild. Shape the options to reality — a completed sprint offers "wrap & archive" instead; no sprints means no resume option; if the sprints plus routes exceed the 4-option cap, collapse resumes into one "Resume a sprint…" option and disambiguate in a follow-up. 
