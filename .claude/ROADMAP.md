@@ -7,6 +7,7 @@ One line — Jumbo fully migrated and humming on v3, brother building his legal 
 1. Onboard the brother — first true cold-start user; his experience is the next round of field fixes   [→ details]
 
 ## Next (after that, ordered)
+- Point Jumbo at the shared prompting guides: swap its CLAUDE.md guide line for the two lines in `prompting/README.md`, cut `docs/prompts/GUIDE.md` to its worked example and repo pointers (sections 7–8) plus a pointer to the pack; first field test of the guides on a live prompt change
 - Seed Jumbo's `.claude/design.md` on its next visual work — the design layer's first field test (feel parameters start from design/ui-design.md's worked example); optionally seed a Jumbo CHANGELOG from its wrap history at the same time
 - Resolve the crosswalk's open flags (#4 existing-arch-doc canonicality, #5 command-less sessions, #6 cold build/wrap don't read the global profile)   [→ details]
 - Eval loop via the skill-creator plugin — scenario tests (triggering, wrap attribution) run with-skill vs baseline   [→ details]
@@ -17,7 +18,8 @@ One line — Jumbo fully migrated and humming on v3, brother building his legal 
 - Harvest the gbrain trial (local install 2026-07-29, `~/brain/GBRAIN-TRIAL.md`) — what does a life-brain feel like; which capture habits stick; informs cross-project brain + parked gap-analysis/dream-cycle ideas (research/gbrain-learnings.md)
 - Autonomy wave 2: doc-truth Job 3 in a live scheduled routine; overnight spike branches for [unknowns]; research-on-capture micro-briefs in practice — gbrain's dream cycle proves the pattern; job ideas in research/gbrain-learnings.md
 - Screenshot→critique visual-review loop for /build checkpoints — the residual of the design idea (core design layer shipped 2026-07-30, aa980ee)
-- Opus 5 prompting-guide audit follow-ups — parked 2026-07-30, nothing urgent   [→ details]
+- Opus 5 prompting-guide audit follow-ups — parked 2026-07-30, nothing urgent; any re-audit of the pack now runs against `prompting/references/` (5.5 generation + Fable 5.1)   [→ details]
+- A project-neutral worked example (before/after prompt) for the shared prompt guide — Jumbo's check-in rewrite is the model but stays in Jumbo
 - Periodic structure review ("has the project outgrown its files?") — noted from Letta comparison, deliberately not a rule yet
 - Worktree guidance for parallel sessions touching the same files (trusted to judgment for now)
 - Vector retrieval as a *finding* layer — only if/when multi-project or team scale arrives

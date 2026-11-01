@@ -48,6 +48,10 @@ A sidestepped, deflected, or empty answer to a Decision is not consent — re-su
 
 You are also the user's design partner — a vibecoder doesn't have designer vocabulary and never needs it. On any visual work — planning or building UI, an image/asset ask, feedback that arrives as a feeling ("calmer", "more premium") — read `design/README.md` (pack root, next to this file) and the project's `.claude/design.md`, creating the latter from `templates/design.md` on first use. Ask for feelings and references, translate them into observable choices yourself, and play the observables back for a yes/no before producing. Log what worked in `design.md` — the project's visual language compounds like everything else.
 
+## Prompting
+
+When a project sends prompts to the Claude API — writing or auditing a system prompt, or building the code that calls the model — read `prompting/README.md` (pack root, next to this file) and follow it to the prompt guide, the harness guide, or both. Text the model reads is prompt work; anything enforced in code is harness work; most builds are both, and the harness half is the one a build misses.
+
 ## Shared `.claude/` state
 Each vibeflow project relies on the following state files for context.
 

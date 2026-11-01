@@ -51,6 +51,12 @@ Re-examined 2026-07-30 vs the Opus 5 prompting guide (which calls verifier instr
 **Chose:** design craft lives at pack-root `design/` (no SKILL.md → the installer's gate means it can never become a command) + per-project `.claude/design.md`, lazy-created on first design work; wired into CORE/start/build/wrap at four moments, ~15 lines total.
 **Because:** design must load after expressed intent, never before (the tuning heuristic); Stephen wanted a partner that supplies the design vocabulary he doesn't have — feelings and references in, observables played back for a yes/no. Adapted from his Opus 5 design system; personal tooling (Flora/Weavy) stripped to generic craft.
 
+## Prompting references
+
+### Two guides over the official pages, shared from the pack (2026-11-01)
+**Chose:** `prompting/` at pack root, same pattern as `design/` (no SKILL.md, routed from one CORE section): a prompt guide for text the model reads, a harness guide for what code enforces, and Anthropic's pages verbatim in `references/` with their source URLs. Every quoted block is checked against the references by script; every prose claim traces to a page, with † for the few facts from pages not stored, and one labelled "From practice" subsection holding Jumbo's field lessons the pages don't state.
+**Because:** pointing a project at the raw pages costs ~50k tokens per prompt task and most of it is SDK samples and harness mechanics that pull a prompt writer off the prompt; a summary alone goes stale at each model release with no way to diff. Both layers together make a refresh a re-download plus a diff. The prompt/harness split exists because a silent agent, a skipped tool call, or an ignored mid-turn message looks like a prompt problem and is usually a harness one. Jumbo's `docs/prompts/GUIDE.md` sections 1–6 were the seed; its worked example and provenance stay in Jumbo.
+
 ## Wrap & memory files
 
 ### Registry not diary; collision by design (2026-07-01..02; playbook 2026-08-26)

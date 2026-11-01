@@ -16,6 +16,9 @@ roadmap/references/     background-routine.md (Ship Captain + autonomous Spotter
 design/                 design references — lane picker (README), vocabulary
                         translation, ui-design, image-prompting; read on visual
                         work per CORE's Design section (no SKILL.md = never a skill)
+prompting/              Claude API references — guide picker (README), the prompt
+                        guide, the harness guide, references/ (five Anthropic pages
+                        verbatim); read per CORE's Prompting section (not a skill)
 templates/              the project-state file shapes (incl. design.md) + global-profile.md
 hooks/                  session-start.sh (orientation) · session-snapshot.sh
                         (SessionEnd/PreCompact breadcrumb) · statusline.sh
@@ -26,7 +29,7 @@ setup / update          installer (symlinks each cmd dir into ~/.claude/skills/)
 
 **Key patterns:** principles over choreography; hard explicit boundaries only where the path is fragile; every skill reads CORE first; progressive disclosure (references load only when their stage fires); all shared text lives exactly once, in CORE.
 
-**Run & verify:** edit a SKILL.md → it hot-reloads on next invocation (symlinks make the working tree live). Real verification = run a session on Jumbo and watch the behavior. Hooks: `bash -n` then run with `CLAUDE_PROJECT_DIR=<project>` against Jumbo (read-only).
+**Run & verify:** edit a SKILL.md → it hot-reloads on next invocation (symlinks make the working tree live). Real verification = run a session on Jumbo and watch the behavior. Hooks: `bash -n` then run with `CLAUDE_PROJECT_DIR=<project>` against Jumbo (read-only). Prompting guides: `python3 -I prompting/check-quotes.py` proves every quoted block still matches a reference page; the guides' prose claims were fact-checked sentence by sentence by a fresh-context reviewer on 2026-11-01, so re-run that pass after any reference refresh.
 
 ## Detail
 
