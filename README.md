@@ -1,10 +1,16 @@
 # vibeflow
 
-vibeflow is a kit of skills that give Claude the structure to plan collaboratively, build autonomously, and save progress contextually, so every session picks up ready and more informed than the last. Under the commands is a memory system: plain markdown files in your project that Claude reads on session start and maintains on session end — your vision, your architecture, your decisions and their whys — so context compounds across sessions instead of evaporating with each chat.
+vibeflow is a skill workflow that gives Claude structure to plan collaboratively, build autonomously, and save progress contextually, so every session picks up ready and more informed than the last. It combines a process and memory architecture with learnings and inspiration from G-Stack, HermesAgent, Letta, and others. 
 
-## New here? Two commands.
+## The flow
 
-You only need to remember two: **`/start`** when you sit down, **`/wrap`** when you're done. Everything else happens in flow — setup is offered the first time you `/start` a project, building begins automatically once a plan is agreed, and saying things like "add X to the roadmap" or "let's wrap up" just works without slash commands.
+Two simple skill commands: **`/start`** when you sit down, **`/wrap`** when you're done. Everything else happens in flow. Setup is offered the first time you `/start` a project, building begins automatically once a plan is agreed, and saying things like "add X to the roadmap" or "let's wrap up" just works without slash commands.
+
+## Philosophy
+
+- **Plan the approach, not the steps.** Spend effort on the expensive-to-reverse decision (the approach); trust Claude to execute the cheap-to-redo work.
+- **Get smarter over time.** `/wrap` captures decisions, learnings, and what worked, so context compounds instead of evaporating.
+- **You stay in the driver's seat.** Claude asks when the answer changes *what* gets built, and builds autonomously when it only changes *how* — one clear decision at a time, always with a recommendation.
 
 ## The commands
 
@@ -18,11 +24,13 @@ You only need to remember two: **`/start`** when you sit down, **`/wrap`** when 
 
 ## The loop
 
-1. **`/bootstrap`** once per project — vision captured, path mapped, memory files created.
-2. **`/start`** → pick up exactly where you left off and decide what to build.
-3. **`/build`** → Claude works through it, checking in at the moments that matter.
-4. **`/wrap`** → progress, decisions, and lessons get written down and committed.
-5. Next session, **`/start`** opens already knowing all of it.
+1. **`/start`** → pick up exactly where you left off and decide what to build.
+2. **`/build`** → Claude works through it, checking in at the moments that matter.
+3. **`/wrap`** → progress, decisions, and lessons get written down and committed.
+4. Next session, **`/start`** opens already knowing all of it.
+5. **`/roadmap`** → run it anytime to see what's ahead, plan your goals, and prioritize your work. 
+6. **`/bootstrap`** happens once per project — vision captured, path mapped, memory files created.
+
 
 ## What Claude remembers
 
@@ -66,12 +74,6 @@ bash ~/.claude/skills/vibeflow/update
 ```
 
 Pulls the latest and re-links any new commands — vibeflow checks once a week and nudges you in-session when your copy is behind.
-
-## Philosophy
-
-- **Plan the approach, not the steps.** Spend effort on the expensive-to-reverse decision (the approach); trust Claude to execute the cheap-to-redo work.
-- **Get smarter over time.** `/wrap` captures decisions, learnings, and what worked, so context compounds instead of evaporating.
-- **You stay in the driver's seat.** Claude asks when the answer changes *what* gets built, and builds autonomously when it only changes *how* — one clear decision at a time, always with a recommendation.
 
 ## License
 
